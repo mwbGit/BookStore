@@ -1,19 +1,15 @@
 package com.mwb.service;
 
 import java.util.List;
-
 import javax.annotation.Resource;
-
 import org.springframework.stereotype.Service;
 
 import com.mwb.mappers.UserDao;
 import com.mwb.entity.User;
-import com.mwb.service.UserService;
-
 @Service("userService")
 public class UserServiceImpl implements UserService{
 
-	@Resource
+	@Resource()
 	private UserDao userDao;
 	
 	@Override
