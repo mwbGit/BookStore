@@ -2,6 +2,7 @@ package com.mwb.service;
 
 import java.util.List;
 import javax.annotation.Resource;
+
 import org.springframework.stereotype.Service;
 
 import com.mwb.mappers.UserDao;
@@ -9,9 +10,9 @@ import com.mwb.entity.User;
 @Service("userService")
 public class UserServiceImpl implements UserService{
 
-	@Resource()
+	@Resource
 	private UserDao userDao;
-	
+
 	@Override
 	public User login(User user) {
 		return userDao.login(user);
