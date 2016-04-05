@@ -1,6 +1,6 @@
 package com.mwb.mappers;
 
-import com.mwb.entity.Admin;
+import com.mwb.util.Admin;
 
 import java.util.List;
 
