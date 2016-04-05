@@ -1,5 +1,7 @@
 package com.mwb.entity;
 
+import java.util.Date;
+
 /**
  * Created by Administrator on 2016/4/5 0005.
  * book
@@ -10,31 +12,30 @@ public class Book {
     private BookType booktype;
     private String press;
     //出版社
-    private String pressdate;
+    private Date pressdate;
     //出版日期
     private String author;
     private String introduction;
-    private float marketprice;
+    private double marketprice;
     //市场价
-    private float memberprice;
+    private double memberprice;
     //会员价
     private int volume;
     //成交量
 
-    @Override
-    public String toString() {
-        return "Book{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                ", booktype=" + booktype +
-                ", press='" + press + '\'' +
-                ", pressdate='" + pressdate + '\'' +
-                ", author='" + author + '\'' +
-                ", introduction='" + introduction + '\'' +
-                ", marketprice=" + marketprice +
-                ", memberprice=" + memberprice +
-                ", volume=" + volume +
-                '}';
+    public Book() {
+    }
+
+    public Book( String name, BookType booktype, String press, Date pressdate, String author, String introduction, double marketprice, double memberprice, int volume) {
+        this.name = name;
+        this.booktype = booktype;
+        this.press = press;
+        this.pressdate = pressdate;
+        this.author = author;
+        this.introduction = introduction;
+        this.marketprice = marketprice;
+        this.memberprice = memberprice;
+        this.volume = volume;
     }
 
     public int getId() {
@@ -69,11 +70,11 @@ public class Book {
         this.press = press;
     }
 
-    public String getPressdate() {
+    public Date getPressdate() {
         return pressdate;
     }
 
-    public void setPressdate(String pressdate) {
+    public void setPressdate(Date pressdate) {
         this.pressdate = pressdate;
     }
 
@@ -93,19 +94,19 @@ public class Book {
         this.introduction = introduction;
     }
 
-    public float getMarketprice() {
+    public double getMarketprice() {
         return marketprice;
     }
 
-    public void setMarketprice(float marketprice) {
+    public void setMarketprice(double marketprice) {
         this.marketprice = marketprice;
     }
 
-    public float getMemberprice() {
+    public double getMemberprice() {
         return memberprice;
     }
 
-    public void setMemberprice(float memberprice) {
+    public void setMemberprice(double memberprice) {
         this.memberprice = memberprice;
     }
 

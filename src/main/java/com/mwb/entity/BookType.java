@@ -11,6 +11,10 @@ public class BookType {
     public BookType() {
     }
 
+    public BookType(String name) {
+        this.name = name;
+    }
+
     public BookType(int id, String name) {
         this.id = id;
         this.name = name;
