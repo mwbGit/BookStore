@@ -7,21 +7,21 @@ package com.mwb.entity;
 public class OderDetails {
 
     private  int id ;
-    private  Oder oderid ;
-    private  Book bookid ;
+    private  Oder oder ;
+    private  Book book ;
     private  int num ;
-    private  float price ;
+    private  double price ;
     private  int state ;
     //状态
 
     public OderDetails() {
     }
 
-    public OderDetails(Book bookid, int id, int num, Oder oderid, float price, int state) {
-        this.bookid = bookid;
-        this.id = id;
+    public OderDetails(Book book, int num, Oder oder, double price, int state) {
+        this.book = book;
+
         this.num = num;
-        this.oderid = oderid;
+        this.oder = oder;
         this.price = price;
         this.state = state;
     }
@@ -29,21 +29,21 @@ public class OderDetails {
     @Override
     public String toString() {
         return "OderDetails{" +
-                "bookid=" + bookid +
+                "book=" + book +
                 ", id=" + id +
-                ", oderid=" + oderid +
+                ", oder=" + oder +
                 ", num=" + num +
                 ", price=" + price +
                 ", state=" + state +
                 '}';
     }
 
-    public Book getBookid() {
-        return bookid;
+    public Book getBook() {
+        return book;
     }
 
-    public void setBookid(Book bookid) {
-        this.bookid = bookid;
+    public void setBook(Book book) {
+        this.book = book;
     }
 
     public int getId() {
@@ -62,19 +62,19 @@ public class OderDetails {
         this.num = num;
     }
 
-    public Oder getOderid() {
-        return oderid;
+    public Oder getOder() {
+        return oder;
     }
 
-    public void setOderid(Oder oderid) {
-        this.oderid = oderid;
+    public void setOder(Oder oder) {
+        this.oder = oder;
     }
 
-    public float getPrice() {
+    public double getPrice() {
         return price;
     }
 
-    public void setPrice(float price) {
+    public void setPrice(double price) {
         this.price = price;
     }
 

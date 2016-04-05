@@ -13,9 +13,8 @@ public class Cart {
 
     public Cart() {
     }
-    public Cart(Book book, int id, int num, int price, User user) {
+    public Cart(Book book, int num, int price, User user) {
         this.book = book;
-        this.id = id;
         this.num = num;
         this.price = price;
         this.user = user;

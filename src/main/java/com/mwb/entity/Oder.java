@@ -8,10 +8,10 @@ import java.util.Date;
  */
 public class Oder {
     private int id;
-    private User userid;
+    private User user;
     private Date date;
     private int num;
-    private float price;
+    private double price;
     //总价
     private String name;
     //收货人
@@ -21,15 +21,14 @@ public class Oder {
     public Oder() {
     }
 
-    public Oder(String adress, Date date, int id, String name, int num, float price, String tel, User userid) {
+    public Oder(String adress, Date date,String name, int num, double price, String tel, User user) {
         this.adress = adress;
         this.date = date;
-        this.id = id;
         this.name = name;
         this.num = num;
         this.price = price;
         this.tel = tel;
-        this.userid = userid;
+        this.user = user;
     }
 
     @Override
@@ -37,7 +36,7 @@ public class Oder {
         return "Oder{" +
                 "adress='" + adress + '\'' +
                 ", id=" + id +
-                ", userid=" + userid +
+                ", user=" + user +
                 ", date=" + date +
                 ", num=" + num +
                 ", price=" + price +
@@ -86,11 +85,11 @@ public class Oder {
         this.num = num;
     }
 
-    public float getPrice() {
+    public double getPrice() {
         return price;
     }
 
-    public void setPrice(float price) {
+    public void setPrice(double price) {
         this.price = price;
     }
 
@@ -102,11 +101,11 @@ public class Oder {
         this.tel = tel;
     }
 
-    public User getUserid() {
-        return userid;
+    public User getUser() {
+        return user;
     }
 
-    public void setUserid(User userid) {
-        this.userid = userid;
+    public void setUser(User user) {
+        this.user = user;
     }
 }
