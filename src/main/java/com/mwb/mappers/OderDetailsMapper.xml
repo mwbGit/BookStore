@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mwb.mappers.OderDetailsDao">
+    <resultMap type="OderDetails" id="OderDetailsResult">
+        <result property="id" column="id"/>
+        <result property="oder.id" column="oderid"/>
+        <result property="book.id" column="bookid"/>
+        <result property="book.name" column="name"/>
+        <result property="num" column="num"/>
+        <result property="price" column="price"/>
+        <result property="state" column="state"/>
+    </resultMap>
+    <select id="find" parameterType="Integer" resultMap="OderDetailsResult">
+		select * from OderDetails where oderid=#{oderid}
+	</select>
+    <select id="findAll" resultMap="OderDetailsResult">
+        select * from OderDetails
+    </select>
+    <delete id="delete" parameterType="Integer">
+		delete from OderDetails where oderid=#{oderid}
+	</delete>
+    <insert id="add" parameterType="OderDetails">
+		insert into OderDetails (oderid,bookid,num,price,state)
+		 values(#{oder.id},#{book.id},#{num},#{price},#{state})
+	</insert>
+</mapper> 

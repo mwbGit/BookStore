@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mwb.mappers.OderDao">
+    <resultMap type="Oder" id="OderResult">
+        <result property="id" column="id"/>
+        <result property="date" column="date"/>
+        <result property="user.id" column="userid"/>
+        <result property="user.name" column="name"/>
+        <result property="num" column="num"/>
+        <result property="price" column="price"/>
+        <result property="name" column="name"/>
+        <result property="adress" column="adress"/>
+        <result property="tel" column="tel"/>
+    </resultMap>
+
+    <select id="find" parameterType="User" resultMap="OderResult">
+		select * from Oder where userid=#{id}
+	</select>
+    <select id="findAll" resultMap="OderResult">
+        select * from Oder
+    </select>
+    <delete id="delete" parameterType="Integer">
+		delete from Oder where id=#{id}
+	</delete>
+    <insert id="add" parameterType="Oder">
+		insert into Oder (userid,date,num,price,name,adress,tel)
+		 values(#{user.id},#{date},#{num},#{price},#{name},#{adress},#{tel})
+	</insert>
+</mapper> 

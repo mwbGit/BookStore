@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mwb.mappers.BookDao">
+
+    <resultMap type="Book" id="BookResult">
+        <result property="id" column="id"/>
+        <result property="name" column="name"/>
+        <result property="booktype.id" column="booktype"/>
+        <result property="booktype.name" column="name"/>
+        <result property="press" column="press"/>
+        <result property="pressdate" column="pressdate"/>
+        <result property="introduction" column="introduction"/>
+        <result property="marketprice" column="marketprice"/>
+        <result property="memberprice" column="memberprice"/>
+        <result property="volume" column="volume"/>
+    </resultMap>
+    <select id="find" parameterType="Integer" resultType="Book">
+		select * from Book where id=#{id} 
+	</select>
+    <select id="findAll" resultMap="BookResult">
+		select * from Book 
+	</select>
+    <delete id="delete" parameterType="Integer">
+		delete from Book where id=#{id}
+	</delete>
+    <update id="edit" parameterType="Book">
+        update Book
+        <set>
+            <if test="name!=null">
+                name=#{name},
+            </if>
+            <if test="booktype.id!=null">
+                booktype=#{booktype.id},
+            </if>
+            <if test="press!=null">
+                press=#{press},
+            </if>
+            <if test="pressdate!=null">
+                pressdate=#{pressdate},
+            </if>
+            <if test="author!=null">
+                author=#{author},
+            </if>
+            <if test="introduction!=null">
+                introduction=#{introduction},
+            </if>
+            <if test="marketprice!=null">
+                marketprice=#{marketprice},
+            </if>
+            <if test="memberprice!=null">
+                memberprice=#{memberprice},
+            </if>
+            <if test="volume!=null">
+                volume=#{volume},
+            </if>
+        </set>
+        where id=#{id}
+    </update>
+    <insert id="add" parameterType="Book">
+		insert into Book (name,booktype,press,pressdate,author,introduction,marketprice,memberprice,volume)
+		 values(#{name},#{booktype.id},#{press},#{pressdate},#{author},#{introduction},#{marketprice},#{memberprice},#{volume})
+	</insert>
+</mapper> 

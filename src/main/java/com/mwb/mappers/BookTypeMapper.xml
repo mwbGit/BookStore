@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mwb.mappers.BookTypeDao">
+
+    <resultMap type="BookType" id="BookTypeResult">
+        <result property="id" column="id"/>
+        <result property="name" column="name"/>
+    </resultMap>
+    <select id="findByName" parameterType="String" resultType="BookType">
+		select * from BookType where name=#{name}
+	</select>
+    <select id="findById" parameterType="Integer" resultType="BookType">
+		select * from BookType where id=#{id} 
+	</select>
+    <select id="findAll" resultMap="BookTypeResult">
+		select * from BookType 
+	</select>
+    <delete id="delete" parameterType="Integer">
+		delete from BookType where id=#{id}
+	</delete>
+    <update id="edit" parameterType="BookType">
+        update BookType
+        <set>
+            <if test="name!=null">
+                name=#{name}
+            </if>
+        </set>
+        where id=#{id}
+    </update>
+    <insert id="add" parameterType="BookType">
+		insert into BookType (name)
+		 values(#{name})
+	</insert>
+</mapper> 

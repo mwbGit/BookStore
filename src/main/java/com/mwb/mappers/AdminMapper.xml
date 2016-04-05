@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mwb.mappers.AdminDao">
+
+    <resultMap type="Admin" id="AdminResult">
+        <result property="id" column="id"/>
+        <result property="name" column="name"/>
+        <result property="password" column="password"/>
+        <result property="email" column="email"/>
+        <result property="grad" column="grad"/>
+    </resultMap>
+    <select id="login" parameterType="Admin" resultType="Admin">
+		select * from Admin where name=#{name} and password=#{password}
+	</select>
+    <select id="find" parameterType="Integer" resultType="Admin">
+		select * from Admin where id=#{id} 
+	</select>
+    <select id="findAll" resultMap="AdminResult">
+		select * from Admin 
+	</select>
+    <delete id="delete" parameterType="Integer">
+		delete from Admin where id=#{id}
+	</delete>
+    <update id="edit" parameterType="Admin">
+        update Admin
+        <set>
+            <if test="name!=null">
+                name=#{name},
+            </if>
+            <if test="password!=null">
+                password=#{password},
+            </if>
+            <if test="email!=null">
+                email=#{email},
+            </if>
+            <if test="grad!=null">
+                grad=#{grad},
+            </if>
+        </set>
+        where id=#{id}
+    </update>
+    <insert id="add" parameterType="Admin">
+		insert into Admin (name,password,email,grad)
+		 values(#{name},#{password},#{email},#{grad})
+	</insert>
+</mapper> 
