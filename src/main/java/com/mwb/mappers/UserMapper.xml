@@ -1,40 +1,77 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper
-PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
-"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.mwb.mappers.UserDao">
 
-	<resultMap type="User" id="UserResult">
-		<result property="id" column="id"/>
-		<result property="name" column="name"/>
-		<result property="password" column="password"/>
-	</resultMap>
-	
-	<select id="login" parameterType="User" resultType="User">
+    <resultMap type="User" id="UserResult">
+        <result property="id" column="id"/>
+        <result property="name" column="name"/>
+        <result property="password" column="password"/>
+        <result property="realname" column="realname"/>
+        <result property="sex" column="sex"/>
+        <result property="tel" column="tel"/>
+        <result property="email" column="email"/>
+        <result property="address" column="address"/>
+        <result property="zipcode" column="zipcode"/>
+        <result property="joindate" column="joindate"/>
+        <result property="lastdate" column="lastdate"/>
+        <result property="members" column="members"/>
+    </resultMap>
+
+    <select id="login" parameterType="User" resultType="User">
 		select * from user where name=#{name} and password=#{password}
 	</select>
-	<select id="find" parameterType="Integer" resultType="User">
+    <select id="find" parameterType="Integer" resultType="User">
 		select * from user where id=#{id} 
 	</select>
-	<select id="findAll"  resultMap="UserResult">
+    <select id="findAll" resultMap="UserResult">
 		select * from user 
 	</select>
-	<delete id="delete" parameterType="Integer">
+    <delete id="delete" parameterType="Integer">
 		delete from user where id=#{id}
 	</delete>
-	<update id="edit" parameterType="User">
-		update  user 
-		<set>
-		<if test="name!=null">
-			name=#{name},
-		</if>
-		<if test="password!=null">
-			password=#{password}
-		</if>
-		</set> 
-		where id=#{id}
-	</update>
-	<insert id="add" parameterType="User">
-		insert into user (name,password) values(#{name},#{password})
+    <update id="edit" parameterType="User">
+        update user
+        <set>
+            <if test="name!=null">
+                name=#{name},
+            </if>
+            <if test="password!=null">
+                password=#{password},
+            </if>
+            <if test="realname!=null">
+                realname=#{realname},
+            </if>
+            <if test="sex!=null">
+                sex=#{sex},
+            </if>
+            <if test="tel!=null">
+                tel=#{tel},
+            </if>
+            <if test="email!=null">
+                email=#{email},
+            </if>
+            <if test="address!=null">
+                address=#{address},
+            </if>
+            <if test="zipcode!=null">
+                zipcode=#{zipcode},
+            </if>
+            <if test="joindate!=null">
+                joindate=#{joindate},
+            </if>
+            <if test="lastdate!=null">
+                lastdate=#{lastdate},
+            </if>
+            <if test="members!=null">
+                members=#{members},
+            </if>
+        </set>
+        where id=#{id}
+    </update>
+    <insert id="add" parameterType="User">
+		insert into user (name,password,realname,sex,tel,email,address,zipcode,joindate,lastdate,members)
+		 values(#{name},#{password},#{realname},#{sex},#{tel},#{email},#{address},#{zipcode},#{joindate},#{lastdate},#{members})
 	</insert>
 </mapper> 
