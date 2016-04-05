@@ -8,16 +8,13 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
-import com.mwb.entity.Book;
-import com.mwb.entity.Cart;
-import com.mwb.mappers.CartDao;
+import com.mwb.entity.*;
+import com.mwb.mappers.*;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-
-import com.mwb.entity.User;
 
 import com.mwb.service.UserService;
 
@@ -27,25 +24,27 @@ public class UserController {
 
 	@Autowired
 	private UserService userService;
+
 	@Autowired
-	private CartDao cartDao;
+	private OderDao oderDao;
+	@Autowired
+	private OderDetailsDao oderDetailsDao;
 	@RequestMapping("/test")
 	public String Test( User user,HttpServletRequest request){
-
 		System.out.println("+++++++++++++++++++++++++++++++++++++++++++");
-		User user1=new  User(1, "mm", "ppp", "啊啊啊", "男", "1203023",
+		User user1=new  User(1,"mm","ppp","啊啊啊","男","1203023",
 				"email@", "hlj heb", 151257,new Date(), new Date(),0);
-		Cart c=new Cart();
-		c.setUser(user1);
-		Book book= new Book();book.setId(1);
-		c.setBook(book);
-		c.setNum(10);c.setPrice(1000);
-		cartDao.add(c);
-		List<Cart> list=cartDao.find(user1);
-		//cartDao.delete(1);
-		System.out.println(list);
-		userService.delete(2);
-		userService.edit(user1);
+
+		Book book=new  Book("java", new BookType(1,"mwb"),"heidachubanshe",
+				new Date(), "mwb", "aaaaaaaaaaaa",11.3,10.2,100) ;
+		user1.setId(1);
+		oderDao.add(new Oder("hlj", new Date(), "mwb", 10, 1.2, "bbb",user1));
+		List<Oder> list1=oderDao.find(user1);
+		List<OderDetails> list=oderDetailsDao.findAll();
+		book.setId(5);
+		oderDetailsDao.add(new OderDetails(book,10,list1.get(0),10.3,11));
+		List<OderDetails> list2=oderDetailsDao.find(1);
+		//oderDetailsDao.delete(1);
 		return "redirect:/test.jsp";
 	}
 	@RequestMapping("/login")
