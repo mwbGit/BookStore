@@ -7,16 +7,15 @@
     <resultMap type="Book" id="BookResult">
         <result property="id" column="id"/>
         <result property="name" column="name"/>
-        <result property="booktype.id" column="booktype"/>
-        <result property="booktype.name" column="name"/>
         <result property="press" column="press"/>
         <result property="pressdate" column="pressdate"/>
         <result property="introduction" column="introduction"/>
         <result property="marketprice" column="marketprice"/>
         <result property="memberprice" column="memberprice"/>
         <result property="volume" column="volume"/>
+        <association property="booktype" column="booktype" select="com.mwb.mappers.BookTypeDao.findById"></association>
     </resultMap>
-    <select id="find" parameterType="Integer" resultType="Book">
+    <select id="find" parameterType="Integer" resultMap="BookResult">
 		select * from Book where id=#{id} 
 	</select>
     <select id="findAll" resultMap="BookResult">
@@ -55,11 +54,17 @@
             <if test="volume!=null">
                 volume=#{volume},
             </if>
+            <if test="inventory!=null">
+                inventory=#{inventory},
+            </if>
+            <if test="img!=null">
+                img=#{img},
+            </if>
         </set>
         where id=#{id}
     </update>
     <insert id="add" parameterType="Book">
-		insert into Book (name,booktype,press,pressdate,author,introduction,marketprice,memberprice,volume)
-		 values(#{name},#{booktype.id},#{press},#{pressdate},#{author},#{introduction},#{marketprice},#{memberprice},#{volume})
+		insert into Book (name,booktype,press,pressdate,author,introduction,marketprice,memberprice,volume,inventory,img)
+		 values(#{name},#{booktype.id},#{press},#{pressdate},#{author},#{introduction},#{marketprice},#{memberprice},#{volume},#{inventory},#{img})
 	</insert>
 </mapper> 

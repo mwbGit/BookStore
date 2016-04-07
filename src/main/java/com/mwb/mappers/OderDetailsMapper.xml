@@ -5,12 +5,11 @@
 <mapper namespace="com.mwb.mappers.OderDetailsDao">
     <resultMap type="OderDetails" id="OderDetailsResult">
         <result property="id" column="id"/>
-        <result property="oder.id" column="oderid"/>
-        <result property="book.id" column="bookid"/>
-        <result property="book.name" column="name"/>
         <result property="num" column="num"/>
         <result property="price" column="price"/>
         <result property="state" column="state"/>
+        <association property="oder" column="oderid" select="com.mwb.mappers.OderDao.findById"></association>
+        <association property="book" column="bookid" select="com.mwb.mappers.BookDao.find"></association>
     </resultMap>
     <select id="find" parameterType="Integer" resultMap="OderDetailsResult">
 		select * from OderDetails where oderid=#{oderid}
