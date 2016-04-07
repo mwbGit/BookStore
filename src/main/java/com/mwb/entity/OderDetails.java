@@ -11,19 +11,19 @@ public class OderDetails {
     private  Book book ;
     private  int num ;
     private  double price ;
-    private  int state ;
+    private  int status ;
     //状态
 
     public OderDetails() {
     }
 
-    public OderDetails(Book book, int num, Oder oder, double price, int state) {
+    public OderDetails(Book book, int num, Oder oder, double price, int status) {
         this.book = book;
 
         this.num = num;
         this.oder = oder;
         this.price = price;
-        this.state = state;
+        this.status = status;
     }
 
     @Override
@@ -34,7 +34,7 @@ public class OderDetails {
                 ", oder=" + oder +
                 ", num=" + num +
                 ", price=" + price +
-                ", state=" + state +
+                ", status=" + status +
                 '}';
     }
 
@@ -78,11 +78,11 @@ public class OderDetails {
         this.price = price;
     }
 
-    public int getState() {
-        return state;
+    public int getStatus() {
+        return status;
     }
 
-    public void setState(int state) {
-        this.state = state;
+    public void setStatus(int status) {
+        this.status = status;
     }
 }

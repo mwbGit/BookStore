@@ -1,5 +1,7 @@
 package com.mwb.entity;
 
+import com.mwb.util.FomateDate;
+
 import java.util.Date;
 
 /**
@@ -18,11 +20,30 @@ public class User {
 	private int zipcode;
 	//邮编
 	private Date joindate;
+	private String joindatestr;
 	//注册时间
 	private Date lastdate;
+	private String lastdatestr;
 	//最后登录时间
 	private int members;
 	//是否是会员
+	public String getLastdatestr() {
+		return lastdatestr;
+	}
+
+	public void setLastdatestr(String lastdatestr) {
+		this.lastdatestr = lastdatestr;
+	}
+
+	public String getJoindatestr() {
+		return joindatestr;
+	}
+
+	public void setJoindatestr(String joindatestr) {
+		this.joindatestr = joindatestr;
+	}
+
+
 	public User() {
 	}
 
@@ -142,6 +163,7 @@ public class User {
 
 	public void setJoindate(Date joindate) {
 		this.joindate = joindate;
+		this.joindatestr=FomateDate.DatetoStr(joindate);
 	}
 
 	public Date getLastdate() {
@@ -150,6 +172,7 @@ public class User {
 
 	public void setLastdate(Date lastdate) {
 		this.lastdate = lastdate;
+		this.lastdatestr=FomateDate.DateToStr(lastdate);
 	}
 
 	public int getMembers() {

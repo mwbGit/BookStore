@@ -1,5 +1,7 @@
 package com.mwb.entity;
 
+import com.mwb.util.FomateDate;
+
 import java.util.Date;
 
 /**
@@ -13,18 +15,36 @@ public class Oder {
     private int num;
     private double price;
     //总价
-    private String name;
+    private String realname;
     //收货人
     private String adress;
     private String tel;
+    private int status;
+    private String datestr;
+
+    public int getStatus() {
+        return status;
+    }
+
+    public void setStatus(int status) {
+        this.status = status;
+    }
+
+    public String getDatestr() {
+        return datestr;
+    }
+
+    public void setDatestr(String datestr) {
+        this.datestr = datestr;
+    }
 
     public Oder() {
     }
 
-    public Oder(String adress, Date date,String name, int num, double price, String tel, User user) {
+    public Oder(String adress, Date date,String realname, int num, double price, String tel, User user) {
         this.adress = adress;
         this.date = date;
-        this.name = name;
+        this.realname = realname;
         this.num = num;
         this.price = price;
         this.tel = tel;
@@ -40,7 +60,7 @@ public class Oder {
                 ", date=" + date +
                 ", num=" + num +
                 ", price=" + price +
-                ", name='" + name + '\'' +
+                ", realname='" + realname + '\'' +
                 ", tel='" + tel + '\'' +
                 '}';
     }
@@ -59,6 +79,7 @@ public class Oder {
 
     public void setDate(Date date) {
         this.date = date;
+        this.datestr = FomateDate.DateToStr(date);
     }
 
     public int getId() {
@@ -69,12 +90,12 @@ public class Oder {
         this.id = id;
     }
 
-    public String getName() {
-        return name;
+    public String getRealname() {
+        return realname;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setRealname(String realname) {
+        this.realname = realname;
     }
 
     public int getNum() {

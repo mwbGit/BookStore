@@ -1,5 +1,8 @@
 package com.mwb.entity;
 
+import com.mwb.util.FomateDate;
+import org.springframework.format.annotation.DateTimeFormat;
+
 import java.util.Date;
 
 /**
@@ -12,6 +15,7 @@ public class Book {
     private BookType booktype;
     private String press;
     //出版社
+    @DateTimeFormat(pattern="yyyy-MM-dd")
     private Date pressdate;
     //出版日期
     private String author;
@@ -22,8 +26,54 @@ public class Book {
     //会员价
     private int volume;
     //成交量
+    private int inventory;
+    //库存
+    private String img;
+    private String dateStr;
+
+    public String getDateStr() {
+        return dateStr;
+    }
+
+    public void setDateStr(String dateStr) {
+        this.dateStr = dateStr;
+    }
+
+    public int getInventory() {
+        return inventory;
+    }
+
+    public void setInventory(int inventory) {
+        this.inventory = inventory;
+    }
+
+    public String getImg() {
+        return img;
+    }
+
+    public void setImg(String img) {
+        this.img = img;
+    }
 
     public Book() {
+    }
+
+    @Override
+    public String toString() {
+        return "Book{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", booktype=" + booktype +
+                ", press='" + press + '\'' +
+                ", pressdate=" + pressdate +
+                ", author='" + author + '\'' +
+                ", introduction='" + introduction + '\'' +
+                ", marketprice=" + marketprice +
+                ", memberprice=" + memberprice +
+                ", volume=" + volume +
+                ", inventory=" + inventory +
+                ", img='" + img + '\'' +
+                '}';
     }
 
     public Book( String name, BookType booktype, String press, Date pressdate, String author, String introduction, double marketprice, double memberprice, int volume) {
@@ -76,6 +126,7 @@ public class Book {
 
     public void setPressdate(Date pressdate) {
         this.pressdate = pressdate;
+        this.dateStr= FomateDate.DatetoStr(pressdate);
     }
 
     public String getAuthor() {
