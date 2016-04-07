@@ -2,11 +2,11 @@ package com.mwb.controller;
 
 import java.util.Date;
 import java.util.List;
+import java.util.Map;
 
-import javax.annotation.Resource;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
-import javax.validation.Valid;
 
 import com.mwb.entity.*;
 import com.mwb.mappers.*;
@@ -17,50 +17,61 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 
 import com.mwb.service.UserService;
+import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
+@RequestMapping("/static")
 public class UserController {
-	private static final org.slf4j.Logger LOGGER = LoggerFactory.getLogger(UserController.class);
+    private static final org.slf4j.Logger LOGGER = LoggerFactory.getLogger(UserController.class);
 
-	@Autowired
-	private UserService userService;
+    @Autowired
+    private UserService userService;
 
-	@Autowired
-	private OderDao oderDao;
-	@Autowired
-	private OderDetailsDao oderDetailsDao;
-	@RequestMapping("/test")
-	public String Test( User user,HttpServletRequest request){
-		System.out.println("+++++++++++++++++++++++++++++++++++++++++++");
-		User user1=new  User(1,"mm","ppp","啊啊啊","男","1203023",
-				"email@", "hlj heb", 151257,new Date(), new Date(),0);
+    //用户登录
+    @RequestMapping("/login")
+    public String login(User user, HttpServletRequest request) {
 
-		Book book=new  Book("java", new BookType(1,"mwb"),"heidachubanshe",
-				new Date(), "mwb", "aaaaaaaaaaaa",11.3,10.2,100) ;
-		user1.setId(1);
-		oderDao.add(new Oder("hlj", new Date(), "mwb", 10, 1.2, "bbb",user1));
-		List<Oder> list1=oderDao.find(user1);
-		List<OderDetails> list=oderDetailsDao.findAll();
-		book.setId(5);
-		oderDetailsDao.add(new OderDetails(book,10,list1.get(0),10.3,11));
-		List<OderDetails> list2=oderDetailsDao.find(1);
-		//oderDetailsDao.delete(1);
-		return "redirect:/test.jsp";
-	}
-	@RequestMapping("/login")
-	public String login(User user,HttpServletRequest request){
+        User resultUser = userService.login(user);
+        if (resultUser == null) {
+            request.setAttribute("user", user);
+            request.setAttribute("errorMsg", "�û������������");
+            return "redirect:/static/login.jsp";
+        } else {
+            HttpSession session = request.getSession();
+            session.setAttribute("User", resultUser);
+            return "redirect:/static/index.jsp";
+            //return "redirect:/success.jsp";
+        }
+    }
 
-		User resultUser=userService.login(user);
-		if(resultUser==null){
-			request.setAttribute("user", user);
-			request.setAttribute("errorMsg", "�û������������");
-			return "redirect:/static/login.jsp";
-		}else{
-			HttpSession session=request.getSession();
-			session.setAttribute("User", resultUser);
-			return "redirect:/static/index.jsp";
-			//return "redirect:/success.jsp";
-		}
-	}
+    //展示所有用户
+    @RequestMapping("/manager/getUsers")
+    public String getUsers(Map<String, Object> map) {
+        LOGGER.info("getUsers into ");
+        map.put("users", userService.findAll());
+        return "manager/usermanager";
+    }
 
+    //升级用户为会员
+    @RequestMapping("/manager/UserUpgrade")
+    public String UserUpgrade(@RequestParam("id") int id, @RequestParam("members") int members) {
+        LOGGER.info("UserUpgrade into ");
+        if (members == 0) {
+            User user = userService.find(id);
+            //1代表会员
+            user.setMembers(1);
+            userService.edit(user);
+        }
+        return "redirect:/static/manager/getUsers";
+    }
+
+    //升级用户为会员
+    @RequestMapping("/manager/UserDelete")
+    public String UserDelete(@RequestParam("id") int id) {
+        LOGGER.info("UserDelete into ");
+        userService.delete(id);
+        LOGGER.info("UserDelete ok ");
+
+        return "redirect:/static/manager/getUsers";
+    }
 }
