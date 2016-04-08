@@ -1,0 +1,19 @@
+特殊字符
+ var el = /[~#^$@%&!*.,。，()<>:;'"{}【】  ]/gi;
+javascript:;
+图片展示
+<% String path=request.getContextPath();%>
+<%=path%>
+<img src=" <%=path%>\static\bookimgs\56b1a5a3N2b5b568b.jpg" alt="" width="150px" height="200px"/>
+
+jstl遍历
+<c:forEach items="${requestScope.bookTypes}" var="BookType">
+<tr>
+<td>${BookType.id}</td>
+<td>${BookType.name}</td>
+<td><a class="delete" href="deleteBookType?id=${BookType.id}">删除</a></td>
+</tr>
+</c:forEach>
+
+只能输入数字和英文
+onkeyup="value=value.replace(/[\W]/g,'') "onbeforepaste="clipboardData.setData('text',clipboardData.getData('text').replace(/[^\d]/g,''))

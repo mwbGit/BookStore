@@ -46,6 +46,12 @@
 			</list>
 		</property>
 	</bean>
-
+	<!-- 配置文件上传 MultipartResolver -->
+	<bean id="multipartResolver"
+		  class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+		<property name="defaultEncoding" value="UTF-8"></property>
+		<property name="maxUploadSize" value="1024000"></property>
+		<property name="uploadTempDir" value="static/bookimgs"></property>
+	</bean>
 	<!-- @ResponseBody注解支持-结束 -->
 </beans>

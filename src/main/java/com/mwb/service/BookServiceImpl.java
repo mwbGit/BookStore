@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Map;
 
 /**
  * Created by Administrator on 2016/4/6 0006.
@@ -39,5 +40,20 @@ public class BookServiceImpl implements BookService {
     @Override
     public List<Book> findAll() {
         return bookDao.findAll();
+    }
+
+    @Override
+    public List<Book> findNewLimit(Map<String, Object> map) {
+         return bookDao.findNewLimit(map);
+    }
+
+    @Override
+    public List<Book> findTypeLimit(Map<String, Object> map) {
+        return bookDao.findTypeLimit(map);
+    }
+
+    @Override
+    public List<Book> findHotLimit(Map<String, Object> map) {
+        return bookDao.findHotLimit(map);
     }
 }

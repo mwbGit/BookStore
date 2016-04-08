@@ -18,9 +18,7 @@
     <select id="find" parameterType="Integer" resultMap="BookResult">
 		select * from Book where id=#{id} 
 	</select>
-    <select id="findAll" resultMap="BookResult">
-		select * from Book 
-	</select>
+
     <delete id="delete" parameterType="Integer">
 		delete from Book where id=#{id}
 	</delete>
@@ -67,4 +65,38 @@
 		insert into Book (name,booktype,press,pressdate,author,introduction,marketprice,memberprice,volume,inventory,img)
 		 values(#{name},#{booktype.id},#{press},#{pressdate},#{author},#{introduction},#{marketprice},#{memberprice},#{volume},#{inventory},#{img})
 	</insert>
+
+    <select id="findAll" resultMap="BookResult">
+        select * from Book ORDER BY  id DESC
+    </select>
+    <select id="findNewLimit" parameterType="Map" resultMap="BookResult">
+        select * from Book ORDER BY  id DESC
+        <if test="index!=null">
+            <if test="size!=null">
+                limit  #{index},#{size}
+            </if>
+        </if>
+    </select>
+    <select id="findTypeLimit" parameterType="Map" resultMap="BookResult">
+        select * from Book
+        <if test="booktype!=null">
+            WHERE booktype=#{booktype}
+        </if>
+        ORDER BY  id DESC
+        <if test="index!=null">
+            <if test="size!=null">
+                limit  #{index},#{size}
+            </if>
+        </if>
+    </select>
+    <select id="findHotLimit" parameterType="Map" resultMap="BookResult">
+        select * from Book
+            ORDER BY volume DESC
+        <if test="index!=null">
+            <if test="size!=null">
+                limit  #{index},#{size}
+            </if>
+        </if>
+    </select>
+
 </mapper> 

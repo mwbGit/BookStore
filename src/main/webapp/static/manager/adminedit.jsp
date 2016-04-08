@@ -1,7 +1,5 @@
-<%@ page import="com.mwb.util.FomateDate" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-         pageEncoding="UTF-8" %>
-<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+pageEncoding="UTF-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -22,7 +20,7 @@
 
     <meta charset="utf-8"/>
 
-    <title>类别管理</title>
+    <title>修改信息</title>
 
     <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 
@@ -51,10 +49,12 @@
     <!-- END GLOBAL MANDATORY STYLES -->
 
     <!-- BEGIN PAGE LEVEL STYLES -->
-    <link rel="stylesheet" type="text/css" href="media/css/select2_metro.css" />
-    <link rel="stylesheet" href="media/css/DT_bootstrap.css" />
-    <!-- END PAGE LEVEL STYLES -->
-    <link rel="shortcut icon" href="media/image/favicon.ico" />
+
+    <link rel="stylesheet" type="text/css" href="media/css/select2_metro.css"/>
+    <link rel="stylesheet" href="media/css/DT_bootstrap.css"/>
+    <!-- END PAGE LEVEL SCRIPTS -->
+
+    <link rel="shortcut icon" href="media/image/favicon.ico"/>
 
 </head>
 
@@ -84,14 +84,14 @@
 
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                         <img alt="" src="media/image/avatar1_small.jpg"/>
-                        <span class="username">Bob Nilson</span>
+                        <span class="username">${admin.name}</span>
                         <i class="icon-angle-down"></i>
 
                     </a>
 
                     <ul class="dropdown-menu">
 
-                        <li><a href="EditPassword"><i class="icon-user"></i>修改密码</a></li>
+                        <li><a href="adminedit.jsp"><i class="icon-user"></i>修改信息</a></li>
 
                         <li><a href="logOut"><i class="icon-key"></i> Log Out</a></li>
 
@@ -129,7 +129,7 @@
             </li>
             <li class="start ">
 
-                <a href="index.html">
+                <a href="index.jsp">
 
                     <i class="icon-home"></i>
 
@@ -142,7 +142,7 @@
 
                 <a href="javascript:;">
 
-                    <i class="icon-cogs"></i>
+                    <i class="icon-table"></i>
 
                     <span class="title">图书管理</span>
 
@@ -170,7 +170,7 @@
                 </ul>
 
             </li>
-            <li class="active">
+            <li >
                 <a href="getBookTypes">
                     <i class="icon-bar-chart"></i>
                     <span class="title">类别管理</span>
@@ -181,7 +181,7 @@
 
                 <a href="javascript:;">
 
-                    <i class="icon-cogs"></i>
+                    <i class="icon-file-text"></i>
 
                     <span class="title">订单管理</span>
 
@@ -209,45 +209,20 @@
                 </ul>
 
             </li>
-            <li class="">
-
-                <a href="javascript:;">
-
-                    <i class="icon-cogs"></i>
-
+            <li >
+                <a href="getUsers">
+                    <i class="icon-user"></i>
                     <span class="title">用户管理</span>
-
-                    <span class="arrow "></span>
-
                 </a>
-
-                <ul class="sub-menu">
-
-                    <li>
-
-                        <a href="useradd.html">
-
-                            添加用户</a>
-
-                    </li>
-                    <li>
-
-                        <a href="usershow.html">
-
-                            展示用户</a>
-
-                    </li>
-
-                </ul>
 
             </li>
-            <li class="">
+            <li class="last">
 
                 <a href="javascript:;">
 
-                    <i class="icon-cogs"></i>
+                    <i class="icon-sitemap"></i>
 
-                    <span class="title">管理员管理</span>
+                    <span class="title">管理员</span>
 
                     <span class="arrow "></span>
 
@@ -257,31 +232,16 @@
 
                     <li>
 
-                        <a href="adminadd.html">
-
+                        <a href="addAdmin">
                             添加管理员</a>
-
                     </li>
-                    <li>
-
-                        <a href="adminshow.html">
-
+                    <li class="active">
+                        <a href="getAdmins">
                             展示管理员</a>
 
                     </li>
 
                 </ul>
-
-            </li>
-            <li class="last ">
-
-                <a href="charts.html">
-
-                    <i class="icon-bar-chart"></i>
-
-                    <span class="title">Visual Charts</span>
-
-                </a>
 
             </li>
 
@@ -389,260 +349,77 @@
 
                     </div>
 
-                    <!-- 来源-->
-                    <ul class="breadcrumb">
 
-                        <li>
-
-                            <i class="icon-home"></i>
-
-                            <a href="index.html">Home</a>
-
-                            <span class="icon-angle-right"></span>
-
-                        </li>
-
-                        <li><a href="getBookTypes">类别管理</a></li>
-
-                    </ul>
 
                 </div>
 
             </div>
 
-
             <!-- 内容展示-->
             <div class="row-fluid">
 
-                <div class="span6">
-
-                    <!-- BEGIN SAMPLE TABLE PORTLET-->
-
+                <div class="span12">
                     <div class="portlet box red">
 
                         <div class="portlet-title">
 
-                            <div class="caption"><i class="icon-cogs"></i>Simple Table</div>
-
+                            <div class="caption"><i class="icon-coffee"></i>修改信息</div>
                             <div class="tools">
-
-                                <a href="javascript:;" class="collapse"></a>
-
-                                <a href="#portlet-config" data-toggle="modal" class="config"></a>
-
                                 <a href="javascript:;" class="reload"></a>
-
                                 <a href="javascript:;" class="remove"></a>
-
                             </div>
 
                         </div>
-
                         <div class="portlet-body">
 
-                            <table class="table table-hover">
+                            <form action="EditPassword" method="post">
+                                <table class="table table-bordered table-hover">
+                                    <tr>
+                                    <td><input id="id" type="hidden" name="id" value="${admin.id}"/></td>
+                                    </tr>
+                                    <tr>
+                                    <td><input id="grade" type="hidden" name="grade" value="${admin.grade}"/></td>
+                                    </tr>
+                                    <tr>
+                                    <td> <label for="name" class="control-label">名称</label></td>
+                                    <td><input id="name" type="text" name="name" value="${admin.name}"/></td>
+                                    </tr>
+                                    <tr>
+                                        <td> <label for="password" class="control-label tooltips" data-placement="top"
+                                                    data-original-title="密码只能输入英文或数字.">密码</label></td>
+                                        <td><input id="password" type="password" name="password" onkeyup="value=value.replace(/[\W]/g,'') "
+                                                   onbeforepaste="clipboardData.setData('text',clipboardData.getData('text').replace(/[^\d]/g,''))"/></td>
+                                    </tr>
+                                    <tr>
+                                        <td> <label for="password2" class="control-label tooltips" data-placement="top"
+                                                    data-original-title="有特殊字符自动删掉..">确认密码</label></td>
+                                        <td><input id="password2" type="password" onkeyup="value=value.replace(/[\W]/g,'') "
+                                                   onbeforepaste="clipboardData.setData('text',clipboardData.getData('text').replace(/[^\d]/g,''))"/></td>
+                                    </tr>
+                                    <tr>
+                                        <td><label for="password2" class="control-label tooltips" data-placement="top"
+                                                   data-original-title="只能为数字">手机号</label></td>
+                                        <td><input id="tel" type="text" name="tel" value="${admin.tel}" onkeyup="value=value.replace(/[^\d]/g,'') "
+                                                   onbeforepaste="clipboardData.setData('text',clipboardData.getData('text').replace(/[^\d]/g,''))"/></td>
+                                    </tr>
+                                    <tr>
+                                        <td> <label for="email" class="control-label">邮箱</label></td>
+                                        <td><input id="email" type="text" name="email" value="${admin.email}"/></td>
+                                    </tr>
 
-                                <thead>
 
-                                <tr>
-
-                                    <th>#</th>
-
-                                    <th>First Name</th>
-
-                                    <th>Last Name</th>
-
-                                    <th class="hidden-480">Username</th>
-
-                                    <th>Status</th>
-
-                                </tr>
-
-                                </thead>
-
-                                <tbody>
-
-                                <tr>
-
-                                    <td>1</td>
-
-                                    <td>Mark</td>
-
-                                    <td>Otto</td>
-
-                                    <td class="hidden-480">makr124</td>
-
-                                    <td><span class="label label-success">Approved</span></td>
-
-                                </tr>
-
-                                <tr>
-
-                                    <td>2</td>
-
-                                    <td>Jacob</td>
-
-                                    <td>Nilson</td>
-
-                                    <td class="hidden-480">jac123</td>
-
-                                    <td><span class="label label-info">Pending</span></td>
-
-                                </tr>
-
-                                <tr>
-
-                                    <td>3</td>
-
-                                    <td>Larry</td>
-
-                                    <td>Cooper</td>
-
-                                    <td class="hidden-480">lar</td>
-
-                                    <td><span class="label label-warning">Suspended</span></td>
-
-                                </tr>
-
-                                <tr>
-
-                                    <td>3</td>
-
-                                    <td>Sandy</td>
-
-                                    <td>Lim</td>
-
-                                    <td class="hidden-480">sanlim</td>
-
-                                    <td><span class="label label-danger">Blocked</span></td>
-
-                                </tr>
-
-                                </tbody>
-
-                            </table>
-
+                                    <tr>
+                                        <td> <label class="control-label"> </label></td>
+                                        <td><button id="sub" type="submit" class="btn red"><i class="icon-ok"></i>修改
+                                        </button>
+                                            <button type="reset" class="btn red">清空</button>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </form>
                         </div>
 
                     </div>
-
-                    <!-- END SAMPLE TABLE PORTLET-->
-
-                </div>
-
-                <div class="span6">
-
-                    <!-- BEGIN BORDERED TABLE PORTLET-->
-
-                    <div class="portlet box yellow">
-
-                        <div class="portlet-title">
-
-                            <div class="caption"><i class="icon-coffee"></i>Bordered Table</div>
-
-                            <div class="tools">
-
-                                <a href="javascript:;" class="collapse"></a>
-
-                                <a href="#portlet-config" data-toggle="modal" class="config"></a>
-
-                                <a href="javascript:;" class="reload"></a>
-
-                                <a href="javascript:;" class="remove"></a>
-
-                            </div>
-
-                        </div>
-
-                        <div class="portlet-body">
-
-                            <table class="table table-bordered table-hover">
-
-                                <thead>
-
-                                <tr>
-
-                                    <th>#</th>
-
-                                    <th>First Name</th>
-
-                                    <th>Last Name</th>
-
-                                    <th class="hidden-480">Username</th>
-
-                                    <th>Status</th>
-
-                                </tr>
-
-                                </thead>
-
-                                <tbody>
-
-                                <tr>
-
-                                    <td>1</td>
-
-                                    <td>Mark</td>
-
-                                    <td>Otto</td>
-
-                                    <td class="hidden-480">makr124</td>
-
-                                    <td><span class="label label-success">Approved</span></td>
-
-                                </tr>
-
-                                <tr>
-
-                                    <td>2</td>
-
-                                    <td>Jacob</td>
-
-                                    <td>Nilson</td>
-
-                                    <td class="hidden-480">jac123</td>
-
-                                    <td><span class="label label-info">Pending</span></td>
-
-                                </tr>
-
-                                <tr>
-
-                                    <td>3</td>
-
-                                    <td>Larry</td>
-
-                                    <td>Cooper</td>
-
-                                    <td class="hidden-480">lar</td>
-
-                                    <td><span class="label label-warning">Suspended</span></td>
-
-                                </tr>
-
-                                <tr>
-
-                                    <td>3</td>
-
-                                    <td>Sandy</td>
-
-                                    <td>Lim</td>
-
-                                    <td class="hidden-480">sanlim</td>
-
-                                    <td><span class="label label-danger">Blocked</span></td>
-
-                                </tr>
-
-                                </tbody>
-
-                            </table>
-
-                        </div>
-
-                    </div>
-
-                    <!-- END BORDERED TABLE PORTLET-->
 
                 </div>
 
@@ -668,8 +445,7 @@
 
     <div class="footer-inner">
 
-        2013 &copy; Metronic by keenthemes.Collect from <a href="http://www.cssmoban.com/" title="网站模板" target="_blank">网站模板</a>
-        - More Templates <a href="http://www.cssmoban.com/" target="_blank" title="模板之家">模板之家</a>
+        2015 &copy; Com.mwb.cn<a href="#" target="_blank">书城</a>
 
     </div>
 
@@ -738,24 +514,16 @@
 
 <script src="media/js/table-advanced.js"></script>
 <!-- END PAGE LEVEL SCRIPTS -->
-<script src="media/js/book-editable.js"></script>
+<script src="media/js/table-editable.js"></script>
+<script src="media/js/adminadd.js"></script>
 <script src="media/js/datetimepicker.min.js"></script>
 <script src="media/js/functions.js"></script>
-
 <script>
 
     jQuery(document).ready(function () {
+
         App.init();
-        TableEditable.init();
-
-        $(".delet").click(function(){
-            if(window.confirm("确定删除?")){
-                return true;
-            }else{
-                return false;
-            }
-
-        });
+        FormSamples.init();
 
     });
 

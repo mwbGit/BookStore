@@ -3,6 +3,7 @@ package com.mwb.controller;
 import com.mwb.entity.Admin;
 
 import com.mwb.service.AdminService;
+import com.mwb.util.MD5;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -11,8 +12,13 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+import java.util.Date;
 import java.util.Map;
 
+/**
+ * 后台
+ * 管理员
+ */
 @Controller
 @RequestMapping("/static")
 public class AdminController {
@@ -26,10 +32,15 @@ public class AdminController {
     @RequestMapping("/manager/LoginAdmin")
     public String Login(Admin admin,HttpServletRequest request) {
         LOGGER.info("Login into ");
+        admin.setPassword(MD5.GetMD5Code(admin.getPassword()));
         Admin manager = adminService.login(admin);
         if (manager == null) {
+            LOGGER.info("admin =null ");
             return "redirect:/static/manager/login.jsp";
         } else {
+            LOGGER.info("admin =ok ");
+            manager.setLastdate(new Date());
+            adminService.edit(manager);
             HttpSession session = request.getSession();
             session.setAttribute("admin", manager);
             return "redirect:/static/manager/index.jsp";
@@ -71,6 +82,7 @@ public class AdminController {
     @RequestMapping("/manager/Addadmin")
     public String Addadmin(Admin admin) {
         LOGGER.info("Addadmin into ");
+        admin.setPassword(MD5.GetMD5Code(admin.getPassword()));
         if (admin != null) {
             adminService.add(admin);
             LOGGER.info("Addadmin ok ");
@@ -82,6 +94,21 @@ public class AdminController {
     public String addAdmin() {
         LOGGER.info("addAdmin into ");
         return "manager/adminadd";
+    }
+    //退出
+    @RequestMapping("/manager/logOut")
+    public String logOut(HttpServletRequest request) {
+        LOGGER.info("logOut into ");
+        request.getSession().removeAttribute("admin");
+        return "redirect:/static/manager/login.jsp";
+    }
+    //修改信息
+    @RequestMapping("/manager/EditPassword")
+    public String EditPassword(Admin admin) {
+        LOGGER.info("EditPassword into ");
+        admin.setPassword(MD5.GetMD5Code(admin.getPassword()));
+        adminService.edit(admin);
+        return "manager/index";
     }
 
 }

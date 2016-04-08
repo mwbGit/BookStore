@@ -80,7 +80,7 @@
 
 		<p>
 
-			<a href="index.html">Return home</a>
+			<a href="index.jsp">Return home</a>
 
 			<br>
 

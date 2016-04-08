@@ -1,24 +1,23 @@
 package com.mwb.controller;
 
 import java.util.Date;
-import java.util.List;
 import java.util.Map;
-
-
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import com.mwb.entity.*;
-import com.mwb.mappers.*;
+import com.mwb.util.MD5;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
-
-
 import com.mwb.service.UserService;
 import org.springframework.web.bind.annotation.RequestParam;
 
+/**
+ * 后台 删除 展示 升级会员
+ * 前台 用户登录 退出 修改
+ */
 @Controller
 @RequestMapping("/static")
 public class UserController {
@@ -27,23 +26,62 @@ public class UserController {
     @Autowired
     private UserService userService;
 
-    //用户登录
-    @RequestMapping("/login")
-    public String login(User user, HttpServletRequest request) {
 
-        User resultUser = userService.login(user);
-        if (resultUser == null) {
-            request.setAttribute("user", user);
-            request.setAttribute("errorMsg", "�û������������");
-            return "redirect:/static/login.jsp";
+    //用户登录
+    @RequestMapping("/Login")
+    public String login(User user ,HttpServletRequest request) {
+        user.setPassword(MD5.GetMD5Code(user.getPassword()));
+        User user1 = userService.login(user);
+        if (user1 == null) {
+            LOGGER.info("user1 =null ");
+            return "login";
         } else {
+            LOGGER.info("user1 =ok ");
+            //存储最后登录时间
+            user1.setLastdate(new Date());
+            userService.edit(user1);
             HttpSession session = request.getSession();
-            session.setAttribute("User", resultUser);
-            return "redirect:/static/index.jsp";
-            //return "redirect:/success.jsp";
+            session.setAttribute("user", user1);
+            return "redirect:/static/index";
         }
+
+    }
+    //退出
+    @RequestMapping("/logOut")
+    public String logOut(HttpServletRequest request) {
+        LOGGER.info("logOut into ");
+        request.getSession().removeAttribute("user");
+        return "redirect:/static/index";
     }
 
+    //获取修改页面
+    @RequestMapping("/userEdit")
+    public String userEdit(HttpServletRequest request) {
+        LOGGER.info("userEdit into ");
+        User user=(User)request.getSession().getAttribute("user");
+        request.setAttribute("UserShow",user);
+        return "useredit";
+    }
+    //修改
+    @RequestMapping("/getEdit")
+    public String getEdit(User user,HttpServletRequest request) {
+        LOGGER.info("getEdit into ");
+        user.setPassword(MD5.GetMD5Code(user.getPassword()));
+        userService.edit(user);
+        request.getSession().removeAttribute("user");
+        return "redirect:/static/login.jsp";
+    }
+    //注册
+    @RequestMapping("/getRegister")
+    public String getRegister(User user,HttpServletRequest request) {
+        LOGGER.info("getRegister into ");
+        //加密 注册时间
+        user.setPassword(MD5.GetMD5Code(user.getPassword()));
+        user.setJoindate(new Date());
+        userService.add(user);
+        return "redirect:/static/login.jsp";
+    }
+//后台----------------
     //展示所有用户
     @RequestMapping("/manager/getUsers")
     public String getUsers(Map<String, Object> map) {
@@ -51,7 +89,6 @@ public class UserController {
         map.put("users", userService.findAll());
         return "manager/usermanager";
     }
-
     //升级用户为会员
     @RequestMapping("/manager/UserUpgrade")
     public String UserUpgrade(@RequestParam("id") int id, @RequestParam("members") int members) {
@@ -65,7 +102,7 @@ public class UserController {
         return "redirect:/static/manager/getUsers";
     }
 
-    //升级用户为会员
+    //删除
     @RequestMapping("/manager/UserDelete")
     public String UserDelete(@RequestParam("id") int id) {
         LOGGER.info("UserDelete into ");

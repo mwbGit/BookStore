@@ -91,7 +91,7 @@
 
                     <ul class="dropdown-menu">
 
-                        <li><a href="EditPassword"><i class="icon-user"></i>修改密码</a></li>
+                        <li><a href="adminedit.jsp"><i class="icon-user"></i>修改信息</a></li>
 
                         <li><a href="logOut"><i class="icon-key"></i> Log Out</a></li>
 

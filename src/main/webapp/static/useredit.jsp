@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-pageEncoding="UTF-8" %>
+         pageEncoding="UTF-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -7,7 +7,6 @@ pageEncoding="UTF-8" %>
     <meta charset="utf-8"/>
     <title>Book Store</title>
     <link rel="stylesheet" type="text/css" href="style.css"/>
-
 </head>
 <body>
 <div>
@@ -38,57 +37,60 @@ pageEncoding="UTF-8" %>
     <div class="center center_content">
         <!--左侧展示-->
         <div class="left_content">
-            <div class="title"><span class="title_icon"><img src="images/bullet1.gif" alt="" title="" /></span>Register</div>
+            <div class="title"><span class="title_icon"><img src="images/bullet1.gif" alt="" title="" />
+            </span>修改</div>
 
             <div class="feat_prod_box_details">
-                <p class="details">
-                    Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud.
-                </p>
-
                 <div class="contact_form">
-                    <div class="form_subtitle">create new account</div>
-                    <form name="register" action="#">
+                    <div class="form_subtitle">修改信息</div>
+                    <form name="register" action="getEdit" method="post">
                         <div class="form_row">
-                            <label class="contact"><strong>Username:</strong></label>
-                            <input type="text" class="contact_input" />
+                            <label class="contact" for="name"><strong>用户名:</strong></label>
+                            <input type="hidden" name="id" value="${UserShow.id}"/>
+                            <input type="text" value="${UserShow.name}" class="contact_input" name="name" id="name"/>
                         </div>
-
-
                         <div class="form_row">
-                            <label class="contact"><strong>Password:</strong></label>
-                            <input type="text" class="contact_input" />
+                            <label class="contact" for="realname"><strong>真实姓名:</strong></label>
+                            <input type="text" value="${UserShow.realname}" class="contact_input" name="realname" id="realname"/>
                         </div>
-
                         <div class="form_row">
-                            <label class="contact"><strong>Email:</strong></label>
-                            <input type="text" class="contact_input" />
-                        </div>
 
-
-                        <div class="form_row">
-                            <label class="contact"><strong>Phone:</strong></label>
-                            <input type="text" class="contact_input" />
+                            <label class="contact" for="sex"><strong>性别:</strong></label>
+                            <input  type="radio" name="sex" value="男"  checked="checked"/> 男
+                            <input id="sex" type="radio" name="sex" value="女" /> 女
                         </div>
 
                         <div class="form_row">
-                            <label class="contact"><strong>Company:</strong></label>
-                            <input type="text" class="contact_input" />
+                            <label class="contact" for="password"><strong>密码:</strong></label>
+                            <input type="password" class="contact_input" name="password" id="password"
+                                   onkeyup="value=value.replace(/[\W]/g,'') "onbeforepaste="clipboardData.setData('text',clipboardData.getData('text').replace(/[^\d]/g,''))"/>
+                        </div>
+                        <div class="form_row">
+                            <label class="contact" for="password1"><strong>确认密码:</strong></label>
+                            <input type="password" class="contact_input" name="password1" id="password1" onkeyup="value=value.replace(/[\W]/g,'')
+                            "onbeforepaste="clipboardData.setData('text',clipboardData.getData('text').replace(/[^\d]/g,''))"/>
                         </div>
 
                         <div class="form_row">
-                            <label class="contact"><strong>Adrres:</strong></label>
-                            <input type="text" class="contact_input" />
+                            <label class="contact" for="tel"><strong>手机号:</strong></label>
+                            <input type="text" value="${UserShow.tel}" class="contact_input" name="tel" id="tel"/>
+                        </div>
+                        <div class="form_row">
+                            <label class="contact" for="email"><strong>邮箱:</strong></label>
+                            <input type="text" value="${UserShow.email}" class="contact_input" name="email" id="email"/>
+                        </div>
+                        <div class="form_row">
+                            <label class="contact" for="address"><strong>地址:</strong></label>
+                            <input type="text" value="${UserShow.address}" class="contact_input" name="address" id="address"/>
                         </div>
 
                         <div class="form_row">
-                            <div class="terms">
-                                <input type="checkbox" name="terms" />
-                                I agree to the <a href="#">terms &amp; conditions</a>                        </div>
+                            <label class="contact" for="zipcode"><strong>邮编:</strong></label>
+                            <input type="text" value="${UserShow.zipcode}" class="contact_input" name="zipcode" id="zipcode"/>
                         </div>
 
-
                         <div class="form_row">
-                            <input type="submit" class="register" value="register" />
+                            <input id="sub" type="submit" class="register" value="注册" />
                         </div>
                     </form>
                 </div>
@@ -206,6 +208,8 @@ pageEncoding="UTF-8" %>
 
 
 </div>
-</body>
 
+<script type="application/javascript"  src="js/jquery-1.10.1.min.js"></script>
+<script type="application/javascript" src="js/useredit.js"></script>
+</body>
 </html>

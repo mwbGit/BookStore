@@ -17,7 +17,7 @@ public class MyExceptionHandler {
 	public ModelAndView Exception(Exception ex){
 		LOGGER.info("into ExceptionHandler");
 		LOGGER.error("出错了异常",ex);
-		ModelAndView mv = new ModelAndView("err");
+		ModelAndView mv = new ModelAndView("manager/err");
 		mv.addObject("exception", ex);
 		return mv;
 	}

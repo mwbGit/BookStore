@@ -7,6 +7,7 @@ font-size:12px;
 margin:0px auto auto auto;
 color:#000000;
 }
+
 a{
 color:#f8981d;
 }
@@ -40,6 +41,11 @@ height: auto;
 margin:auto;
 background-color:#FFFFFF;
 }
+.center{
+    width:900px;
+    height: auto;
+    margin:auto;
+}
 .header{
 width:900px;
 height:181px;
@@ -50,7 +56,7 @@ padding:50px 0 0 130px;
 }
 /*-----------------------------menu-------------------*/
 #menu{
-width:628px;
+width:100%;
 height:30px;
 padding:55px 0 0 10px;
 }
@@ -69,14 +75,13 @@ height:20px;
 #menu ul li a{
 height:27px;
 display:block;
-padding:0px 10px 0 10px;
+padding:0px 2px 0 2px;
 margin:0 4px 0 4px;
-_margin:0 2px 0 2px;
 float:left;
 text-decoration:none;
 text-align:center;
 color:#fff;
-font-size:13px;
+font-size:14px;
 line-height:25px;
 }
 #menu ul li.selected a{
@@ -103,6 +108,9 @@ color:#990000;
 }
 span.red{
 color:#990000;
+}
+span.gre{
+    color:#734633;
 }
 .price{
 font-size:14px;
@@ -160,6 +168,11 @@ clear:both;
 background:url(images/border.gif) no-repeat bottom center;
 padding:0 0 35px 0;
 }
+.image{
+    width: 70px;
+    height: 100px;
+}
+
 img.right{
 float:right;
 padding:0 0 0 10px;
@@ -242,6 +255,7 @@ z-index:250;
 }
 img.thumb{
 padding:10px 0 0 0;
+
 }
 .new_products{
 clear:both;
@@ -316,6 +330,7 @@ color:#795636;
 .tabs-container {
 clear: left;
 padding:0px;
+    font-size: 14px;
 }
 /*-----------------------languages_box---------*/
 .languages_box{
@@ -335,7 +350,7 @@ padding:0 0 0 20px;
 }
 .currency a{
 text-decoration:none;
-color:#333333;
+color:blue;
 padding:3px;
 border:1px #eeedee solid;
 }
@@ -352,10 +367,8 @@ border:1px #990000 solid;
 }
 /*------------------------cart---------------------*/
 .cart{
-width:337px;
 float:left;
-height:40px;
-margin:10px 0 10px 0;
+margin:5px 0 10px 0;
 background:url(images/border.gif) no-repeat bottom center;
 padding:0 0 30px 0;
 }
@@ -364,6 +377,7 @@ float:left;
 padding:3px;
 border:1px #eeedee solid;
 margin:10px 0 0 15px;
+font-size:16px;
 }
 a.view_cart{
 display:block;
@@ -536,7 +550,6 @@ color: #ccc;
 }
 /*---------------footer------------------------*/
 .footer{
-height:100px;
 border-top:1px #b2b2b2 dashed;
 background:url(images/footer_bg.gif) no-repeat bottom;
 }

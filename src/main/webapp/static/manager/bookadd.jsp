@@ -91,7 +91,7 @@ pageEncoding="UTF-8" %>
 
                     <ul class="dropdown-menu">
 
-                        <li><a href="EditPassword"><i class="icon-user"></i>修改密码</a></li>
+                        <li><a href="adminedit.jsp"><i class="icon-user"></i>修改信息</a></li>
 
                         <li><a href="logOut"><i class="icon-key"></i> Log Out</a></li>
 
@@ -395,7 +395,7 @@ pageEncoding="UTF-8" %>
 
                                 <!-- BEGIN FORM-->
 
-                                <form action="bookAdd" class="form-horizontal form-bordered form-row-stripped">
+                                <form action="bookAdd" method="post" class="form-horizontal form-bordered form-row-stripped" enctype="multipart/form-data">
 
                                     <div class="control-group">
 
@@ -404,7 +404,7 @@ pageEncoding="UTF-8" %>
                                         <div class="controls">
 
                                             <input id="name" type="text" name="name"
-                                                   class="m-wrap span12"/>
+                                                   class="m-wrap span6"/>
 
                                         </div>
 
@@ -416,7 +416,7 @@ pageEncoding="UTF-8" %>
 
                                         <div class="controls">
 
-                                            <select  class="m-wrap span12" name="booktype.id" id="type">
+                                            <select  class="m-wrap span6" name="booktype.id" id="type">
 
                                             </select>
 
@@ -430,7 +430,7 @@ pageEncoding="UTF-8" %>
 
                                         <div class="controls">
 
-                                            <input id="press" type="text" name="press" class="m-wrap span12">
+                                            <input id="press" type="text" name="press" class="m-wrap span6">
 
                                         </div>
 
@@ -440,7 +440,7 @@ pageEncoding="UTF-8" %>
                                         <label class="control-label" for="date">出版日期</label>
 
                                         <div class="controls">
-                                            <input type="text" name="pressdate" class="m-wrap span12"
+                                            <input type="text" name="pressdate" class="m-wrap span6"
                                                    placeholder="yyyy-MM-dd" id="date">
                                         </div>
 
@@ -451,7 +451,7 @@ pageEncoding="UTF-8" %>
 
                                         <div class="controls">
 
-                                            <input id="author" type="text" name="author" class="m-wrap span12">
+                                            <input id="author" type="text" name="author" class="m-wrap span6">
 
                                         </div>
 
@@ -462,7 +462,7 @@ pageEncoding="UTF-8" %>
 
                                         <div class="controls">
                                                     <textarea id="introduction" type="text" name="introduction"
-                                                              class="m-wrap span12"></textarea>
+                                                              class="m-wrap span6"></textarea>
                                         </div>
 
                                     </div>
@@ -472,7 +472,7 @@ pageEncoding="UTF-8" %>
 
                                         <div class="controls">
 
-                                            <input type="text" id="marketprice" name="marketprice" class="m-wrap span12">
+                                            <input type="text" id="marketprice" name="marketprice" class="m-wrap span6">
 
                                         </div>
 
@@ -483,7 +483,7 @@ pageEncoding="UTF-8" %>
 
                                         <div class="controls">
 
-                                            <input type="text" id="memberprice" name="memberprice" class="m-wrap span12">
+                                            <input type="text" id="memberprice" name="memberprice" class="m-wrap span6">
 
                                         </div>
 
@@ -494,7 +494,7 @@ pageEncoding="UTF-8" %>
 
                                         <div class="controls">
 
-                                            <input type="text" id="inventory" name="inventory" class="m-wrap span12">
+                                            <input type="text" id="inventory" name="inventory" class="m-wrap span6">
 
                                         </div>
 
@@ -505,7 +505,7 @@ pageEncoding="UTF-8" %>
 
                                         <div class="controls">
 
-                                            <input type="file" name="img" class="m-wrap span12">
+                                            <input type="file" name="file" class="m-wrap span6">
 
                                         </div>
 
@@ -519,8 +519,7 @@ pageEncoding="UTF-8" %>
                                         <button type="reset" class="btn blue">清空</button>
 
                                     </div>
-
-                                </form>
+                                    </form>
 
                                 <!-- END FORM-->
 
