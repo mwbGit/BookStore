@@ -6,24 +6,35 @@
     <resultMap type="Oder" id="OderResult">
         <result property="id" column="id"/>
         <result property="date" column="date"/>
-        <result property="user.id" column="userid"/>
-        <result property="user.name" column="name"/>
         <result property="num" column="num"/>
         <result property="price" column="price"/>
-        <result property="name" column="name"/>
+        <result property="realname" column="realname"/>
         <result property="adress" column="adress"/>
         <result property="tel" column="tel"/>
+        <result property="status" column="status"/>
+        <association property="user" column="userid" select="com.mwb.mappers.UserDao.find"></association>
+
     </resultMap>
 
     <select id="find" parameterType="User" resultMap="OderResult">
 		select * from Oder where userid=#{id}
 	</select>
-    <select id="findAll" resultMap="OderResult">
-        select * from Oder
+    <select id="findById" parameterType="Integer" resultMap="OderResult">
+		select * from Oder where id=#{id}
+	</select>
+    <select id="findNo" resultMap="OderResult">
+        select * from Oder where status=0
+    </select>
+    <select id="findOk" resultMap="OderResult">
+        select * from Oder where status=1
     </select>
     <delete id="delete" parameterType="Integer">
 		delete from Oder where id=#{id}
 	</delete>
+    <update id="send" parameterType="Integer">
+        update Oder SET status=1
+        where id=#{id}
+	</update>
     <insert id="add" parameterType="Oder">
 		insert into Oder (userid,date,num,price,name,adress,tel)
 		 values(#{user.id},#{date},#{num},#{price},#{name},#{adress},#{tel})

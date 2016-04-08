@@ -21,7 +21,7 @@
 			<property name="allowUrls">
 				<list>                       
                   <value>/login</value> 
-                  <value>/err</value>   
+                  <value>/err.jsp</value>
                 </list>   
 			</property>
 		</bean>
@@ -36,5 +36,16 @@
 	<mvc:resources mapping="/static/**" location="/static/" />
 	<mvc:default-servlet-handler/>
 	<mvc:annotation-driven></mvc:annotation-driven>
-	
+
+	<!-- @ResponseBody注解支持-开始 -->
+	<bean id="mappingJacksonHttpMessageConverter"
+		  class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter">
+		<property name="supportedMediaTypes">
+			<list>
+				<value>application/json;charset=UTF-8</value>
+			</list>
+		</property>
+	</bean>
+
+	<!-- @ResponseBody注解支持-结束 -->
 </beans>

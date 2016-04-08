@@ -20,6 +20,11 @@ public class FomateDate {
         String str = format.format(date);
         return str;
     }
+    public static String DatetoStr(Date date) {
+        SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+        String str = format.format(date);
+        return str;
+    }
     /**
      * 字符串转换成日期
      * @param str

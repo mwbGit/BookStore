@@ -9,7 +9,9 @@
         <result property="name" column="name"/>
         <result property="password" column="password"/>
         <result property="email" column="email"/>
-        <result property="grad" column="grad"/>
+        <result property="tel" column="tel"/>
+        <result property="lastdate" column="lastdate"/>
+        <result property="grade" column="grade"/>
     </resultMap>
     <select id="login" parameterType="Admin" resultType="Admin">
 		select * from Admin where name=#{name} and password=#{password}
@@ -35,14 +37,20 @@
             <if test="email!=null">
                 email=#{email},
             </if>
-            <if test="grad!=null">
-                grad=#{grad},
+            <if test="tel!=null">
+                tel=#{tel},
+            </if>
+            <if test="lastdate!=null">
+                lastdate=#{lastdate},
+            </if>
+            <if test="grade!=null">
+                grade=#{grade},
             </if>
         </set>
         where id=#{id}
     </update>
     <insert id="add" parameterType="Admin">
-		insert into Admin (name,password,email,grad)
-		 values(#{name},#{password},#{email},#{grad})
+		insert into Admin (name,password,email,tel,lastdate,grade)
+		 values(#{name},#{password},#{email},#{tel},#{lastdate},#{grade})
 	</insert>
 </mapper> 
