@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mwb.mappers.ContactDao">
+
+    <resultMap type="Contact" id="ContactResult">
+        <result property="id" column="id"/>
+        <result property="name" column="name"/>
+        <result property="tel" column="tel"/>
+        <result property="email" column="email"/>
+        <result property="message" column="message"/>
+        <result property="date" column="date"/>
+    </resultMap>
+
+    <select id="find" parameterType="Integer" resultType="Contact">
+		select * from Contact where id=#{id}
+	</select>
+    <select id="findAll" resultMap="ContactResult">
+		select * from Contact order by id desc
+	</select>
+    <delete id="delete" parameterType="Integer">
+		delete from Contact where id=#{id}
+	</delete>
+
+    <insert id="add" parameterType="Contact">
+		insert into Contact (name,tel,email,date,message)
+		 values(#{name},#{tel},#{email},#{date},#{message})
+	</insert>
+</mapper> 

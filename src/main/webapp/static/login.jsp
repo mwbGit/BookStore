@@ -6,28 +6,27 @@ pageEncoding="UTF-8" %>
 <head>
     <meta charset="utf-8"/>
     <title>Book Store</title>
-    <link rel="stylesheet" type="text/css" href="style.css"/>
+    <link rel="stylesheet" type="text/css" href="js/style.css"/>
 
 </head>
 <body>
 <div>
-    <% String path = request.getContextPath();%>
     <!--Top展示-->
     <div class=" center header">
         <div class="logo"><a href="index.html"><img src="images/logo.gif" alt="" title="" border="0"/></a></div>
         <div id="menu">
             <ul>
-                <li ><a href="index">Home</a></li>
-                <c:forEach items="${booktype}" var="BookType">
-                    <li><a href="getTypeBooks?id=${BookType.id}">${BookType.name}</a></li>
-                </c:forEach>
+                <li ><a href="index.jsp">Home</a></li>
+                <div id="booktypeshow">
+
+                </div>
 
                 <!--判断用户是否登录-->
                 <c:if test="${empty sessionScope.user}">
-                    <li><a class="selected" href="login.jsp">登录</a></li>
+                    <li class="selected"><a class="selected" href="login.jsp">登录</a></li>
                     <li><a href="register.jsp">注册</a></li>
                 </c:if>
-                <li><a href="contact.html">联系我们</a></li>
+                <li><a href="contact.jsp">联系我们</a></li>
 
             </ul>
         </div>
@@ -129,19 +128,8 @@ pageEncoding="UTF-8" %>
 
                 <div class="title"><span class="title_icon"><img src="images/bullet4.gif" alt="" title=""/></span>热销书籍
                 </div>
+                <div id="bookhotshow"></div>
 
-                <c:forEach items="${hotbook}" var="Book">
-
-                    <div class="new_prod_box">
-                        <a href="getBookDetails?id=${Book.id}">${Book.name}</a>
-
-                        <div class="new_prod_bg">
-                            <span class="new_icon"><img src="images/promo_icon.gif" alt="" title=""/></span>
-                            <a href="getBookDetails?id=${Book.id}"><img src="<%=path%>${Book.img}" class="image thumb"
-                                                                        border="0"/></a>
-                        </div>
-                    </div>
-                </c:forEach>
             </div>
 
             <!--右侧新书-->
@@ -149,21 +137,10 @@ pageEncoding="UTF-8" %>
 
                 <div class="title"><span class="title_icon"><img src="images/bullet4.gif" alt="" title=""/></span>新书排行
                 </div>
-                <c:forEach items="${newbooks}" var="Book">
 
-                    <div class="new_prod_box">
-                        <a href="getBookDetails?id=${Book.id}">${Book.name}</a>
-
-                        <div class="new_prod_bg">
-                            <span class="new_icon"><img src="images/new_icon.gif" alt="" title=""/></span>
-                            <a href="getBookDetails?id=${Book.id}"><img src="<%=path%>${Book.img}" class="image thumb"
-                                                                        border="0"/></a>
-                        </div>
-                    </div>
-                </c:forEach>
+                <div id="booktnewshow"></div>
 
             </div>
-
         </div>
         <!--end of right content-->
 
@@ -187,6 +164,8 @@ pageEncoding="UTF-8" %>
 
 
 </div>
+<script type="application/javascript" src="js/jquery-1.10.1.min.js"></script>
+<script type="application/javascript" src="js/getshow.js"></script>
 </body>
 
 </html>

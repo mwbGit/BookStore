@@ -5,7 +5,9 @@ import com.mwb.mappers.AdminDao;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * Created by Administrator on 2016/4/7 0007.
@@ -28,6 +30,16 @@ public class AdminServiceImpl implements AdminService {
     @Override
     public Admin find(int id) {
         return  adminDao.find(id);
+    }
+
+    @Override
+    public Admin findNameExist(Admin admin) {
+        Map<String,Object> map=new HashMap<String, Object>();
+        map.put("name",admin.getName());
+        if (admin.getId()!=null){
+            map.put("id",admin.getId());
+        }
+        return adminDao.findNameExist(map);
     }
 
     @Override

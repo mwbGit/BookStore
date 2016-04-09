@@ -2,7 +2,6 @@ package com.mwb.controller;
 
 import com.mwb.entity.*;
 import com.mwb.service.BookService;
-import com.mwb.service.BookServiceImpl;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -13,10 +12,12 @@ import org.springframework.web.multipart.MultipartFile;
 import javax.servlet.http.HttpServletRequest;
 import java.io.File;
 import java.io.IOException;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+/**
+ * 后台书籍管理
+ */
 @Controller
 @RequestMapping("/static/manager")
 public class BookController {

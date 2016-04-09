@@ -17,3 +17,13 @@ jstl遍历
 
 只能输入数字和英文
 onkeyup="value=value.replace(/[\W]/g,'') "onbeforepaste="clipboardData.setData('text',clipboardData.getData('text').replace(/[^\d]/g,''))
+
+ $.each(data.list, function (index, values) {}
+
+var params = $('form').serialize(); //序列化表单的值
+
+
+1 getTypeBooks id=null?
+getBookDetails?id=270
+session
+img url

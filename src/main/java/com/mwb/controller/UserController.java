@@ -42,7 +42,7 @@ public class UserController {
             userService.edit(user1);
             HttpSession session = request.getSession();
             session.setAttribute("user", user1);
-            return "redirect:/static/index";
+            return "redirect:/static/index.jsp";
         }
 
     }
@@ -51,7 +51,7 @@ public class UserController {
     public String logOut(HttpServletRequest request) {
         LOGGER.info("logOut into ");
         request.getSession().removeAttribute("user");
-        return "redirect:/static/index";
+        return "redirect:/static/index.jsp";
     }
 
     //获取修改页面
@@ -66,8 +66,24 @@ public class UserController {
     @RequestMapping("/getEdit")
     public String getEdit(User user,HttpServletRequest request) {
         LOGGER.info("getEdit into ");
+        //防止修改其他用户
+       User u= (User)request.getSession().getAttribute("user");
+        if (u.getId()!=user.getId()){
+            LOGGER.info("no user id ");
+            request.setAttribute("UserShow","u");
+            return "useredit";
+        }
+        //验证用户名是否重复
+        if(userService.findNameExist(user)!=null){
+            LOGGER.info("getEdit name Exist ");
+            request.setAttribute("err", "用户名重复");
+            request.setAttribute("UserShow",u);
+            return "useredit";
+        }
+        //修改
         user.setPassword(MD5.GetMD5Code(user.getPassword()));
         userService.edit(user);
+        LOGGER.info("getEdit edit ok ");
         request.getSession().removeAttribute("user");
         return "redirect:/static/login.jsp";
     }
@@ -75,6 +91,12 @@ public class UserController {
     @RequestMapping("/getRegister")
     public String getRegister(User user,HttpServletRequest request) {
         LOGGER.info("getRegister into ");
+        if(userService.findNameExist(user)!=null){
+            LOGGER.info("getEdit name Exist ");
+            request.setAttribute("err","用户名重复");
+            request.setAttribute("userAdd",user);
+            return "register";
+        }
         //加密 注册时间
         user.setPassword(MD5.GetMD5Code(user.getPassword()));
         user.setJoindate(new Date());

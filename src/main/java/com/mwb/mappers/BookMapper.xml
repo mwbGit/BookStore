@@ -69,6 +69,9 @@
     <select id="findAll" resultMap="BookResult">
         select * from Book ORDER BY  id DESC
     </select>
+    <select id="findTypeCount" parameterType="Integer" resultType="Integer">
+        select COUNT(id) from Book WHERE booktype=#{typeid}
+    </select>
     <select id="findNewLimit" parameterType="Map" resultMap="BookResult">
         select * from Book ORDER BY  id DESC
         <if test="index!=null">
@@ -80,9 +83,8 @@
     <select id="findTypeLimit" parameterType="Map" resultMap="BookResult">
         select * from Book
         <if test="booktype!=null">
-            WHERE booktype=#{booktype}
+            WHERE booktype=#{booktype} order by volume desc
         </if>
-        ORDER BY  id DESC
         <if test="index!=null">
             <if test="size!=null">
                 limit  #{index},#{size}

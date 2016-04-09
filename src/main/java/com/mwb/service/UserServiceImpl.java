@@ -1,6 +1,8 @@
 package com.mwb.service;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import javax.annotation.Resource;
 
 import org.springframework.stereotype.Service;
@@ -28,6 +30,16 @@ public class UserServiceImpl implements UserService{
 	public User find(int id) {
 		// TODO Auto-generated method stub
 		return userDao.find(id);
+	}
+
+	@Override
+	public User findNameExist(User user) {
+		Map<String,Object> map=new HashMap<String, Object>();
+		map.put("name",user.getName());
+		if (user.getId()!=null){
+			map.put("id",user.getId());
+		}
+		return userDao.findNameExist(map);
 	}
 
 	@Override

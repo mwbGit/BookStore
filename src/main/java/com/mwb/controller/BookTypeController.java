@@ -15,6 +15,9 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import java.util.List;
 import java.util.Map;
 
+/**
+ * 书籍类别控制
+ */
 @Controller
 @RequestMapping("/static/manager")
 public class BookTypeController {

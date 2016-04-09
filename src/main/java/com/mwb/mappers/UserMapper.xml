@@ -22,6 +22,12 @@
     <select id="login" parameterType="User" resultType="User">
 		select * from user where name=#{name} and password=#{password}
 	</select>
+    <select id="findNameExist" parameterType="map" resultType="User">
+		select * from user where name=#{name}
+		<if test="id!=null">
+		and id !=#{id}
+        </if>
+	</select>
     <select id="find" parameterType="Integer" resultType="User">
 		select * from user where id=#{id} 
 	</select>

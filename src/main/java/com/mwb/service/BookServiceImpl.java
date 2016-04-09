@@ -56,4 +56,9 @@ public class BookServiceImpl implements BookService {
     public List<Book> findHotLimit(Map<String, Object> map) {
         return bookDao.findHotLimit(map);
     }
+
+    @Override
+    public int findTypeCount(int typeid) {
+        return bookDao.findTypeCount(typeid);
+    }
 }

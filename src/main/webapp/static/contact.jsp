@@ -7,6 +7,7 @@
     <meta charset="utf-8"/>
     <title>Book Store</title>
     <link rel="stylesheet" type="text/css" href="js/style.css"/>
+
 </head>
 <body>
 <div>
@@ -22,10 +23,10 @@
 
                 <!--判断用户是否登录-->
                 <c:if test="${empty sessionScope.user}">
-                    <li><a class="selected" href="login.jsp">登录</a></li>
-                    <li class="selected"><a href="register.jsp">注册</a></li>
+                    <li ><a class="selected" href="login.jsp">登录</a></li>
+                    <li><a href="register.jsp">注册</a></li>
                 </c:if>
-                <li><a href="contact.jsp">联系我们</a></li>
+                <li><a class="selected" href="contact.jsp">联系我们</a></li>
 
             </ul>
         </div>
@@ -37,65 +38,41 @@
         <!--左侧展示-->
         <div class="left_content">
             <div class="title"><span class="title_icon"><img src="images/bullet1.gif" alt="" title="" />
-            </span>注册</div>
+            </span>联系我们</div>
 
             <div class="feat_prod_box_details">
+                <form action="sendMessage" method="post">
                 <div class="contact_form">
-                    <div class="form_subtitle">注册信息</div>
-                    <form name="register" action="getRegister" method="post">
-                        <div class="form_row">
-                            <label class="contact" for="name"><strong>用户名:</strong></label>
-                            <input type="text" class="contact_input" name="name" id="name"  onkeyup=" $('#err').hide();"
-                                   value="${userAdd.name}"/>
-                            <span id="err"style="color: #ff0000" >${err}</span>
-                        </div>
-                        <div class="form_row">
-                            <label class="contact" for="realname"><strong>真实姓名:</strong></label>
-                            <input type="text" class="contact_input" name="realname" id="realname" value="${userAdd.realname}"/>
-                        </div>
-                        <div class="form_row">
 
-                            <label class="contact" for="sex"><strong>性别:</strong></label>
-                            <input  type="radio" name="sex" value="男" checked="checked"/> 男
-                            <input id="sex" type="radio" name="sex" value="女" /> 女
-                        </div>
+                    <div class="form_subtitle">留下您宝贵的意见</div>
+                    <div class="form_row">
+                        <label class="contact" for="name"><strong>姓名:</strong></label>
+                        <input type="text" class="contact_input" id="name" name="name"/>
+                    </div>
 
-                        <div class="form_row">
-                            <label class="contact" for="password"><strong>密码:</strong></label>
-                            <input type="password" class="contact_input" name="password" id="password"
-                                   onkeyup="value=value.replace(/[\W]/g,'') "onbeforepaste="clipboardData.setData('text',clipboardData.getData('text').replace(/[^\d]/g,''))"/>
-                        </div>
-                        <div class="form_row">
-                            <label class="contact" for="password1"><strong>确认密码:</strong></label>
-                            <input type="password" class="contact_input" name="password1" id="password1" onkeyup="value=value.replace(/[\W]/g,'')
-                            "onbeforepaste="clipboardData.setData('text',clipboardData.getData('text').replace(/[^\d]/g,''))"/>
-                        </div>
+                    <div class="form_row">
+                        <label class="contact" for="tel"><strong>手机:</strong></label>
+                        <input type="text" class="contact_input" id="tel" name="tel"/>
+                    </div>
+                    <div class="form_row">
+                        <label class="contact" for="email"><strong>邮箱:</strong></label>
+                        <input type="text" class="contact_input" id="email" name="email"/>
+                    </div>
 
 
-                        <div class="form_row">
-                            <label class="contact" for="tel"><strong>手机号:</strong></label>
-                            <input type="text" class="contact_input" name="tel" id="tel" value="${userAdd.tel}"/>
-                        </div>
-                        <div class="form_row">
-                            <label class="contact" for="email"><strong>邮箱:</strong></label>
-                            <input type="text" class="contact_input" name="email" id="email" value="${userAdd.email}"/>
-                        </div>
-                        <div class="form_row">
-                            <label class="contact" for="address"><strong>地址:</strong></label>
-                            <input type="text" class="contact_input" name="address" id="address" value="${userAdd.address}"/>
-                        </div>
 
-                        <div class="form_row">
-                            <label class="contact" for="zipcode"><strong>邮编:</strong></label>
-                            <input type="text" class="contact_input" name="zipcode" id="zipcode" value="${userAdd.zipcode}"/>
-                        </div>
 
-                        <div class="form_row">
-                            <input id="sub" type="submit" class="register" value="注册" />
-                        </div>
-                    </form>
+                    <div class="form_row">
+                        <label class="contact" for="message"><strong>内容:</strong></label>
+                        <textarea class="contact_textarea" id="message" name="message"></textarea>
+                    </div>
+
+
+                    <div class="form_row">
+                        <input id="sub" type="submit" class="register" value="留言" />
+                    </div>
                 </div>
-
+                </form>
             </div>
 
 
@@ -187,10 +164,20 @@
 
 
 </div>
-
-<script type="application/javascript"  src="js/jquery-1.10.1.min.js"></script>
-<script type="application/javascript" src="js/useredit.js"></script>
+<script type="application/javascript" src="js/jquery-1.10.1.min.js"></script>
 <script type="application/javascript" src="js/getshow.js"></script>
-
+<script type="application/javascript">
+    jQuery(document).ready(function () {
+        $("#sub").click(function(){
+           var len= $("#message").val().trim();
+            if(len.length<10){
+                alert("内容少于10字！")
+                return false;
+            }
+            return true;
+        });
+    });
+</script>
 </body>
+
 </html>

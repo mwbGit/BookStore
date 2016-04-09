@@ -18,4 +18,6 @@ public interface BookDao {
 	public List<Book> findTypeLimit(Map<String,Object> map);
 	//2个参数 index size
 	public List<Book> findHotLimit(Map<String,Object> map);
+	//获取条数
+	public int findTypeCount(int typeid);
 }

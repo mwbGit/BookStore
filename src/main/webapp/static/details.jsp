@@ -6,13 +6,11 @@
 <head>
     <meta charset="utf-8"/>
     <title>Book Store</title>
-    <link rel="stylesheet" type="text/css" href="style.css"/>
-    <link rel="stylesheet" href="lightbox.css" type="text/css" media="screen" />
+    <link rel="stylesheet" type="text/css" href="js/style.css"/>
+    <link rel="stylesheet" href="js/lightbox.css" type="text/css" media="screen" />
+    <script type="application/javascript"  src="js/jquery-1.10.1.min.js"></script>
+    <script type="application/javascript" src="js/getshow.js"></script>
 
-    <script src="js/prototype.js" type="text/javascript"></script>
-    <script src="js/scriptaculous.js?load=effects" type="text/javascript"></script>
-    <script src="js/lightbox.js" type="text/javascript"></script>
-    <script type="text/javascript" src="js/java.js"></script>
 </head>
 <body>
 <div>
@@ -23,10 +21,10 @@
         <div class="logo"><a href="index.html"><img src="images/logo.gif" alt="" title="" border="0"/></a></div>
         <div id="menu">
             <ul>
-                <li class="selected"><a href="index">Home</a></li>
-                <c:forEach items="${booktype}" var="BookType">
-                    <li><a href="getTypeBooks?id=${BookType.id}">${BookType.name}</a></li>
-                </c:forEach>
+                <li ><a href="index.jsp">Home</a></li>
+                <div id="booktypeshow">
+
+                </div>
 
                 <!--判断用户是否登录-->
                 <c:if test="${empty sessionScope.user}">
@@ -151,19 +149,8 @@
 
                 <div class="title"><span class="title_icon"><img src="images/bullet4.gif" alt="" title=""/></span>热销书籍
                 </div>
+                <div id="bookhotshow"></div>
 
-                <c:forEach items="${hotbook}" var="Book">
-
-                    <div class="new_prod_box">
-                        <a href="getBookDetails?id=${Book.id}">${Book.name}</a>
-
-                        <div class="new_prod_bg">
-                            <span class="new_icon"><img src="images/promo_icon.gif" alt="" title=""/></span>
-                            <a href="getBookDetails?id=${Book.id}"><img src="<%=path%>${Book.img}" class="image thumb"
-                                                                        border="0"/></a>
-                        </div>
-                    </div>
-                </c:forEach>
             </div>
 
             <!--右侧新书-->
@@ -171,18 +158,8 @@
 
                 <div class="title"><span class="title_icon"><img src="images/bullet4.gif" alt="" title=""/></span>新书排行
                 </div>
-                <c:forEach items="${newbooks}" var="Book">
 
-                    <div class="new_prod_box">
-                        <a href="getBookDetails?id=${Book.id}">${Book.name}</a>
-
-                        <div class="new_prod_bg">
-                            <span class="new_icon"><img src="images/new_icon.gif" alt="" title=""/></span>
-                            <a href="getBookDetails?id=${Book.id}"><img src="<%=path%>${Book.img}" class="image thumb"
-                                                                        border="0"/></a>
-                        </div>
-                    </div>
-                </c:forEach>
+                <div id="booktnewshow"></div>
 
             </div>
 
@@ -211,11 +188,4 @@
 </div>
 
 </body>
-<script type="text/javascript">
-
-    var tabber1 = new Yetii({
-        id: 'demo'
-    });
-
-</script>
 </html>

@@ -49,6 +49,7 @@ jQuery(document).ready(function ($) {
 
 //表单提交
     $('#sub').click(function () {
+
         if (Judge()) {
             return true;
         } else {

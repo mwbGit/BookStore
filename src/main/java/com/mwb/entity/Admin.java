@@ -9,7 +9,7 @@ import java.util.Date;
  * 管理员
  */
 public class Admin {
-    private  int id;
+    private  Integer id;
     private  String name;
     private  String  email;
     private  String  password;
@@ -63,11 +63,11 @@ public class Admin {
         this.lastdatestr = FomateDate.DateToStr(lastdate);
     }
 
-    public int getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 

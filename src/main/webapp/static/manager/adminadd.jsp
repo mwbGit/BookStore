@@ -393,33 +393,34 @@ pageEncoding="UTF-8" %>
                             <form action="Addadmin" method="post">
                                 <table class="table table-bordered table-hover">
                                     <tr>
-                                        <td> <label for="name" class="control-label">名称</label></td>
-                                        <td><input id="name" type="text" name="name" /></td>
+                                        <td style="text-align: right"> <label for="name" class="control-label">名称</label></td>
+                                        <td><input id="name" type="text" name="name" value="${adminAdd.name}"onkeyup=" $('#err').hide();"/>
+                                            <span  id="err"style="color: #ff0000" >${err}</span></td>
                                     </tr>
                                     <tr>
-                                        <td> <label for="password" class="control-label tooltips" data-placement="top"
+                                        <td style="text-align: right">  <label for="password" class="control-label tooltips" data-placement="top"
                                                     data-original-title="密码只能输入英文或数字.">密码</label></td>
-                                        <td><input id="password" type="password" name="password" onkeyup="value=value.replace(/[\W]/g,'') "
+                                        <td><input id="password" type="password" value="${adminAdd.password}" name="password" onkeyup="value=value.replace(/[\W]/g,'') "
                                                    onbeforepaste="clipboardData.setData('text',clipboardData.getData('text').replace(/[^\d]/g,''))"/></td>
                                     </tr>
                                     <tr>
-                                        <td> <label for="password2" class="control-label tooltips" data-placement="top"
+                                        <td style="text-align: right">  <label for="password2" class="control-label tooltips" data-placement="top"
                                                     data-original-title="有特殊字符自动删掉..">确认密码</label></td>
-                                        <td><input id="password2" type="password" onkeyup="value=value.replace(/[\W]/g,'') "
+                                        <td><input id="password2" type="password" value="${adminAdd.password}" onkeyup="value=value.replace(/[\W]/g,'') "
                                                    onbeforepaste="clipboardData.setData('text',clipboardData.getData('text').replace(/[^\d]/g,''))"/></td>
                                     </tr>
                                     <tr>
-                                        <td><label for="password2" class="control-label tooltips" data-placement="top"
+                                        <td style="text-align: right"> <label for="password2" class="control-label tooltips" data-placement="top"
                                                    data-original-title="只能为数字">手机号</label></td>
-                                        <td><input id="tel" type="text" name="tel" onkeyup="value=value.replace(/[^\d]/g,'') "
+                                        <td><input id="tel" type="text" name="tel"value="${adminAdd.tel}" onkeyup="value=value.replace(/[^\d]/g,'') "
                                                    onbeforepaste="clipboardData.setData('text',clipboardData.getData('text').replace(/[^\d]/g,''))"/></td>
                                     </tr>
                                     <tr>
-                                        <td> <label for="email" class="control-label">邮箱</label></td>
-                                        <td><input id="email" type="text" name="email"/></td>
+                                        <td style="text-align: right">  <label for="email" class="control-label">邮箱</label></td>
+                                        <td><input id="email" type="text" name="email" value="${adminAdd.email}"/></td>
                                     </tr>
                                     <tr>
-                                        <td> <label for="grade" class="control-label">级别</label></td>
+                                        <td style="text-align: right">  <label for="grade" class="control-label">级别</label></td>
                                         <td><select name="grade" id="grade">
                                                 <option value="1">管理员</option>
                                                 <option value="2">高级管理员</option>

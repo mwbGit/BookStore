@@ -7,6 +7,7 @@
     <meta charset="utf-8"/>
     <title>Book Store</title>
     <link rel="stylesheet" type="text/css" href="js/style.css"/>
+    <link rel="stylesheet" type="text/css" href="js/fy.css"/>
 
 </head>
 <body>
@@ -20,6 +21,7 @@
                 <div id="booktypeshow">
 
                 </div>
+
                 <!--判断用户是否登录-->
                 <c:if test="${empty sessionScope.user}">
                     <li><a href="login.jsp">登录</a></li>
@@ -37,10 +39,10 @@
         <!--左侧展示-->
         <div class="left_content">
             <div class="crumb_nav">
-                <a href="javascript:;">Home</a> &gt;&gt; 热销书籍
-                <input id="typeid" type="hidden" value="0">
+                <a href="javascript:;">Home</a> &gt;&gt; ${curType.name}
+                <input id="typeid" type="hidden" value="${curType.id}">
             </div>
-            <div class="title"><span class="title_icon"><img src="images/bullet1.gif" alt="" title=""/></span>热销书籍</div>
+            <div class="title"><span class="title_icon"><img src="images/bullet1.gif" alt="" title=""/></span>${curType.name}书籍排行</div>
             <!--书籍展示-->
             <div class="new_products">
 
@@ -118,7 +120,6 @@
                 <div id="booktnewshow"></div>
 
             </div>
-
         </div>
         <!--end of right content-->
 
@@ -145,11 +146,6 @@
 <script type="application/javascript" src="js/jquery-1.10.1.min.js"></script>
 <script type="application/javascript" src="js/bookshow.js"></script>
 <script type="application/javascript" src="js/getshow.js"></script>
-<script type="application/javascript">
-    jQuery(document).ready(function () {
-        setPage(1);
-    });
-</script>
 </body>
 
 </html>

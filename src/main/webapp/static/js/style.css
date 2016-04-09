@@ -49,7 +49,7 @@ background-color:#FFFFFF;
 .header{
 width:900px;
 height:181px;
-background:url(images/header.jpg) no-repeat center;
+background:url(../images/header.jpg) no-repeat center;
 }
 .logo{
 padding:50px 0 0 130px;
@@ -126,7 +126,7 @@ padding:2px 2px 0 2px;
 .center_content{
 width:900px;
 padding:0px 0 0 0;
-background:url(images/center_bg.gif) repeat-y center;
+background:url(../images/center_bg.gif) repeat-y center;
 }
 .left_content{
 width:490px;
@@ -165,7 +165,7 @@ padding:0px 15px 0 0 ;
 .about{
 width:337px;
 clear:both;
-background:url(images/border.gif) no-repeat bottom center;
+background:url(../images/border.gif) no-repeat bottom center;
 padding:0 0 35px 0;
 }
 .image{
@@ -209,17 +209,17 @@ position:relative;
 .box_top{
 width:295px;
 height:9px;
-background:url(images/box_top.gif) no-repeat center bottom;
+background:url(../images/box_top.gif) no-repeat center bottom;
 }
 .box_center{
 width:295px;
 height:auto;
-background:url(images/box_center.gif) repeat-y center;
+background:url(../images/box_center.gif) repeat-y center;
 }
 .box_bottom{
 width:295px;
 height:9px;
-background:url(images/box_bottom.gif) no-repeat center top;
+background:url(../images/box_bottom.gif) no-repeat center top;
 }
 
 .new_prod_box{
@@ -237,7 +237,7 @@ display:block;
 width:132px;
 height:119px;
 text-align:center;
-background:url(images/new_prod_box.gif) no-repeat center;
+background:url(../images/new_prod_box.gif) no-repeat center;
 position:relative;
 }
 .new_icon{
@@ -275,7 +275,7 @@ ul.list li a{
 list-style:none;
 text-decoration:none;
 color:#000000;
-background:url(images/left_menu_bullet.gif) no-repeat left;
+background:url(../images/left_menu_bullet.gif) no-repeat left;
 padding:0 0 0 17px;
 }
 ul.list li a:hover{
@@ -369,7 +369,7 @@ border:1px #990000 solid;
 .cart{
 float:left;
 margin:5px 0 10px 0;
-background:url(images/border.gif) no-repeat bottom center;
+background:url(../images/border.gif) no-repeat bottom center;
 padding:0 0 30px 0;
 }
 .home_cart_content{
@@ -437,7 +437,7 @@ cursor:pointer;
 text-align:center;
 float:right;
 color:#FFFFFF;
-background:url(images/register_bt.gif) no-repeat center;
+background:url(../images/register_bt.gif) no-repeat center;
 }
 a.contact{
 width:53px;
@@ -445,7 +445,7 @@ height:24px;
 display:block;
 float:right;
 margin:0 0 0 10px;
-background:url(images/contact_bt.gif) no-repeat center;
+background:url(../images/contact_bt.gif) no-repeat center;
 text-decoration:none;
 text-align:center;
 line-height:24px;
@@ -457,7 +457,7 @@ height:25px;
 display:block;
 float:right;
 margin:10px 30px 0 10px;
-background:url(images/register_bt.gif) no-repeat center;
+background:url(../images/register_bt.gif) no-repeat center;
 text-decoration:none;
 text-align:center;
 line-height:25px;
@@ -469,7 +469,7 @@ height:25px;
 display:block;
 float:left;
 margin:10px 0 0 0px;
-background:url(images/register_bt.gif) no-repeat center;
+background:url(../images/register_bt.gif) no-repeat center;
 text-decoration:none;
 text-align:center;
 line-height:25px;
@@ -521,7 +521,9 @@ float:left;
 clear:both;
 font-size:10px;
 }
-
+.go{
+    width:13px;
+}
 div.pagination a {
 padding: 2px 5px 2px 5px;
 margin-right: 2px;
@@ -551,7 +553,7 @@ color: #ccc;
 /*---------------footer------------------------*/
 .footer{
 border-top:1px #b2b2b2 dashed;
-background:url(images/footer_bg.gif) no-repeat bottom;
+background:url(../images/footer_bg.gif) no-repeat bottom;
 }
 .left_footer{
 float:left;

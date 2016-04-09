@@ -382,7 +382,8 @@ pageEncoding="UTF-8" %>
                                     </tr>
                                     <tr>
                                     <td> <label for="name" class="control-label">名称</label></td>
-                                    <td><input id="name" type="text" name="name" value="${admin.name}"/></td>
+                                    <td><input id="name" type="text" name="name" value="${admin.name}"  onkeyup=" $('#err').hide();"/>
+                                        <span style="color: #ff0000" id="err">${err}</span></td>
                                     </tr>
                                     <tr>
                                         <td> <label for="password" class="control-label tooltips" data-placement="top"

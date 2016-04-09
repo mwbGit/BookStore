@@ -80,10 +80,16 @@ public class AdminController {
     }
     //添加
     @RequestMapping("/manager/Addadmin")
-    public String Addadmin(Admin admin) {
+    public String Addadmin(Admin admin,Map<String,Object> map) {
         LOGGER.info("Addadmin into ");
-        admin.setPassword(MD5.GetMD5Code(admin.getPassword()));
+        if(adminService.findNameExist(admin)!=null){
+            LOGGER.info("Addadmin name Exist ");
+            map.put("err", "用户名重复");
+            map.put("adminAdd", admin);
+            return "manager/adminadd";
+        }
         if (admin != null) {
+            admin.setPassword(MD5.GetMD5Code(admin.getPassword()));
             adminService.add(admin);
             LOGGER.info("Addadmin ok ");
         }
@@ -104,11 +110,23 @@ public class AdminController {
     }
     //修改信息
     @RequestMapping("/manager/EditPassword")
-    public String EditPassword(Admin admin) {
+    public String EditPassword(Admin admin,Map<String,Object> map,HttpServletRequest request) {
         LOGGER.info("EditPassword into ");
+        //防止修改其他用户
+        Admin u= (Admin)request.getSession().getAttribute("admin");
+        if (u.getId()!=admin.getId()){
+            LOGGER.info("no admin id ");
+            return "manager/adminedit";
+        }
+        if(adminService.findNameExist(admin)!=null){
+            LOGGER.info("Addadmin name Exist ");
+            map.put("err", "用户名重复");
+            return "manager/adminedit";
+        }
         admin.setPassword(MD5.GetMD5Code(admin.getPassword()));
         adminService.edit(admin);
-        return "manager/index";
+        request.getSession().removeAttribute("admin");
+        return "redirect:/static/manager/login.jsp";
     }
 
 }

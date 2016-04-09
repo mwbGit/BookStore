@@ -16,6 +16,12 @@
     <select id="login" parameterType="Admin" resultType="Admin">
 		select * from Admin where name=#{name} and password=#{password}
 	</select>
+    <select id="findNameExist" parameterType="map" resultType="Admin">
+        select * from Admin where name=#{name}
+        <if test="id!=null">
+            and id !=#{id}
+        </if>
+    </select>
     <select id="find" parameterType="Integer" resultType="Admin">
 		select * from Admin where id=#{id} 
 	</select>

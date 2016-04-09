@@ -1,16 +1,21 @@
 package com.mwb.controller;
 
+import com.mwb.entity.Book;
+import com.mwb.entity.Pagination;
 import com.mwb.service.BookService;
 import com.mwb.service.BookTypeService;
+import com.mwb.service.PaginationService;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -27,25 +32,22 @@ public class BookInfoController {
 	@Autowired
 	private BookTypeService bookTypeService;
 	//服务器启动加载 主页
-	@RequestMapping("/index")
-	public String index(HttpServletRequest request){
-		LOGGER.info("into  index=");
-		HttpSession session=request.getSession();
+	@RequestMapping("/getShow")
+	@ResponseBody
+	public Map<String,Object> getShow(HttpServletRequest request){
+		LOGGER.info("into  getShow=");
 		Map<String,Object> map=new HashMap<String, Object>();
-		//热销第一页
-		map.put("index",0);
-		map.put("size",12);
-		session.setAttribute("hotbooks",bookService.findHotLimit(map));
+		Map<String,Object> result=new HashMap<String, Object>();
 		//热销排行 新书排行
 		map.put("index",0);
 		map.put("size",3);
 		//热销书籍
-		session.setAttribute("hotbook", bookService.findHotLimit(map));
+		result.put("hotbooks", bookService.findHotLimit(map));
 		//新书
-		session.setAttribute("newbooks", bookService.findNewLimit(map));
+		result.put("newbooks", bookService.findNewLimit(map));
 		//图书类别
-		session.setAttribute("booktype", bookTypeService.findAll());
-		return "index";
+		result.put("booktypes", bookTypeService.findAll());
+		return result;
 	}
 	//图书详情
 	@RequestMapping("/getBookDetails")
@@ -53,6 +55,21 @@ public class BookInfoController {
 		map.put("Book",bookService.find(id));
 		return "details";
 
+	}
+
+	//图书类别分页
+	@RequestMapping("/getTypeBooksFy")
+	@ResponseBody
+	public Map<String, Object> getTypeBooksFy(@RequestParam("id")int tyepeid,Pagination page) {
+		LOGGER.info("into  getTypeBooks=");
+		return PaginationService.Paging(tyepeid,page,bookService,bookTypeService);
+	}
+	//tittle 点击
+	@RequestMapping("/getTypeBooks")
+	public String getTypeBooks(@RequestParam("id")int tyepeid,Map<String, Object> map) {
+		LOGGER.info("into  getTypeBooks=");
+		map.put("curType",bookTypeService.findById(tyepeid));
+		return "typebook";
 	}
 
 }

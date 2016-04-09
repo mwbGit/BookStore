@@ -14,6 +14,9 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import java.util.List;
 import java.util.Map;
 
+/**
+ * 后台订单管理
+ */
 @Controller
 @RequestMapping("/static/manager")
 public class OderController {
