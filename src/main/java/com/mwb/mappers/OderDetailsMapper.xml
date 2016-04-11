@@ -7,7 +7,7 @@
         <result property="id" column="id"/>
         <result property="num" column="num"/>
         <result property="price" column="price"/>
-        <result property="state" column="state"/>
+        <result property="status" column="status"/>
         <association property="oder" column="oderid" select="com.mwb.mappers.OderDao.findById"></association>
         <association property="book" column="bookid" select="com.mwb.mappers.BookDao.find"></association>
     </resultMap>
@@ -15,13 +15,20 @@
 		select * from OderDetails where oderid=#{oderid}
 	</select>
     <select id="findAll" resultMap="OderDetailsResult">
-        select * from OderDetails
+        select * from OderDetails ORDER BY id DESC
     </select>
     <delete id="delete" parameterType="Integer">
 		delete from OderDetails where oderid=#{oderid}
 	</delete>
+    <delete id="deleteById" parameterType="Integer">
+		delete from OderDetails where id=#{id}
+	</delete>
     <insert id="add" parameterType="OderDetails">
-		insert into OderDetails (oderid,bookid,num,price,state)
-		 values(#{oder.id},#{book.id},#{num},#{price},#{state})
+		insert into OderDetails (oderid,bookid,num,price,status)
+		 values(#{oder.id},#{book.id},#{num},#{price},#{status})
 	</insert>
+    <update id="send" parameterType="Map">
+        update OderDetails SET status=#{status}
+        where oderid=#{id}
+    </update>
 </mapper> 

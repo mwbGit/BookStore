@@ -49,10 +49,10 @@
     <!-- END GLOBAL MANDATORY STYLES -->
 
     <!-- BEGIN PAGE LEVEL STYLES -->
-    <link rel="stylesheet" type="text/css" href="media/css/select2_metro.css" />
-    <link rel="stylesheet" href="media/css/DT_bootstrap.css" />
+    <link rel="stylesheet" type="text/css" href="media/css/select2_metro.css"/>
+    <link rel="stylesheet" href="media/css/DT_bootstrap.css"/>
     <!-- END PAGE LEVEL STYLES -->
-    <link rel="shortcut icon" href="media/image/favicon.ico" />
+    <link rel="shortcut icon" href="media/image/favicon.ico"/>
 
 </head>
 
@@ -136,7 +136,7 @@
                 </a>
 
             </li>
-            <li >
+            <li>
 
                 <a href="javascript:;">
 
@@ -157,7 +157,7 @@
                             添加图书</a>
 
                     </li>
-                    <li >
+                    <li>
 
                         <a href="getBooks">
 
@@ -168,7 +168,7 @@
                 </ul>
 
             </li>
-            <li >
+            <li>
                 <a href="getBookTypes">
                     <i class="icon-bar-chart"></i>
                     <span class="title">类别管理</span>
@@ -207,7 +207,14 @@
                 </ul>
 
             </li>
-            <li  class="active">
+            <li>
+                <a href="getMessage">
+                    <i class="icon-gift"></i>
+                    <span class="title">留言管理</span>
+                </a>
+
+            </li>
+            <li class="active">
                 <a href="getUsers">
                     <i class="icon-user"></i>
                     <span class="title">用户管理</span>
@@ -407,8 +414,8 @@
                                     <th class="hidden-480" width="9%">注册时间</th>
                                     <th class="hidden-480" width="10%">最后登录</th>
                                     <th class="hidden-480">会员</th>
-                                    <th class="hidden-480" >删除</th>
-                                    <th class="hidden-480" >升级</th>
+                                    <th class="hidden-480">删除</th>
+                                    <th class="hidden-480">升级</th>
                                 </tr>
                                 </thead>
                                 <tbody>
@@ -425,7 +432,8 @@
                                         <td>${User.lastdatestr}</td>
                                         <td>${User.members==1?"是":"否"}</td>
                                         <td><a class="delete" href="UserDelete?id=${User.id}">删除</a></td>
-                                        <td><a class="upgrade" href="UserUpgrade?id=${User.id}&members=${User.members}">升级</a></td>
+                                        <td><a class="upgrade" href="UserUpgrade?id=${User.id}&members=${User.members}">升级</a>
+                                        </td>
                                     </tr>
                                 </c:forEach>
                                 </tbody>
@@ -529,7 +537,7 @@
 
 <script src="media/js/table-advanced.js"></script>
 <!-- END PAGE LEVEL SCRIPTS -->
-<script src="media/js/book-editable.js"></script>
+<script src="media/js/a-user-editable.js"></script>
 <script src="media/js/datetimepicker.min.js"></script>
 <script src="media/js/functions.js"></script>
 
@@ -539,27 +547,27 @@
         App.init();
         TableEditable.init();
 
-        $(".upgrade").click(function(){
+        $(".upgrade").click(function () {
             var href = $(this).attr("href");
-           var num=href.charAt(href.length - 1);
-            if(num=='1'){
+            var num = href.charAt(href.length - 1);
+            if (num == '1') {
                 alert("该用户已经是会员！");
                 return false;
-            }else{
-            if(window.confirm("确定升级该用户为会员吗?")){
-            //   $("form").attr("action", href).submit();
-                return true;
-            }else{
-                return false;
-            }
+            } else {
+                if (window.confirm("确定升级该用户为会员吗?")) {
+                    //   $("form").attr("action", href).submit();
+                    return true;
+                } else {
+                    return false;
+                }
             }
         });
 
-        $(".delete").click(function(){
+        $(".delete").click(function () {
 
-            if(window.confirm("确定删除该用户？")){
+            if (window.confirm("确定删除该用户？")) {
                 return true;
-            }else{
+            } else {
                 return false;
             }
 

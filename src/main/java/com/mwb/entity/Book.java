@@ -1,8 +1,10 @@
 package com.mwb.entity;
 
 import com.mwb.util.FomateDate;
+import com.mwb.util.FormatDouble;
 import org.springframework.format.annotation.DateTimeFormat;
 
+import java.text.DecimalFormat;
 import java.util.Date;
 
 /**
@@ -10,7 +12,7 @@ import java.util.Date;
  * book
  */
 public class Book {
-    private int id;
+    private Integer id;
     private String name;
     private BookType booktype;
     private String press;
@@ -20,14 +22,14 @@ public class Book {
     //出版日期
     private String author;
     private String introduction;
-    private double marketprice;
     //市场价
-    private double memberprice;
+    private double marketprice;
     //会员价
-    private int volume;
+    private double memberprice;
     //成交量
-    private int inventory;
+    private int volume;
     //库存
+    private int inventory;
     private String img;
     private String dateStr;
 
@@ -88,11 +90,11 @@ public class Book {
         this.volume = volume;
     }
 
-    public int getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
@@ -146,11 +148,12 @@ public class Book {
     }
 
     public double getMarketprice() {
+
         return marketprice;
     }
 
     public void setMarketprice(double marketprice) {
-        this.marketprice = marketprice;
+        this.marketprice = FormatDouble.getToDoble(marketprice);
     }
 
     public double getMemberprice() {
@@ -158,7 +161,8 @@ public class Book {
     }
 
     public void setMemberprice(double memberprice) {
-        this.memberprice = memberprice;
+        this.memberprice = FormatDouble.getToDoble(memberprice);
+
     }
 
     public int getVolume() {

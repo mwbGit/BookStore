@@ -16,17 +16,17 @@
         <div class="logo"><a href="index.html"><img src="images/logo.gif" alt="" title="" border="0"/></a></div>
         <div id="menu">
             <ul>
-                <li ><a href="index.jsp">Home</a></li>
+                <li><a href="index.jsp">Home</a></li>
                 <div id="booktypeshow">
 
                 </div>
 
                 <!--判断用户是否登录-->
                 <c:if test="${empty sessionScope.user}">
-                    <li ><a class="selected" href="login.jsp">登录</a></li>
+                    <li><a href="login.jsp">登录</a></li>
                     <li><a href="register.jsp">注册</a></li>
                 </c:if>
-                <li><a class="selected" href="contact.jsp">联系我们</a></li>
+                <li><a href="contact.jsp">联系我们</a></li>
 
             </ul>
         </div>
@@ -36,52 +36,77 @@
 
     <div class="center center_content">
         <!--左侧展示-->
+        <input class="pagename" type="hidden" value="contact"/>
         <div class="left_content">
-            <div class="title"><span class="title_icon"><img src="images/bullet1.gif" alt="" title="" />
-            </span>联系我们</div>
-
-            <div class="feat_prod_box_details">
-                <form action="sendMessage" method="post">
-                <div class="contact_form">
-
-                    <div class="form_subtitle">留下您宝贵的意见</div>
-                    <div class="form_row">
-                        <label class="contact" for="name"><strong>姓名:</strong></label>
-                        <input type="text" class="contact_input" id="name" name="name"/>
-                    </div>
-
-                    <div class="form_row">
-                        <label class="contact" for="tel"><strong>手机:</strong></label>
-                        <input type="text" class="contact_input" id="tel" name="tel"/>
-                    </div>
-                    <div class="form_row">
-                        <label class="contact" for="email"><strong>邮箱:</strong></label>
-                        <input type="text" class="contact_input" id="email" name="email"/>
-                    </div>
-
-
-
-
-                    <div class="form_row">
-                        <label class="contact" for="message"><strong>内容:</strong></label>
-                        <textarea class="contact_textarea" id="message" name="message"></textarea>
-                    </div>
-
-
-                    <div class="form_row">
-                        <input id="sub" type="submit" class="register" value="留言" />
-                    </div>
+            <div style="display:none" id="fyshow">
+                <div class="crumb_nav">
+                    <a href="javascript:;">Home</a> &gt;&gt; <span class="curType"></span>
+                    <input id="typeid" type="hidden" value="0">
                 </div>
-                </form>
+                <div class="title "><span class="title_icon"><img src="images/bullet1.gif" alt="" title=""/></span>
+                    <span class="curType"></span>书籍排行
+                </div>
+                <!--书籍展示-->
+                <div class="new_products">
+
+                    <div id="show">
+
+                    </div>
+                    <!--分页条-->
+                    <div class="pagination">
+                        <!-- 分页按键-->
+                        <label class="lb "></label>
+
+                        <div id="fy" class="page"></div>
+                    </div>
+
+
+                </div>
+
+            </div>
+            <div id="other">
+                <div class="title"><span class="title_icon"><img src="images/bullet1.gif" alt="" title=""/>
+            </span>联系我们
+                </div>
+
+                <div class="feat_prod_box_details">
+                    <form action="sendMessage" method="post">
+                        <div class="contact_form">
+
+                            <div class="form_subtitle">留下您宝贵的意见</div>
+                            <div class="form_row">
+                                <label class="contact" for="name"><strong>姓名:</strong></label>
+                                <input type="text" class="contact_input" id="name" name="name"/>
+                            </div>
+
+                            <div class="form_row">
+                                <label class="contact" for="tel"><strong>手机:</strong></label>
+                                <input type="text" class="contact_input" id="tel" name="tel"/>
+                            </div>
+                            <div class="form_row">
+                                <label class="contact" for="email"><strong>邮箱:</strong></label>
+                                <input type="text" class="contact_input" id="email" name="email"/>
+                            </div>
+
+
+                            <div class="form_row">
+                                <label class="contact" for="message"><strong>内容:</strong></label>
+                                <textarea class="contact_textarea" id="message" name="message"></textarea>
+                            </div>
+
+
+                            <div class="form_row">
+                                <input id="sub" type="submit" class="register" value="留言"/>
+                            </div>
+                        </div>
+                    </form>
+                </div>
             </div>
 
-
-
-
-
-
+            <div id="details"></div>
             <div class="clear"></div>
-        </div><!--end of left content-->
+        </div>
+        <!--end of left content-->
         <!--end of left content-->
 
         <!--右侧-->
@@ -90,29 +115,29 @@
             <!--用户信息-->
             <c:if test="${!empty sessionScope.user}">
                 <div class="currency">
-
                     <div class="home_cart_content">
-                        您好 : ${user.name} | <a href="userEdit?id=${user.id}">修改信息</a> |<a href="logOut"> 退出</a></span>
+                        <span class="red">    您好<c:if test="${user.members!=0}">会员</span></c:if>: ${user.name} | <a href="userEdit">修改信息</a> |<a href="getOder"> 订单</a>|<a href="logOut">
+                        退出</a></span>
                     </div>
-
 
                 </div>
 
                 <!--右侧购物车-->
                 <div class="cart">
                     <div class="title">
-                        <a href="getMyCar？id=${user.id}">
+                        <a href="getMyCar">
                         <span class="title_icon">
                     <img src="images/cart.gif"/> 购物车</span>
                         </a>
                     </div>
                     <div class="home_cart_content">
-                        3本 | <span class="red">总价: 100元</span>
+                        <span id="sum"></span>本 | <span class="red">总价: <span id="price"></span>元</span>
                     </div>
-
 
                 </div>
             </c:if>
+            <div class="clear"></div>
+
             <!--右侧关于我们-->
             <div class="title"><span class="title_icon"><img src="images/bullet3.gif" alt="" title=""/></span>About Our
                 Store
@@ -145,11 +170,13 @@
         <!--end of right content-->
 
         <div class="clear"></div>
-    </div><!--end of center content-->
+    </div>
+    <!--end of center content-->
 
 
     <div class="center footer">
-        <div class="left_footer"><img src="images/footer_logo.gif" alt="" title="" /><br /> <a href="http://www.cssmoban.com/" title="free templates">cssmoban</a></div>
+        <div class="left_footer"><img src="images/footer_logo.gif" alt="" title=""/><br/> <a
+                href="http://www.cssmoban.com/" title="free templates">cssmoban</a></div>
         <div class="right_footer">
             <a href="#">home</a>
             <a href="#">about us</a>
@@ -165,12 +192,12 @@
 
 </div>
 <script type="application/javascript" src="js/jquery-1.10.1.min.js"></script>
-<script type="application/javascript" src="js/getshow.js"></script>
+<script type="application/javascript" src="js/bookshow.js"></script>
 <script type="application/javascript">
     jQuery(document).ready(function () {
-        $("#sub").click(function(){
-           var len= $("#message").val().trim();
-            if(len.length<10){
+        $("#sub").click(function () {
+            var len = $("#message").val().trim();
+            if (len.length < 10) {
                 alert("内容少于10字！")
                 return false;
             }

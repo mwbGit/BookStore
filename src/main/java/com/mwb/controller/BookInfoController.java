@@ -1,10 +1,14 @@
 package com.mwb.controller;
 
 import com.mwb.entity.Book;
+import com.mwb.entity.Cart;
 import com.mwb.entity.Pagination;
+import com.mwb.entity.User;
 import com.mwb.service.BookService;
 import com.mwb.service.BookTypeService;
+import com.mwb.service.CartService;
 import com.mwb.service.PaginationService;
+import com.mwb.util.FormatDouble;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -31,7 +35,9 @@ public class BookInfoController {
 	private BookService bookService;
 	@Autowired
 	private BookTypeService bookTypeService;
-	//服务器启动加载 主页
+	@Autowired
+	private CartService cartService;
+	// 主页
 	@RequestMapping("/getShow")
 	@ResponseBody
 	public Map<String,Object> getShow(HttpServletRequest request){
@@ -47,13 +53,29 @@ public class BookInfoController {
 		result.put("newbooks", bookService.findNewLimit(map));
 		//图书类别
 		result.put("booktypes", bookTypeService.findAll());
+		//购物车内容
+		User user=(User)request.getSession().getAttribute("user");
+		result.put("sum",0);
+		result.put("price",0);
+		if (user!=null){
+			//返回信息
+			int sum=0;double price=0;
+			List<Cart> list=cartService.find(user);
+			for (Cart car : list){
+				sum+=car.getNum();
+				price+=car.getPrice();
+			}
+			result.put("sum",sum);
+			result.put("price", FormatDouble.getToDoble(price));
+		}
 		return result;
 	}
 	//图书详情
 	@RequestMapping("/getBookDetails")
-	public String getBookDetails(@RequestParam("id")int id,Map<String, Object> map) {
-		map.put("Book",bookService.find(id));
-		return "details";
+	@ResponseBody
+	public Book getBookDetails(@RequestParam("id")int id) {
+		LOGGER.info("into  getBookDetails=");
+		return bookService.find(id);
 
 	}
 
@@ -64,12 +86,6 @@ public class BookInfoController {
 		LOGGER.info("into  getTypeBooks=");
 		return PaginationService.Paging(tyepeid,page,bookService,bookTypeService);
 	}
-	//tittle 点击
-	@RequestMapping("/getTypeBooks")
-	public String getTypeBooks(@RequestParam("id")int tyepeid,Map<String, Object> map) {
-		LOGGER.info("into  getTypeBooks=");
-		map.put("curType",bookTypeService.findById(tyepeid));
-		return "typebook";
-	}
+
 
 }

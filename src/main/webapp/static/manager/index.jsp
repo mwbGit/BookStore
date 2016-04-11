@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-pageEncoding="UTF-8" %>
+         pageEncoding="UTF-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -138,7 +138,7 @@ pageEncoding="UTF-8" %>
                 </a>
 
             </li>
-            <li >
+            <li>
 
                 <a href="javascript:;">
 
@@ -159,7 +159,7 @@ pageEncoding="UTF-8" %>
                             添加图书</a>
 
                     </li>
-                    <li >
+                    <li>
 
                         <a href="getBooks">
 
@@ -170,7 +170,7 @@ pageEncoding="UTF-8" %>
                 </ul>
 
             </li>
-            <li >
+            <li>
                 <a href="getBookTypes">
                     <i class="icon-bar-chart"></i>
                     <span class="title">类别管理</span>
@@ -209,7 +209,14 @@ pageEncoding="UTF-8" %>
                 </ul>
 
             </li>
-            <li >
+            <li>
+                <a href="getMessage">
+                    <i class="icon-gift"></i>
+                    <span class="title">留言管理</span>
+                </a>
+
+            </li>
+            <li>
                 <a href="getUsers">
                     <i class="icon-user"></i>
                     <span class="title">用户管理</span>
@@ -350,7 +357,6 @@ pageEncoding="UTF-8" %>
                     </div>
 
 
-
                 </div>
 
             </div>
@@ -359,7 +365,7 @@ pageEncoding="UTF-8" %>
             <div class="row-fluid">
 
                 <div class="span12">
-<h1>Hello!!!</h1>
+                    <h1>Hello!!!</h1>
 
                 </div>
 

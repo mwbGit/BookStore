@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-pageEncoding="UTF-8" %>
+         pageEncoding="UTF-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -159,7 +159,7 @@ pageEncoding="UTF-8" %>
                             添加图书</a>
 
                     </li>
-                    <li >
+                    <li>
 
                         <a href="getBooks">
 
@@ -170,7 +170,7 @@ pageEncoding="UTF-8" %>
                 </ul>
 
             </li>
-            <li >
+            <li>
                 <a href="getBookTypes">
                     <i class="icon-bar-chart"></i>
                     <span class="title">类别管理</span>
@@ -209,7 +209,14 @@ pageEncoding="UTF-8" %>
                 </ul>
 
             </li>
-            <li >
+            <li>
+                <a href="getMessage">
+                    <i class="icon-gift"></i>
+                    <span class="title">留言管理</span>
+                </a>
+
+            </li>
+            <li>
                 <a href="getUsers">
                     <i class="icon-user"></i>
                     <span class="title">用户管理</span>
@@ -395,7 +402,9 @@ pageEncoding="UTF-8" %>
 
                                 <!-- BEGIN FORM-->
 
-                                <form action="bookAdd" method="post" class="form-horizontal form-bordered form-row-stripped" enctype="multipart/form-data">
+                                <form action="bookAdd" method="post"
+                                      class="form-horizontal form-bordered form-row-stripped"
+                                      enctype="multipart/form-data">
 
                                     <div class="control-group">
 
@@ -416,7 +425,7 @@ pageEncoding="UTF-8" %>
 
                                         <div class="controls">
 
-                                            <select  class="m-wrap span6" name="booktype.id" id="type">
+                                            <select class="m-wrap span6" name="booktype.id" id="type">
 
                                             </select>
 
@@ -519,7 +528,7 @@ pageEncoding="UTF-8" %>
                                         <button type="reset" class="btn blue">清空</button>
 
                                     </div>
-                                    </form>
+                                </form>
 
                                 <!-- END FORM-->
 

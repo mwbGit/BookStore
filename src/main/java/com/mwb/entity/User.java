@@ -26,7 +26,7 @@ public class User {
 	private String lastdatestr;
 	//最后登录时间
 	private int members;
-	//是否是会员
+	//是否是会员0不是
 	public String getLastdatestr() {
 		return lastdatestr;
 	}

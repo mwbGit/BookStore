@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-pageEncoding="UTF-8" %>
+         pageEncoding="UTF-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -138,7 +138,7 @@ pageEncoding="UTF-8" %>
                 </a>
 
             </li>
-            <li >
+            <li>
 
                 <a href="javascript:;">
 
@@ -159,7 +159,7 @@ pageEncoding="UTF-8" %>
                             添加图书</a>
 
                     </li>
-                    <li >
+                    <li>
 
                         <a href="getBooks">
 
@@ -170,7 +170,7 @@ pageEncoding="UTF-8" %>
                 </ul>
 
             </li>
-            <li >
+            <li>
                 <a href="getBookTypes">
                     <i class="icon-bar-chart"></i>
                     <span class="title">类别管理</span>
@@ -209,7 +209,14 @@ pageEncoding="UTF-8" %>
                 </ul>
 
             </li>
-            <li >
+            <li>
+                <a href="getMessage">
+                    <i class="icon-gift"></i>
+                    <span class="title">留言管理</span>
+                </a>
+
+            </li>
+            <li>
                 <a href="getUsers">
                     <i class="icon-user"></i>
                     <span class="title">用户管理</span>
@@ -350,7 +357,6 @@ pageEncoding="UTF-8" %>
                     </div>
 
 
-
                 </div>
 
             </div>
@@ -375,44 +381,52 @@ pageEncoding="UTF-8" %>
                             <form action="EditPassword" method="post">
                                 <table class="table table-bordered table-hover">
                                     <tr>
-                                    <td><input id="id" type="hidden" name="id" value="${admin.id}"/></td>
+                                        <td><input id="id" type="hidden" name="id" value="${admin.id}"/></td>
                                     </tr>
                                     <tr>
-                                    <td><input id="grade" type="hidden" name="grade" value="${admin.grade}"/></td>
+                                        <td><input id="grade" type="hidden" name="grade" value="${admin.grade}"/></td>
                                     </tr>
                                     <tr>
-                                    <td> <label for="name" class="control-label">名称</label></td>
-                                    <td><input id="name" type="text" name="name" value="${admin.name}"  onkeyup=" $('#err').hide();"/>
-                                        <span style="color: #ff0000" id="err">${err}</span></td>
+                                        <td><label for="name" class="control-label">名称</label></td>
+                                        <td><input id="name" type="text" name="name" value="${admin.name}"
+                                                   onkeyup=" $('#err').hide();"/>
+                                            <span style="color: #ff0000" id="err">${err}</span></td>
                                     </tr>
                                     <tr>
-                                        <td> <label for="password" class="control-label tooltips" data-placement="top"
-                                                    data-original-title="密码只能输入英文或数字.">密码</label></td>
-                                        <td><input id="password" type="password" name="password" onkeyup="value=value.replace(/[\W]/g,'') "
-                                                   onbeforepaste="clipboardData.setData('text',clipboardData.getData('text').replace(/[^\d]/g,''))"/></td>
+                                        <td><label for="password" class="control-label tooltips" data-placement="top"
+                                                   data-original-title="密码只能输入英文或数字.">密码</label></td>
+                                        <td><input id="password" type="password" name="password"
+                                                   onkeyup="value=value.replace(/[\W]/g,'') "
+                                                   onbeforepaste="clipboardData.setData('text',clipboardData.getData('text').replace(/[^\d]/g,''))"/>
+                                        </td>
                                     </tr>
                                     <tr>
-                                        <td> <label for="password2" class="control-label tooltips" data-placement="top"
-                                                    data-original-title="有特殊字符自动删掉..">确认密码</label></td>
-                                        <td><input id="password2" type="password" onkeyup="value=value.replace(/[\W]/g,'') "
-                                                   onbeforepaste="clipboardData.setData('text',clipboardData.getData('text').replace(/[^\d]/g,''))"/></td>
+                                        <td><label for="password2" class="control-label tooltips" data-placement="top"
+                                                   data-original-title="有特殊字符自动删掉..">确认密码</label></td>
+                                        <td><input id="password2" type="password"
+                                                   onkeyup="value=value.replace(/[\W]/g,'') "
+                                                   onbeforepaste="clipboardData.setData('text',clipboardData.getData('text').replace(/[^\d]/g,''))"/>
+                                        </td>
                                     </tr>
                                     <tr>
                                         <td><label for="password2" class="control-label tooltips" data-placement="top"
                                                    data-original-title="只能为数字">手机号</label></td>
-                                        <td><input id="tel" type="text" name="tel" value="${admin.tel}" onkeyup="value=value.replace(/[^\d]/g,'') "
-                                                   onbeforepaste="clipboardData.setData('text',clipboardData.getData('text').replace(/[^\d]/g,''))"/></td>
+                                        <td><input id="tel" type="text" name="tel" value="${admin.tel}"
+                                                   onkeyup="value=value.replace(/[^\d]/g,'') "
+                                                   onbeforepaste="clipboardData.setData('text',clipboardData.getData('text').replace(/[^\d]/g,''))"/>
+                                        </td>
                                     </tr>
                                     <tr>
-                                        <td> <label for="email" class="control-label">邮箱</label></td>
+                                        <td><label for="email" class="control-label">邮箱</label></td>
                                         <td><input id="email" type="text" name="email" value="${admin.email}"/></td>
                                     </tr>
 
 
                                     <tr>
-                                        <td> <label class="control-label"> </label></td>
-                                        <td><button id="sub" type="submit" class="btn red"><i class="icon-ok"></i>修改
-                                        </button>
+                                        <td><label class="control-label"> </label></td>
+                                        <td>
+                                            <button id="sub" type="submit" class="btn red"><i class="icon-ok"></i>修改
+                                            </button>
                                             <button type="reset" class="btn red">清空</button>
                                         </td>
                                     </tr>

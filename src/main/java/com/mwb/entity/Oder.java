@@ -19,6 +19,7 @@ public class Oder {
     //收货人
     private String adress;
     private String tel;
+    //未发货0 发货1
     private int status;
     private String datestr;
 

@@ -18,7 +18,7 @@ import java.util.Map;
 @Controller
 @RequestMapping("/static")
 public class ContactController {
-    private static final org.slf4j.Logger LOGGER = LoggerFactory.getLogger(UserController.class);
+    private static final org.slf4j.Logger LOGGER = LoggerFactory.getLogger(ContactController.class);
 
     @Autowired
     private ContactService contactService;
@@ -36,9 +36,9 @@ public class ContactController {
     public String deleteMessage(@RequestParam("id") int id) {
         LOGGER.info("deleteMessage ");
         contactService.delete(id);
-        return "manager/contact";
+        return "redirect:/static/manager/getMessage";
     }
-    @RequestMapping("/getMessage")
+    @RequestMapping("manager/getMessage")
     public String getMessage(Map<String,Object> map) {
         LOGGER.info("getMessage ");
         map.put("contacts",contactService.findAll());

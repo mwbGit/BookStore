@@ -23,20 +23,23 @@
 		select * from Oder where id=#{id}
 	</select>
     <select id="findNo" resultMap="OderResult">
-        select * from Oder where status=0
+        select * from Oder where status=0 ORDER BY id DESC
     </select>
     <select id="findOk" resultMap="OderResult">
-        select * from Oder where status=1
+        select * from Oder where status!=0 ORDER BY id DESC
     </select>
     <delete id="delete" parameterType="Integer">
 		delete from Oder where id=#{id}
 	</delete>
-    <update id="send" parameterType="Integer">
-        update Oder SET status=1
+    <delete id="clearOder" parameterType="User">
+		delete from Oder where userid=#{id} AND status!=0
+	</delete>
+    <update id="send" parameterType="Map">
+        update Oder SET status=#{status}
         where id=#{id}
 	</update>
     <insert id="add" parameterType="Oder">
-		insert into Oder (userid,date,num,price,name,adress,tel)
-		 values(#{user.id},#{date},#{num},#{price},#{name},#{adress},#{tel})
+		insert into Oder (id,userid,date,num,price,realname,adress,tel)
+		 values(#{id},#{user.id},#{date},#{num},#{price},#{realname},#{adress},#{tel})
 	</insert>
 </mapper> 

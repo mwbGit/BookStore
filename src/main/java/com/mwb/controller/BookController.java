@@ -30,11 +30,13 @@ public class BookController {
 	@RequestMapping("/bookAdd")
 	public String bookAdd(Book book,@RequestParam("file") MultipartFile file,HttpServletRequest request){
 		LOGGER.info("bookAdd fileup into");
-		String img="";
+		String img="",contextPath;
 		if (!file.isEmpty()) {
 			String filePath = request.getSession().getServletContext().getRealPath("/")
 					+ "\\static\\bookimgs\\" +  file.getOriginalFilename();
-			img="\\static\\bookimgs\\" +  file.getOriginalFilename();
+			//   /BookStore
+			contextPath=request.getSession().getServletContext().getContextPath();
+			img=contextPath+"/static/bookimgs/" +  file.getOriginalFilename();
 			//转存文件
 			LOGGER.info(" fileup into{}",file.getOriginalFilename());
 			LOGGER.info("filePath{}",filePath);

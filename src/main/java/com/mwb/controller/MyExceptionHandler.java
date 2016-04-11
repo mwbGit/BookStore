@@ -11,7 +11,7 @@ import org.springframework.web.servlet.ModelAndView;
  */
 @ControllerAdvice
 public class MyExceptionHandler {
-	private static final org.slf4j.Logger LOGGER = LoggerFactory.getLogger(AdminController.class);
+	private static final org.slf4j.Logger LOGGER = LoggerFactory.getLogger(MyExceptionHandler.class);
 
 	@ExceptionHandler({Exception.class})
 	public ModelAndView Exception(Exception ex){

@@ -23,7 +23,7 @@ pageEncoding="UTF-8" %>
 
                 <!--判断用户是否登录-->
                 <c:if test="${empty sessionScope.user}">
-                    <li class="selected"><a class="selected" href="login.jsp">登录</a></li>
+                    <li ><a  href="login.jsp">登录</a></li>
                     <li><a href="register.jsp">注册</a></li>
                 </c:if>
                 <li><a href="contact.jsp">联系我们</a></li>
@@ -36,10 +36,35 @@ pageEncoding="UTF-8" %>
 
     <div class="center center_content">
         <!--左侧展示-->
+        <input class="pagename" type="hidden" value="login"/>
         <div class="left_content">
+            <div style="display:none" id="fyshow">
+                <div class="crumb_nav">
+                    <a href="javascript:;">Home</a> &gt;&gt; <span class="curType"></span>
+                    <input id="typeid" type="hidden" value="0">
+                </div>
+                <div class="title "><span class="title_icon"><img src="images/bullet1.gif" alt="" title=""/></span>
+                    <span class="curType"></span>书籍排行</div>
+                <!--书籍展示-->
+                <div class="new_products">
+
+                    <div id="show">
+
+                    </div>
+                    <!--分页条-->
+                    <div class="pagination">
+                        <!-- 分页按键-->
+                        <label  class="lb " ></label>
+                        <div id="fy" class="page"></div>
+                    </div>
+
+
+                </div>
+
+            </div>
+            <div id="other">
             <div class="title"><span class="title_icon"><img src="images/bullet1.gif" alt="" title="" />
             </span>登录</div>
-
             <div class="feat_prod_box_details">
                 <div class="contact_form">
                     <div class="form_subtitle">请输入登录信息</div>
@@ -74,8 +99,8 @@ pageEncoding="UTF-8" %>
                 </div>
 
             </div>
-
-
+            </div>
+            <div id="details"></div>
 
 
 
@@ -86,33 +111,7 @@ pageEncoding="UTF-8" %>
 
         <!--右侧-->
         <div class="center right_content">
-            <!--判断用户是否登录-->
-            <!--用户信息-->
-            <c:if test="${!empty sessionScope.user}">
-                <div class="currency">
 
-                    <div class="home_cart_content">
-                        您好 : ${user.name} | <a href="userEdit?id=${user.id}">修改信息</a> |<a href="logOut"> 退出</a></span>
-                    </div>
-
-
-                </div>
-
-                <!--右侧购物车-->
-                <div class="cart">
-                    <div class="title">
-                        <a href="getMyCar？id=${user.id}">
-                        <span class="title_icon">
-                    <img src="images/cart.gif"/> 购物车</span>
-                        </a>
-                    </div>
-                    <div class="home_cart_content">
-                        3本 | <span class="red">总价: 100元</span>
-                    </div>
-
-
-                </div>
-            </c:if>
             <!--右侧关于我们-->
             <div class="title"><span class="title_icon"><img src="images/bullet3.gif" alt="" title=""/></span>About Our
                 Store
@@ -145,10 +144,10 @@ pageEncoding="UTF-8" %>
         <!--end of right content-->
 
         <div class="clear"></div>
-    </div><!--end of center content-->
+         </div><!--end of center content-->
 
 
-    <div class="center footer">
+       <div class="center footer">
         <div class="left_footer"><img src="images/footer_logo.gif" alt="" title="" /><br /> <a href="http://www.cssmoban.com/" title="free templates">cssmoban</a></div>
         <div class="right_footer">
             <a href="#">home</a>
@@ -165,7 +164,7 @@ pageEncoding="UTF-8" %>
 
 </div>
 <script type="application/javascript" src="js/jquery-1.10.1.min.js"></script>
-<script type="application/javascript" src="js/getshow.js"></script>
+<script type="application/javascript" src="js/bookshow.js"></script>
 </body>
 
 </html>

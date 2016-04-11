@@ -138,7 +138,7 @@
                 </a>
 
             </li>
-            <li >
+            <li>
 
                 <a href="javascript:;">
 
@@ -159,7 +159,7 @@
                             添加图书</a>
 
                     </li>
-                    <li >
+                    <li>
 
                         <a href="getBooks">
 
@@ -170,7 +170,7 @@
                 </ul>
 
             </li>
-            <li >
+            <li>
                 <a href="getBookTypes">
                     <i class="icon-bar-chart"></i>
                     <span class="title">类别管理</span>
@@ -203,7 +203,14 @@
                 </ul>
 
             </li>
-            <li >
+            <li>
+                <a href="getMessage">
+                    <i class="icon-gift"></i>
+                    <span class="title">留言管理</span>
+                </a>
+
+            </li>
+            <li>
                 <a href="getUsers">
                     <i class="icon-user"></i>
                     <span class="title">用户管理</span>
@@ -387,7 +394,8 @@
                         </div>
                         <div class="portlet-body">
 
-                            <table class="table table-striped table-bordered table-hover table-full-width" id="sample_1">
+                            <table class="table table-striped table-bordered table-hover table-full-width"
+                                   id="sample_1">
                                 <thead>
                                 <tr>
                                     <th>订单编号</th>
@@ -528,10 +536,10 @@
         App.init();
         TableAdvanced.init();
 
-        $(".delete").click(function(){
-            if(window.confirm("确定发货?")){
-                return true; 
-            }else{
+        $(".delete").click(function () {
+            if (window.confirm("确定删除此订单?")) {
+                return true;
+            } else {
                 return false;
             }
 

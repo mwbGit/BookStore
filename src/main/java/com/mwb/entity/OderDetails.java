@@ -12,7 +12,7 @@ public class OderDetails {
     private  int num ;
     private  double price ;
     private  int status ;
-    //状态
+    //状态0未发货 1发货 2已收货
 
     public OderDetails() {
     }

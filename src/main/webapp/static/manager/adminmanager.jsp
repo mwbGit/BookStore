@@ -49,10 +49,10 @@
     <!-- END GLOBAL MANDATORY STYLES -->
 
     <!-- BEGIN PAGE LEVEL STYLES -->
-    <link rel="stylesheet" type="text/css" href="media/css/select2_metro.css" />
-    <link rel="stylesheet" href="media/css/DT_bootstrap.css" />
+    <link rel="stylesheet" type="text/css" href="media/css/select2_metro.css"/>
+    <link rel="stylesheet" href="media/css/DT_bootstrap.css"/>
     <!-- END PAGE LEVEL STYLES -->
-    <link rel="shortcut icon" href="media/image/favicon.ico" />
+    <link rel="shortcut icon" href="media/image/favicon.ico"/>
 
 </head>
 
@@ -136,7 +136,7 @@
                 </a>
 
             </li>
-            <li >
+            <li>
 
                 <a href="javascript:;">
                     <i class="icon-table"></i>
@@ -155,7 +155,7 @@
                             添加图书</a>
 
                     </li>
-                    <li >
+                    <li>
 
                         <a href="getBooks">
 
@@ -166,7 +166,7 @@
                 </ul>
 
             </li>
-            <li >
+            <li>
                 <a href="getBookTypes">
                     <i class="icon-bar-chart"></i>
                     <span class="title">类别管理</span>
@@ -205,7 +205,14 @@
                 </ul>
 
             </li>
-            <li >
+            <li>
+                <a href="getMessage">
+                    <i class="icon-gift"></i>
+                    <span class="title">留言管理</span>
+                </a>
+
+            </li>
+            <li>
                 <a href="getUsers">
                     <i class="icon-user"></i>
                     <span class="title">用户管理</span>
@@ -392,10 +399,10 @@
                                     <th class="hidden-480">用户名</th>
                                     <th class="hidden-480">手机号</th>
                                     <th class="hidden-480">邮箱</th>
-                                    <th class="hidden-480" >最后登录时间</th>
-                                    <th class="hidden-480" >级别</th>
-                                    <th class="hidden-480" >删除</th>
-                                    <th class="hidden-480" >升级</th>
+                                    <th class="hidden-480">最后登录时间</th>
+                                    <th class="hidden-480">级别</th>
+                                    <th class="hidden-480">删除</th>
+                                    <th class="hidden-480">升级</th>
                                 </tr>
                                 </thead>
                                 <tbody>
@@ -406,8 +413,10 @@
                                         <td>${Admin.email}</td>
                                         <td>${Admin.lastdatestr}</td>
                                         <td>${Admin.grade==1?"管理员":"高级管理员"}</td>
-                                        <td><a class="delete" href="AdminDelete?id=${Admin.id}&grade=${Admin.grade}">删除</a></td>
-                                        <td><a class="upgrade" href="AdminUpgrade?id=${Admin.id}&grade=${Admin.grade}">升级</a></td>
+                                        <td><a class="delete"
+                                               href="AdminDelete?id=${Admin.id}&grade=${Admin.grade}">删除</a></td>
+                                        <td><a class="upgrade" href="AdminUpgrade?id=${Admin.id}&grade=${Admin.grade}">升级</a>
+                                        </td>
                                     </tr>
                                 </c:forEach>
                                 </tbody>
@@ -510,7 +519,7 @@
 
 <script src="media/js/table-advanced.js"></script>
 <!-- END PAGE LEVEL SCRIPTS -->
-<script src="media/js/book-editable.js"></script>
+<script src="media/js/admin-editable.js"></script>
 <script src="media/js/datetimepicker.min.js"></script>
 <script src="media/js/functions.js"></script>
 
@@ -519,32 +528,32 @@
     jQuery(document).ready(function () {
         App.init();
         TableEditable.init();
-        $(".upgrade").click(function(){
+        $(".upgrade").click(function () {
             var href = $(this).attr("href");
-           var num=href.charAt(href.length - 1);
-            if(num=='2'||num=='9'){
+            var num = href.charAt(href.length - 1);
+            if (num == '2' || num == '9') {
                 alert("该管理员级别达到上限！");
                 return false;
-            }else{
-            if(window.confirm("确定升级该管理员吗?")){
-            //   $("form").attr("action", href).submit();
-                return true;
-            }else{
-                return false;
-            }
-            }
-        });
-        $(".delete").click(function(){
-            var href = $(this).attr("href");
-            var num=href.charAt(href.length - 1);
-            if(num=='9'){
-                alert("您的级别不够！");
-                return false;
-            }else{
-                if(window.confirm("确定删除该管理员吗?")){
+            } else {
+                if (window.confirm("确定升级该管理员吗?")) {
                     //   $("form").attr("action", href).submit();
                     return true;
-                }else{
+                } else {
+                    return false;
+                }
+            }
+        });
+        $(".delete").click(function () {
+            var href = $(this).attr("href");
+            var num = href.charAt(href.length - 1);
+            if (num == '9') {
+                alert("您的级别不够！");
+                return false;
+            } else {
+                if (window.confirm("确定删除该管理员吗?")) {
+                    //   $("form").attr("action", href).submit();
+                    return true;
+                } else {
                     return false;
                 }
             }

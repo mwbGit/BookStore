@@ -49,10 +49,10 @@
     <!-- END GLOBAL MANDATORY STYLES -->
 
     <!-- BEGIN PAGE LEVEL STYLES -->
-    <link rel="stylesheet" type="text/css" href="media/css/select2_metro.css" />
-    <link rel="stylesheet" href="media/css/DT_bootstrap.css" />
+    <link rel="stylesheet" type="text/css" href="media/css/select2_metro.css"/>
+    <link rel="stylesheet" href="media/css/DT_bootstrap.css"/>
     <!-- END PAGE LEVEL STYLES -->
-    <link rel="shortcut icon" href="media/image/favicon.ico" />
+    <link rel="shortcut icon" href="media/image/favicon.ico"/>
 
 </head>
 
@@ -136,7 +136,7 @@
                 </a>
 
             </li>
-            <li >
+            <li>
 
                 <a href="javascript:;">
 
@@ -157,7 +157,7 @@
                             添加图书</a>
 
                     </li>
-                    <li >
+                    <li>
 
                         <a href="getBooks">
 
@@ -207,7 +207,14 @@
                 </ul>
 
             </li>
-            <li >
+            <li>
+                <a href="getMessage">
+                    <i class="icon-gift"></i>
+                    <span class="title">留言管理</span>
+                </a>
+
+            </li>
+            <li>
                 <a href="getUsers">
                     <i class="icon-user"></i>
                     <span class="title">用户管理</span>
@@ -440,20 +447,21 @@
                         </div>
                         <div class="portlet-body">
                             <form action="bookTypeAdd" method="post">
-                            <table class="table table-bordered table-hover">
-                                <tr>
-                                    <td> <label class="control-label">名称</label></td>
-                                    <td><input type="text" name="name"/></td>
-                                </tr>
+                                <table class="table table-bordered table-hover">
+                                    <tr>
+                                        <td><label class="control-label">名称</label></td>
+                                        <td><input type="text" name="name"/></td>
+                                    </tr>
 
-                                <tr>
-                                    <td> <label class="control-label"> </label></td>
-                                    <td><button id="sub" type="submit" class="btn blue"><i class="icon-ok"></i> Save
-                                    </button>
-                                        <button type="reset" class="btn blue">清空</button>
-                                    </td>
-                                </tr>
-                            </table>
+                                    <tr>
+                                        <td><label class="control-label"> </label></td>
+                                        <td>
+                                            <button id="sub" type="submit" class="btn blue"><i class="icon-ok"></i> Save
+                                            </button>
+                                            <button type="reset" class="btn blue">清空</button>
+                                        </td>
+                                    </tr>
+                                </table>
                             </form>
                         </div>
 
@@ -566,10 +574,10 @@
         App.init();
         TableEditable.init();
 
-        $(".delete").click(function(){
-            if(window.confirm("确定删除?")){
+        $(".delete").click(function () {
+            if (window.confirm("确定删除?")) {
                 return true;
-            }else{
+            } else {
                 return false;
             }
 

@@ -78,7 +78,7 @@ var TableEditable = function () {
                 ],
                 // set the initial value
                 "iDisplayLength": 5,
-                "aaSorting": [[0, "desc"]],
+                "aaSorting": [[8,"desc"]],
                 "sDom": "<'row-fluid'<'span6'l><'span6'f>r>t<'row-fluid'<'span6'i><'span6'p>>",
                 "sPaginationType": "bootstrap",
                 "oLanguage": {

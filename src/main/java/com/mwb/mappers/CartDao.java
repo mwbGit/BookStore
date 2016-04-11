@@ -13,4 +13,5 @@ public interface CartDao {
 	public void clear(User user);
 	public void edit(Cart cart);
 	public List<Cart> find(User user);
+	public Cart findById(int id);
 }

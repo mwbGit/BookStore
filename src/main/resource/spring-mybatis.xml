@@ -62,7 +62,9 @@
             <tx:method name="new*" propagation="REQUIRED" />  
             <tx:method name="set*" propagation="REQUIRED" />  
             <tx:method name="remove*" propagation="REQUIRED" />  
-            <tx:method name="delete*" propagation="REQUIRED" />  
+            <tx:method name="clear*" propagation="REQUIRED" />
+            <tx:method name="checkOut*" propagation="REQUIRED" />
+            <tx:method name="delete*" propagation="REQUIRED" />
             <tx:method name="change*" propagation="REQUIRED" />  
             <tx:method name="get*" propagation="REQUIRED" read-only="true" />  
             <tx:method name="find*" propagation="REQUIRED" read-only="true" />  

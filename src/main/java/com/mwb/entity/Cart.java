@@ -9,11 +9,11 @@ public class Cart {
     private User user;
     private Book book;
     private int num;
-    private int price;
+    private double price;
 
     public Cart() {
     }
-    public Cart(Book book, int num, int price, User user) {
+    public Cart( User user,Book book, int num, double price) {
         this.book = book;
         this.num = num;
         this.price = price;
@@ -55,11 +55,11 @@ public class Cart {
         this.num = num;
     }
 
-    public int getPrice() {
+    public double getPrice() {
         return price;
     }
 
-    public void setPrice(int price) {
+    public void setPrice(double price) {
         this.price = price;
     }
 

@@ -59,6 +59,10 @@ public class UserController {
     public String userEdit(HttpServletRequest request) {
         LOGGER.info("userEdit into ");
         User user=(User)request.getSession().getAttribute("user");
+        if(user==null){
+            LOGGER.info("user no login ");
+            return "login";
+        }
         request.setAttribute("UserShow",user);
         return "useredit";
     }
@@ -68,7 +72,11 @@ public class UserController {
         LOGGER.info("getEdit into ");
         //防止修改其他用户
        User u= (User)request.getSession().getAttribute("user");
-        if (u.getId()!=user.getId()){
+        if(user==null){
+            LOGGER.info("user no login ");
+            return "login";
+        }
+        if (u.getId().equals(user.getId())){
             LOGGER.info("no user id ");
             request.setAttribute("UserShow","u");
             return "useredit";

@@ -13,17 +13,14 @@
 <div>
     <!--Top展示-->
     <div class=" center header">
-        <div class="logo"><a href="index.html"><img src="images/logo.gif" alt="" title="" border="0"/></a></div>
+        <div class="logo"><a href="index.jsp"><img src="images/logo.gif" alt="" title="" border="0"/></a></div>
         <div id="menu">
             <ul>
-                <li class="selected"><a href="index.jsp">Home</a></li>
+                <li ><a href="index.jsp">Home</a></li>
                 <div id="booktypeshow">
+
                 </div>
-                <!--判断用户是否登录-->
-                <c:if test="${empty sessionScope.user}">
-                    <li><a href="login.jsp">登录</a></li>
-                    <li><a href="register.jsp">注册</a></li>
-                </c:if>
+
                 <li><a href="contact.jsp">联系我们</a></li>
 
             </ul>
@@ -34,17 +31,16 @@
 
     <div class="center center_content">
         <!--左侧展示-->
-        <input class="pagename" type="hidden" value="index"/>
-
+        <input class="pagename" type="hidden" value="oder"/>
+        <form action="getMyCar" method="post"></form>
         <div class="left_content">
-            <div id="fyshow">
+            <div style="display:none" id="fyshow">
                 <div class="crumb_nav">
                     <a href="javascript:;">Home</a> &gt;&gt; <span class="curType"></span>
                     <input id="typeid" type="hidden" value="0">
                 </div>
                 <div class="title "><span class="title_icon"><img src="images/bullet1.gif" alt="" title=""/></span>
-                    <span class="curType"></span>书籍排行
-                </div>
+                    <span class="curType"></span>书籍排行</div>
                 <!--书籍展示-->
                 <div class="new_products">
 
@@ -54,8 +50,7 @@
                     <!--分页条-->
                     <div class="pagination">
                         <!-- 分页按键-->
-                        <label class="lb "></label>
-
+                        <label  class="lb " ></label>
                         <div id="fy" class="page"></div>
                     </div>
 
@@ -63,8 +58,50 @@
                 </div>
 
             </div>
+            <div id="other">
+                <div class="title"><span class="title_icon"><img src="images/bullet1.gif" alt="" title="" />
+                </span>My Oder</div>
+
+                <div class="feat_prod_box_details">
+                    <c:if test="${empty requestScope.sky}">
+                    <form action="getOder" method="post"></form>
+                    <table class="cart_table">
+                        <tr class="cart_title">
+                            <td>图片</td>
+                            <td>书名</td>
+                            <td>单价</td>
+                            <td>本书</td>
+                            <td>总价</td>
+                            <td>状态</td>
+                            <td>移除</td>
+                        </tr>
+                        <c:forEach items="${requestScope.oders}" var="OderDetails">
+                        <tr>
+                            <td><a class="details" href="${OderDetails.book.id}"><img src="${OderDetails.book.img}"  border="0" class="cart_thumb imgsmall" /></a></td>
+                            <td>${OderDetails.book.name}</td>
+                            <td>${OderDetails.oder.user.members!=0?OderDetails.book.memberprice:OderDetails.book.marketprice}</td>
+                            <td>${OderDetails.num}本</td>
+                            <td>${OderDetails.price}元</td>
+                            <td>${OderDetails.status==0?"<span class='blue'> 未发货</span>":"<span class='red'> 已发货</span> "}</td>
+                            <td><a class="oderdelete" href="deleteOder?id=${OderDetails.id}">删除</a><input type="hidden" value="${OderDetails.status}"/></td>
+                        </tr>
+
+                        </c:forEach>
+                    </table>
+                        <a id="clearoder" href="clearOder" class="checkout">清空已发货订单</a>
+                    </c:if>
+                    <c:if test="${!empty requestScope.sky}">
+                      <h1> 您已经没有订单了！</h1>
+                    </c:if>
+                </div>
+            </div>
             <div id="details"></div>
-        </div>
+
+
+
+
+            <div class="clear"></div>
+        </div><!--end of left content-->
         <!--end of left content-->
 
         <!--右侧-->
@@ -74,7 +111,7 @@
             <c:if test="${!empty sessionScope.user}">
                 <div class="currency">
                     <div class="home_cart_content">
-                    <span class="red">    您好<c:if test="${user.members!=0}">会员</span></c:if>: ${user.name} | <a href="userEdit">修改信息</a> |<a href="getOder"> 订单</a>|<a href="logOut">
+                        <span class="red">    您好<c:if test="${user.members!=0}">会员</span></c:if>: ${user.name} | <a href="userEdit">修改信息</a> |<a href="getOder"> 订单</a>|<a href="logOut">
                         退出</a></span>
                     </div>
 
@@ -124,18 +161,15 @@
                 <div id="booktnewshow"></div>
 
             </div>
-
         </div>
         <!--end of right content-->
 
         <div class="clear"></div>
-    </div>
-    <!--end of center content-->
+    </div><!--end of center content-->
 
 
     <div class="center footer">
-        <div class="left_footer"><img src="images/footer_logo.gif" alt="" title=""/><br/> <a
-                href="http://www.cssmoban.com/" title="free templates">cssmoban</a></div>
+        <div class="left_footer"><img src="images/footer_logo.gif" alt="" title="" /><br /> <a href="http://www.cssmoban.com/" title="free templates">cssmoban</a></div>
         <div class="right_footer">
             <a href="#">home</a>
             <a href="#">about us</a>
@@ -152,8 +186,7 @@
 </div>
 <script type="application/javascript" src="js/jquery-1.10.1.min.js"></script>
 <script type="application/javascript" src="js/bookshow.js"></script>
-<script type="application/javascript">
-</script>
+<script type="application/javascript" src="js/cart.js"></script>
 </body>
 
 </html>

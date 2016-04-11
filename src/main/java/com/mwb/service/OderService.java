@@ -12,4 +12,6 @@ public interface OderService {
 	public List<Oder> find(User user);
 	public List<Oder> findOK();
 	public List<Oder> findNo();
+	//清空未发货订单
+	public void clearOder(User user);
 }

@@ -1,6 +1,8 @@
 特殊字符
  var el = /[~#^$@%&!*.,。，()<>:;'"{}【】  ]/gi;
 javascript:;
+var href = $(this).attr("href");
+
 图片展示
 <% String path=request.getContextPath();%>
 <%=path%>
@@ -14,6 +16,7 @@ jstl遍历
 <td><a class="delete" href="deleteBookType?id=${BookType.id}">删除</a></td>
 </tr>
 </c:forEach>
+          //   $("form").attr("action", href).submit();
 
 只能输入数字和英文
 onkeyup="value=value.replace(/[\W]/g,'') "onbeforepaste="clipboardData.setData('text',clipboardData.getData('text').replace(/[^\d]/g,''))
@@ -22,8 +25,8 @@ onkeyup="value=value.replace(/[\W]/g,'') "onbeforepaste="clipboardData.setData('
 
 var params = $('form').serialize(); //序列化表单的值
 
-
-1 getTypeBooks id=null?
-getBookDetails?id=270
-session
-img url
+待处理
+session  后台价格
+日期异常
+后台主页
+版权 返回顶部 关于我们 分类列表右对齐

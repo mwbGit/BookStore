@@ -16,7 +16,7 @@ public class Contact {
     private String email;
     private String message;
     private Date date;
-    private String datastr;
+    private String datestr;
 
     public String getMessage() {
         return message;
@@ -26,12 +26,12 @@ public class Contact {
         this.message = message;
     }
 
-    public String getDatastr() {
-        return datastr;
+    public String getDatestr() {
+        return datestr;
     }
 
-    public void setDatastr(String datastr) {
-        this.datastr = datastr;
+    public void setDatestr(String datestr) {
+        this.datestr = datestr;
     }
 
     public Date getDate() {
@@ -40,6 +40,7 @@ public class Contact {
 
     public void setDate(Date date) {
         this.date = date;
+        this.datestr = FomateDate.DateToStr(date);
     }
 
     public Integer getId() {

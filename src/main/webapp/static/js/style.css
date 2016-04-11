@@ -109,6 +109,9 @@ color:#990000;
 span.red{
 color:#990000;
 }
+span.blue{
+color:blue;
+}
 span.gre{
     color:#734633;
 }
@@ -172,6 +175,11 @@ padding:0 0 35px 0;
     width: 70px;
     height: 100px;
 }
+.imgsmall{
+    width: 30px;
+    height: 40px;
+}
+
 
 img.right{
 float:right;

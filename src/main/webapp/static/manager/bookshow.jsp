@@ -49,10 +49,10 @@
     <!-- END GLOBAL MANDATORY STYLES -->
 
     <!-- BEGIN PAGE LEVEL STYLES -->
-    <link rel="stylesheet" type="text/css" href="media/css/select2_metro.css" />
-    <link rel="stylesheet" href="media/css/DT_bootstrap.css" />
+    <link rel="stylesheet" type="text/css" href="media/css/select2_metro.css"/>
+    <link rel="stylesheet" href="media/css/DT_bootstrap.css"/>
     <!-- END PAGE LEVEL STYLES -->
-    <link rel="shortcut icon" href="media/image/favicon.ico" />
+    <link rel="shortcut icon" href="media/image/favicon.ico"/>
 
 </head>
 
@@ -168,7 +168,8 @@
                 </ul>
 
             </li>
-            <li >
+
+            <li>
                 <a href="getBookTypes">
                     <i class="icon-bar-chart"></i>
                     <span class="title">类别管理</span>
@@ -207,7 +208,14 @@
                 </ul>
 
             </li>
-            <li >
+            <li>
+                <a href="getMessage">
+                    <i class="icon-gift"></i>
+                    <span class="title">留言管理</span>
+                </a>
+
+            </li>
+            <li>
                 <a href="getUsers">
                     <i class="icon-user"></i>
                     <span class="title">用户管理</span>
@@ -541,10 +549,10 @@
         App.init();
         TableEditable.init();
 
-        $(".delet").click(function(){
-            if(window.confirm("确定删除?")){
+        $(".delet").click(function () {
+            if (window.confirm("确定删除?")) {
                 return true;
-            }else{
+            } else {
                 return false;
             }
 

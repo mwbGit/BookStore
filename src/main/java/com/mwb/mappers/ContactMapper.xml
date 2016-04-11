@@ -17,7 +17,7 @@
 		select * from Contact where id=#{id}
 	</select>
     <select id="findAll" resultMap="ContactResult">
-		select * from Contact order by id desc
+		select * from Contact order by date desc
 	</select>
     <delete id="delete" parameterType="Integer">
 		delete from Contact where id=#{id}

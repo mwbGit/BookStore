@@ -1,11 +1,10 @@
 package com.mwb.service;
 
 import com.mwb.entity.Book;
+import com.mwb.entity.BookType;
 import com.mwb.entity.Pagination;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
-
-import java.util.ArrayList;
+import org.springframework.stereotype.Component;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -14,6 +13,7 @@ import java.util.Map;
  * Created by Administrator on 2016/4/9 0009.
  * 分页操作
  */
+@Component
 public class PaginationService {
     private static final org.slf4j.Logger LOGGER = LoggerFactory.getLogger(PaginationService.class);
     //默认大小及起始 热销排行展示数量
@@ -26,6 +26,7 @@ public class PaginationService {
         Map<String,Object> map=new HashMap<String, Object>();
         Map<String,Object> result=new HashMap<String, Object>();
         List<Book> list;
+        BookType bookType=new BookType();
 
         if (page.getSize()==null){
             LOGGER.info("into  page index=1");
@@ -74,6 +75,13 @@ public class PaginationService {
         }
         //返回分页信息
         LOGGER.info("into  page return");
+        if(tyepeid==0){
+            bookType.setName("热销");
+            bookType.setId(0);
+        }else {
+            bookType= bookTypeService.findById(tyepeid);
+        }
+        result.put("curType",bookType);
         result.put("TypeBooks",list);
         result.put("page",page);
         return result;

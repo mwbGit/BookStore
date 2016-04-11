@@ -47,11 +47,20 @@ var TableAdvanced = function () {
             "aoColumnDefs": [
                 {"bSortable": false, "aTargets": [ 0 ] }
             ],
-            "aaSorting": [[1, 'asc']],
+            "aaSorting": [[3, 'desc']],
              "aLengthMenu": [
                 [5, 15, 20, -1],
                 [5, 15, 20, "All"] // change per page values here
             ],
+            "oLanguage": {
+                "sLengthMenu": "_MENU_ ",
+                "sSearch": "搜索",
+                "sInfo": "当前显示 _START_ 到 _END_ 条，共 _TOTAL_ 条记录",
+                "oPaginate": {
+                    "sPrevious": "Prev",
+                    "sNext": "Next"
+                }
+            },
             // set the initial value
             "iDisplayLength": 5
         });

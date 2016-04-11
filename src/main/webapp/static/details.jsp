@@ -1,176 +1,203 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-         pageEncoding="UTF-8" %>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-    <meta charset="utf-8"/>
+    <meta http-equiv="Content-Type" content="text/html; charset=windows-1252" />
     <title>Book Store</title>
-    <link rel="stylesheet" type="text/css" href="js/style.css"/>
-    <link rel="stylesheet" href="js/lightbox.css" type="text/css" media="screen" />
-    <script type="application/javascript"  src="js/jquery-1.10.1.min.js"></script>
-    <script type="application/javascript" src="js/getshow.js"></script>
-
+    <link rel="stylesheet" type="text/css" href="js/style.css" />
 </head>
 <body>
-<div>
-    <!--当前路径-->
-    <% String path = request.getContextPath();%>
-    <!--Top展示-->
-    <div class=" center header">
-        <div class="logo"><a href="index.html"><img src="images/logo.gif" alt="" title="" border="0"/></a></div>
+<div id="wrap">
+
+    <div class="header">
+        <div class="logo"><a href="index.jsp"><img src="images/logo.gif" alt="" title="" border="0" /></a></div>
         <div id="menu">
             <ul>
-                <li ><a href="index.jsp">Home</a></li>
-                <div id="booktypeshow">
-
-                </div>
-
-                <!--判断用户是否登录-->
-                <c:if test="${empty sessionScope.user}">
-                    <li><a href="login.jsp">登录</a></li>
-                    <li><a href="register.jsp">注册</a></li>
-                </c:if>
-                <li><a href="contact.jsp">联系我们</a></li>
-
+                <li><a href="index.jsp">home</a></li>
+                <li><a href="about.html">about us</a></li>
+                <li><a href="category.html">books</a></li>
+                <li><a href="specials.html">specials books</a></li>
+                <li><a href="myaccount.html">my accout</a></li>
+                <li><a href="register.html">register</a></li>
+                <li><a href="details.html">prices</a></li>
+                <li><a href="contact.jsp">contact</a></li>
             </ul>
         </div>
+
 
     </div>
 
 
-    <div class="center center_content">
-        <!--左侧展示-->
+    <div class="center_content">
         <div class="left_content">
-            <div class="crumb_nav">
-                <a href="javascript:;">Home</a> &gt;&gt; 书籍详情
-            </div>
-            <div class="title"><span class="title_icon"><img src="images/bullet1.gif" alt="" title="" />
-            </span>${Book.name}</div>
+            <div class="title"><span class="title_icon"><img src="images/bullet1.gif" alt="" title="" /></span>My cart</div>
 
             <div class="feat_prod_box_details">
 
-                <div class="prod_img"><a href="javascript:;"><img src="<%=path%>${Book.img}" alt="${Book.img}" width="100px" height="150px" border="0" /></a>
-                    <br /><br />
-                    <a href="<%=path%>${Book.img}" rel="lightbox"><img src="images/zoom.gif" alt="" title="" border="0" /></a>
-                </div>
+                <table class="cart_table">
+                    <tr class="cart_title">
+                        <td>Item pic</td>
+                        <td>Book name</td>
+                        <td>Unit price</td>
+                        <td>Qty</td>
+                        <td>Total</td>
+                    </tr>
 
-                <div class="prod_det_box">
-                    <div class="box_top"></div>
-                    <div class="box_center">
-                        <div class="prod_title"><h3>详情</h3></div>
-                        <div class="price"><strong>&nbsp;&nbsp; 名称:</strong> <span class="red">${Book.name}</span></div>
-                        <div class="price"><strong> &nbsp;&nbsp; 作者:</strong> <span class="red">${Book.author}</span></div>
-                        <div class="price"><strong>&nbsp;&nbsp;  出版社:</strong> <span class="red">${Book.press}</span></div>
-                        <div class="price"><strong> &nbsp;&nbsp; 出版日期:</strong> <span class="red">${Book.dateStr}</span></div>
-                        <div class="price"><strong> &nbsp;&nbsp; 市场价:</strong> <span class="red">${Book.marketprice}</span></div>
-                        <div class="price"><strong> &nbsp;&nbsp; 会员价:</strong> <span class="red">${Book.memberprice}</span></div>
-                        <div class="price"><strong> &nbsp;&nbsp; 成交量:</strong> <span class="red">${Book.volume}</span></div>
-                        <div class="price"><strong> &nbsp;&nbsp; 库存:</strong> <span class="red">${Book.inventory}</span></div>
-                        <a href="addCart?id=${Book.id}" class="more"> <input id="sub" type="button" class="register" value="加入购物车" /></a>
-                        <div class="clear"></div>
-                    </div>
+                    <tr>
+                        <td><a href="details.html"><img src="images/cart_thumb.gif" alt="" title="" border="0" class="cart_thumb" /></a></td>
+                        <td>Books</td>
+                        <td>100$</td>
+                        <td>1</td>
+                        <td>100$</td>
+                    </tr>
+                    <tr>
+                        <td><a href="details.html"><img src="images/cart_thumb.gif" alt="" title="" border="0" class="cart_thumb" /></a></td>
+                        <td>Books</td>
+                        <td>100$</td>
+                        <td>1</td>
+                        <td>100$</td>
+                    </tr>
+                    <tr>
+                        <td><a href="details.html"><img src="images/cart_thumb.gif" alt="" title="" border="0" class="cart_thumb" /></a></td>
+                        <td>Books</td>
+                        <td>100$</td>
+                        <td>1</td>
+                        <td>100$</td>
+                    </tr>
 
-                    <div class="box_bottom"></div>
-                </div>
-                <div class="clear"></div>
+                    <tr>
+                        <td colspan="4" class="cart_total"><span class="red">TOTAL SHIPPING:</span></td>
+                        <td> 250$</td>
+                    </tr>
+
+                    <tr>
+                        <td colspan="4" class="cart_total"><span class="red">TOTAL:</span></td>
+                        <td> 325$</td>
+                    </tr>
+
+                </table>
+                <a href="#" class="continue">&lt; continue</a>
+                <a href="#" class="checkout">checkout &gt;</a>
+
+
+
+
             </div>
 
 
-            <div id="demo" class="demolayout">
 
-                <ul id="demo-nav" class="demolayout">
-                    <li><a class="active" href="#tab1">简介</a></li>
-                </ul>
-
-                <div class="tabs-container">
-
-                    <div style="display: block;" class="tab" id="tab1">
-                        <br>
-                        &nbsp;&nbsp;
-                        ${Book.introduction}
-
-                    </div>
-
-
-
-                </div>
-
-
-            </div>
 
 
 
             <div class="clear"></div>
         </div><!--end of left content-->
-        <!--end of left content-->
-        <!--右侧-->
 
-        <div class="center right_content">
-            <!--判断用户是否登录-->
-            <!--用户信息-->
-            <c:if test="${!empty sessionScope.user}">
-                <div class="currency">
+        <div class="right_content">
 
-                    <div class="home_cart_content">
-                        您好 : ${user.name} | <a href="userEdit">修改信息</a> |<a href="logOut"> 退出</a></span>
-                    </div>
-
-
-                </div>
-
-                <!--右侧购物车-->
-                <div class="cart">
-                    <div class="title">
-                        <a href="getMyCar？id=${user.id}">
-                        <span class="title_icon">
-                    <img src="images/cart.gif"/> 购物车</span>
-                        </a>
-                    </div>
-                    <div class="home_cart_content">
-                        3本 | <span class="red">总价: 100元</span>
-                    </div>
-
-
-                </div>
-            </c:if>
-            <!--右侧关于我们-->
-            <div class="title"><span class="title_icon"><img src="images/bullet3.gif" alt="" title=""/></span>About Our
-                Store
+            <div class="languages_box">
+                <span class="red">Languages:</span>
+                <a href="#"><img src="images/gb.gif" alt="" title="" border="0" /></a>
+                <a href="#"><img src="images/fr.gif" alt="" title="" border="0" /></a>
+                <a href="#"><img src="images/de.gif" alt="" title="" border="0" /></a>
             </div>
+            <div class="currency">
+                <span class="red">Currency: </span>
+                <a href="#">GBP</a>
+                <a href="#">EUR</a>
+                <a href="#"><strong>USD</strong></a>
+            </div>
+
+
+            <div class="cart">
+                <div class="title"><span class="title_icon"><img src="images/cart.gif" alt="" title="" /></span>My cart</div>
+                <div class="home_cart_content">
+                    3 x items | <span class="red">TOTAL: 100$</span>
+                </div>
+
+            </div>
+
+            <div class="title"><span class="title_icon"><img src="images/bullet3.gif" alt="" title="" /></span>About Our Store</div>
             <div class="about">
                 <p>
-                    <img src="images/about.gif" alt="" title="" class="right"/>
-                    当当网，综合性网上购物中心。致力于为消费者提供更多选择、更低价格、更为便捷的一站式购物体验。包括服装、鞋包、图书、家居、孕.婴.童等众多品类,支持全网比价、货到付款、上门退换货! </p>
+                    <img src="images/about.gif" alt="" title="" class="right" />
+                    Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud.
+                </p>
 
             </div>
-            <!--右侧热销-->
+
             <div class="right_box">
 
-                <div class="title"><span class="title_icon"><img src="images/bullet4.gif" alt="" title=""/></span>热销书籍
+                <div class="title"><span class="title_icon"><img src="images/bullet4.gif" alt="" title="" /></span>Promotions</div>
+                <div class="new_prod_box">
+                    <a href="details.html">product name</a>
+                    <div class="new_prod_bg">
+                        <span class="new_icon"><img src="images/promo_icon.gif" alt="" title="" /></span>
+                        <a href="details.html"><img src="images/thumb1.gif" alt="" title="" class="thumb" border="0" /></a>
+                    </div>
                 </div>
-                <div id="bookhotshow"></div>
+
+                <div class="new_prod_box">
+                    <a href="details.html">product name</a>
+                    <div class="new_prod_bg">
+                        <span class="new_icon"><img src="images/promo_icon.gif" alt="" title="" /></span>
+                        <a href="details.html"><img src="images/thumb2.gif" alt="" title="" class="thumb" border="0" /></a>
+                    </div>
+                </div>
+
+                <div class="new_prod_box">
+                    <a href="details.html">product name</a>
+                    <div class="new_prod_bg">
+                        <span class="new_icon"><img src="images/promo_icon.gif" alt="" title="" /></span>
+                        <a href="details.html"><img src="images/thumb3.gif" alt="" title="" class="thumb" border="0" /></a>
+                    </div>
+                </div>
 
             </div>
 
-            <!--右侧新书-->
             <div class="right_box">
 
-                <div class="title"><span class="title_icon"><img src="images/bullet4.gif" alt="" title=""/></span>新书排行
-                </div>
+                <div class="title"><span class="title_icon"><img src="images/bullet5.gif" alt="" title="" /></span>Categories</div>
 
-                <div id="booktnewshow"></div>
+                <ul class="list">
+                    <li><a href="#">accesories</a></li>
+                    <li><a href="#">books gifts</a></li>
+                    <li><a href="#">specials</a></li>
+                    <li><a href="#">hollidays gifts</a></li>
+                    <li><a href="#">accesories</a></li>
+                    <li><a href="#">books gifts</a></li>
+                    <li><a href="#">specials</a></li>
+                    <li><a href="#">hollidays gifts</a></li>
+                    <li><a href="#">accesories</a></li>
+                    <li><a href="#">books gifts</a></li>
+                    <li><a href="#">specials</a></li>
+                </ul>
+
+                <div class="title"><span class="title_icon"><img src="images/bullet6.gif" alt="" title="" /></span>Partners</div>
+
+                <ul class="list">
+                    <li><a href="#">accesories</a></li>
+                    <li><a href="#">books gifts</a></li>
+                    <li><a href="#">specials</a></li>
+                    <li><a href="#">hollidays gifts</a></li>
+                    <li><a href="#">accesories</a></li>
+                    <li><a href="#">books gifts</a></li>
+                    <li><a href="#">specials</a></li>
+                    <li><a href="#">hollidays gifts</a></li>
+                    <li><a href="#">accesories</a></li>
+                </ul>
 
             </div>
 
-        </div>
-        <!--end of right content-->
+
+        </div><!--end of right content-->
+
+
+
 
         <div class="clear"></div>
     </div><!--end of center content-->
 
 
-    <div class="center footer">
+    <div class="footer">
         <div class="left_footer"><img src="images/footer_logo.gif" alt="" title="" /><br /> <a href="http://www.cssmoban.com/" title="free templates">cssmoban</a></div>
         <div class="right_footer">
             <a href="#">home</a>
