@@ -20,86 +20,138 @@ jQuery(document).ready(function ($) {
     function Judge() {
         var name = $("#name").val();
         var press = $("#press").val();
+        var pressdate = $("#pressdate").val();
         var author = $("#author").val();
-        var introduction = $("#introduction").val();
+        var introduction = $("#introduction").val().trim();
         var inventory = $("#inventory").val();
 
         if (name == "" || name.length > 20 ) {
-           alert("书名格式不正确！")
+            $.MsgBox({
+                msg: "书名格式不正确！",
+                type: "alert",
+                opacity: .5 //遮罩层透明度
+            });
+            setTimeout('$("#msg_box,#msg_con").remove()', 1500);
             return false;
         }
 
         if (press == "" || press.length >30 ) {
-            alert("出版社格式不正确！")
+            $.MsgBox({
+                msg: "出版社格式不正确！",
+                type: "alert",
+                opacity: .5 //遮罩层透明度
+            });
+            setTimeout('$("#msg_box,#msg_con").remove()', 1500);
             return false;
         }
-        if(!date()){
+        //日期
+        if(pressdate==""||pressdate==null){
+            $.MsgBox({
+                msg: "出版日期不能为空！",
+                type: "alert",
+                opacity: .5 //遮罩层透明度
+            });
+            setTimeout('$("#msg_box,#msg_con").remove()', 1500);
             return false;
         }
         if (author == "" || author.length > 20 ) {
-           alert("作者格式不正确！")
+            $.MsgBox({
+                msg: "作者格式不正确！",
+                type: "alert",
+                opacity: .5 //遮罩层透明度
+            });
+            setTimeout('$("#msg_box,#msg_con").remove()', 1500);
             return false;
         }
         if (introduction == "" || introduction.length > 500 ) {
-           alert("简介格式不正确！")
+            $.MsgBox({
+                msg: "简介格式不正确！",
+                type: "alert",
+                opacity: .5 //遮罩层透明度
+            });
+            setTimeout('$("#msg_box,#msg_con").remove()', 1500);
             return false;
         }
-        if(!price("marketprice")||! price("memberprice")){
+        if(!price("marketprice")||!price("memberprice")){
+
             return false;
         }
-        if(parseInt($("#marketprice").val())<parseInt($("#memberprice").val())){
-            alert("会员价应低于市场价！")
+        if(parseFloat($("#marketprice").val())<parseFloat($("#memberprice").val())){
+            $.MsgBox({
+                msg: "会员价应低于市场价！",
+                type: "alert",
+                opacity: .5 //遮罩层透明度
+            });
+            setTimeout('$("#msg_box,#msg_con").remove()', 1500);
             return false;
         }
         var sum= /^[1-9]\d*$/;
         if (inventory == "" || inventory.length > 20 || !sum.test(inventory)) {
-                alert("存量格式不正确！");
+            $.MsgBox({
+                msg: "存量格式不正确！",
+                type: "alert",
+                opacity: .5 //遮罩层透明度
+            });
+            setTimeout('$("#msg_box,#msg_con").remove()', 1500);
             return false;
         }
         return true;
     };
 
 
-    //日期格式验证
-    function date(){
-        var a = /^(\d{4})-(\d{2})-(\d{2})$/
-        if (!a.test(document.getElementById("date").value)) {
-            alert("日期格式不正确!")
-            return false
-        }else{
-            return true;
-        }
-    }
+
+
     //金额格式验证
     function price(id){
         if(document.getElementById(id).value==""){
-            alert("金额为空!")
+            $.MsgBox({
+                msg: "金额为空！",
+                type: "alert",
+                opacity: .5 //遮罩层透明度
+            });
+            setTimeout('$("#msg_box,#msg_con").remove()', 1500);
             return false
+        }else {
+                var m = document.getElementById(id);
+                var regex = /^\d+\.?\d{0,2}$/;
+                if (!regex.test($("#"+id).val()))
+                {
+                    $.MsgBox({
+                        msg: "金额输入有误！",
+                        type: "alert",
+                        opacity: .5 //遮罩层透明度
+                    });
+                    setTimeout('$("#msg_box,#msg_con").remove()', 1500);
+                    $("#"+id).val("");
+                    $("#"+id).focus();
+                    return false;
+                }else{
+                    return true;
+                }
         }
-        var a = /^(([1-9]\d*)|\d)(\.\d{1,2})?$/
-        if (!a.test(document.getElementById(id).value)) {
-            alert("金额格式不正确!")
-            return false
-        }else{
-            return true;
-        }
+
     }
 
 
-//价格text离开验证
-    $('#marketprice').blur(function(){
+//价格text按下验证
+    $('#marketprice').keyup(function(){
         price("marketprice");
     });
-    $('#memberprice').blur(function(){
+    $('#memberprice').keyup(function(){
         price("memberprice");
-        if(parseInt($("#marketprice").val())<parseInt($("#memberprice").val())){
-            alert("会员价应低于市场价！")
+        if(parseFloat($("#marketprice").val())<parseFloat($("#memberprice").val())){
+            $.MsgBox({
+                msg: "会员价应低于市场价！",
+                type: "alert",
+                opacity: .5 //遮罩层透明度
+            });
+            setTimeout('$("#msg_box,#msg_con").remove()', 1500);
+            $("#memberprice").val("");
+            $("#memberprice").focus();
             return false;
         }
     });
-    $('#date').blur(function(){
-        date();
-    });
+
 //表单提交
     $('#sub').click(function(){
         if(Judge()){

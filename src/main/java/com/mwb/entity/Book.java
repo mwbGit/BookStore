@@ -23,9 +23,9 @@ public class Book {
     private String author;
     private String introduction;
     //市场价
-    private double marketprice;
+    private Double marketprice;
     //会员价
-    private double memberprice;
+    private Double memberprice;
     //成交量
     private int volume;
     //库存
@@ -147,20 +147,20 @@ public class Book {
         this.introduction = introduction;
     }
 
-    public double getMarketprice() {
+    public Double getMarketprice() {
 
         return marketprice;
     }
 
-    public void setMarketprice(double marketprice) {
+    public void setMarketprice(Double marketprice) {
         this.marketprice = FormatDouble.getToDoble(marketprice);
     }
 
-    public double getMemberprice() {
+    public Double getMemberprice() {
         return memberprice;
     }
 
-    public void setMemberprice(double memberprice) {
+    public void setMemberprice(Double memberprice) {
         this.memberprice = FormatDouble.getToDoble(memberprice);
 
     }

@@ -52,6 +52,7 @@ public class BookTypeController {
     @RequestMapping("/bookTypeAdd")
     public String bookTypeAdd(BookType bookType) {
         LOGGER.info("bookTypeAdd into ");
+        bookType.setName(bookType.getName().trim());
         bookTypeService.add(bookType);
         return "redirect:/static/manager/getBookTypes";
     }

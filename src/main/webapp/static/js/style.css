@@ -499,9 +499,10 @@ color:#FFFFFF;
 font-size:11px;
 line-height:20px;
 }
+
 /*--------------cart_table-------------*/
 .cart_table{
-width:440px;
+width:100%;
 border:1px #CCCCCC solid;
 text-align:center;
 }

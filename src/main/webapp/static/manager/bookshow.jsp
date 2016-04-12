@@ -435,7 +435,7 @@
                                         <td>${Book.volume}</td>
                                         <td>${Book.inventory}</td>
                                         <td><a class="edit" href="javascript:;">Edit</a></td>
-                                        <td><a class="delete" href="bookDelet?id=${Book.id}">delete</a></td>
+                                        <td><a class="delet" href="bookDelet?id=${Book.id}">delete</a></td>
                                     </tr>
                                 </c:forEach>
                                 </tbody>
@@ -537,7 +537,6 @@
 
 <script src="media/js/app.js"></script>
 
-<script src="media/js/table-advanced.js"></script>
 <!-- END PAGE LEVEL SCRIPTS -->
 <script src="media/js/book-editable.js"></script>
 <script src="media/js/datetimepicker.min.js"></script>
@@ -550,6 +549,7 @@
         TableEditable.init();
 
         $(".delet").click(function () {
+
             if (window.confirm("确定删除?")) {
                 return true;
             } else {

@@ -2,6 +2,7 @@
  * cart
  */
 jQuery(document).ready(function () {
+
     $(".delete").click(function () {
         if (window.confirm("确定移除此书籍？")) {
             return true;
@@ -18,7 +19,7 @@ jQuery(document).ready(function () {
     });
     $("#checkout").click(function () {
         if (window.confirm("货到付款，确定？")) {
-            $("form").submit();
+            $("form").attr("action","checkOut").submit();
             return false;
         } else {
             return false;
@@ -49,5 +50,94 @@ jQuery(document).ready(function () {
             return false;
         }
     });
-
+    $(".add").click(function () {
+        var put=$(this).prev();
+        var id=$(this).val();
+        var type="add";
+        $.ajax({
+            type: "post", //请求方式
+            async: false, //同步和异步的参数
+            dataType: "json",
+            url: "editCart", //发送请求地址
+            data: {"type":type,"id":id},
+            success: function (data) {
+                put.val(data.num);
+                if(data.flag){
+                    $("#flag"+id).hide();
+                }else{
+                    $("#price"+id).html(data.price);
+                    $("#flag"+id).show();
+                }
+                count();
+            }
+        });
+    });
+    $(".min").click(function () {
+        var put=$(this).next();
+        var id=$(this).val();
+        var type="min";
+        $.ajax({
+            type: "post", //请求方式
+            async: false, //同步和异步的参数
+            dataType: "json",
+            url: "editCart", //发送请求地址
+            data: {"type":type,"id":id},
+            success: function (data) {
+                if(data.num=="0"){
+                    //删除此行
+                    put.parent().parent().remove();
+                }else{
+                    $("#price"+id).html(data.price);
+                    put.val(data.num);
+                }
+                if(data.flag){
+                    $("#flag"+id).hide();
+                }else{
+                    $("#flag"+id).show();
+                }
+                count();
+            }
+        });
+    });
+    $(".put").blur(function () {
+        var put=$(this);
+        var id=$(this).next().val();
+        var type="put";
+        var num=$(this).val();
+        $.ajax({
+            type: "post", //请求方式
+            async: false, //同步和异步的参数
+            dataType: "json",
+            url: "editCart", //发送请求地址
+            data: {"type":type,"id":id,"num":num},
+            success: function (data) {
+                if(data.num=="0"){
+                    //删除此行
+                    put.parent().parent().remove();
+                }else{
+                    $("#price"+id).html(data.price);
+                    put.val(data.num);
+                }
+                if(data.flag){
+                   $("#flag"+id).hide();
+                }else{
+                    $("#flag"+id).show();
+                }
+                count();
+            }
+        });
+    });
+    function count(){
+        var price=0;
+        var sum=0;
+        $('.price').each(function () {
+            price+=parseFloat($(this).text());
+        });
+        $('.put').each(function () {
+            sum+=parseInt($(this).val());
+        });
+        $("#count").html(sum+"本/"+price+"元");
+        $("#price").html(price);
+        $("#sum").html(sum);
+    }
 });

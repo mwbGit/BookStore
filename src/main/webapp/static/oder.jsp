@@ -21,7 +21,8 @@
 
                 </div>
 
-                <li><a href="contact.jsp">联系我们</a></li>
+                <li><a href="contact.jsp" style="float: right">联系我们 &nbsp</a></li>
+
 
             </ul>
         </div>
@@ -67,13 +68,13 @@
                     <form action="getOder" method="post"></form>
                     <table class="cart_table">
                         <tr class="cart_title">
-                            <td>图片</td>
-                            <td>书名</td>
-                            <td>单价</td>
-                            <td>本书</td>
-                            <td>总价</td>
-                            <td>状态</td>
-                            <td>移除</td>
+                            <td width="10%">图片</td>
+                            <td width="*">书名</td>
+                            <td width="10%">单价</td>
+                            <td width="10%">本书</td>
+                            <td width="12%">总价</td>
+                            <td width="10%">状态</td>
+                            <td width="10%">移除</td>
                         </tr>
                         <c:forEach items="${requestScope.oders}" var="OderDetails">
                         <tr>

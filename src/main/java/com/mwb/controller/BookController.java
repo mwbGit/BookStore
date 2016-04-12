@@ -49,8 +49,11 @@ public class BookController {
 			}
 		}
 		LOGGER.info("request book="+book);
-		System.out.println(book);
 		book.setImg(img);
+		book.setName(book.getName().trim());
+		book.setAuthor(book.getAuthor().trim());
+		book.setIntroduction(book.getIntroduction().trim());
+		book.setPress(book.getPress().trim());
 		bookService.add(book);
 		LOGGER.info("book add ok");
 		return "redirect:/static/manager/bookadd.jsp";

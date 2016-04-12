@@ -20,12 +20,12 @@
 
                 </div>
 
+                <li><a href="contact.jsp" style="float: right">联系我们 &nbsp</a></li>
                 <!--判断用户是否登录-->
                 <c:if test="${empty sessionScope.user}">
-                    <li><a href="login.jsp">登录</a></li>
-                    <li><a href="register.jsp">注册</a></li>
+                    <li ><a href="register.jsp" style="float: right">注册</a></li>
+                    <li><a href="login.jsp" style="float: right">登录</a></li>
                 </c:if>
-                <li><a href="contact.jsp">联系我们</a></li>
 
             </ul>
         </div>

@@ -30,7 +30,7 @@ var TableEditable = function () {
                 var a = /^(([1-9]\d*)|\d)(\.\d{1,2})?$/;
                 if (!a.test(jqInputs[1].value)||!a.test(jqInputs[2].value)) {
                     alert("金额格式不正确！");
-                    return false;
+                    return;
                 }
                 if(parseInt(jqInputs[2].value)>parseInt(jqInputs[1].value)){
                     alert("会员价应小于市场价！");
@@ -57,12 +57,18 @@ var TableEditable = function () {
                 oTable.fnUpdate(jqInputs[2].value, nRow, 7, false);
                 oTable.fnUpdate(jqInputs[3].value, nRow, 9, false);
                 oTable.fnUpdate('<a class="edit" href="">Edit</a>', nRow, 10, false);
-                oTable.fnUpdate('<a class="delete" href="bookDelet?id='+jqInputs[0].value+'">Delete</a>', nRow, 11, false);
+                oTable.fnUpdate('<a class="delet" href="bookDelet?id='+jqInputs[0].value+'">Delete</a>', nRow, 11, false);
                 oTable.fnDraw();
             }
 
             function cancelEditRow(oTable, nRow) {
-                var jqInputs = $('input', nRow);
+                var aData = oTable.fnGetData(nRow);
+                var jqTds = $('>td', nRow);
+                jqTds[6].innerHTML = '<input type="text" class="m-wrap small" value="' + aData[6] + '">';
+                jqTds[7].innerHTML = '<input type="text" class="m-wrap small" value="' + aData[7] + '">';
+                jqTds[9].innerHTML = '<input type="text" class="m-wrap small" value="' + aData[9] + '">';
+                jqTds[10].innerHTML = '<a class="edit" href="">Save</a>';
+                jqTds[11].innerHTML = '<a class="cancel" href="">Cancel</a>';
                 oTable.fnUpdate(jqInputs[0].value, nRow, 0, false);
                 oTable.fnUpdate(jqInputs[1].value, nRow, 1, false);
                 oTable.fnUpdate(jqInputs[2].value, nRow, 2, false);
@@ -115,16 +121,6 @@ var TableEditable = function () {
                 nEditing = nRow;
             });
 
-            //$('#sample_editable_1 a.delete').live('click', function (e) {
-            //    e.preventDefault();
-            //
-            //    if (confirm("你确定删除?") == false) {
-            //        return false;
-            //    }
-            //    var nRow = $(this).parents('tr')[0];
-            //    oTable.fnDeleteRow(nRow);
-            //  //  alert("Deleted! Do not forget to do some ajax to sync with backend :)");
-            //});
 
             $('#sample_editable_1 a.cancel').live('click', function (e) {
                 e.preventDefault();
@@ -159,6 +155,8 @@ var TableEditable = function () {
                     nEditing = nRow;
                 }
             });
+
+
         }
 
     };

@@ -90,6 +90,8 @@ public class AdminController {
         }
         if (admin != null) {
             admin.setPassword(MD5.GetMD5Code(admin.getPassword()));
+            admin.setName(admin.getName().trim());
+            admin.setEmail(admin.getEmail().trim());
             adminService.add(admin);
             LOGGER.info("Addadmin ok ");
         }
@@ -124,6 +126,8 @@ public class AdminController {
             return "manager/adminedit";
         }
         admin.setPassword(MD5.GetMD5Code(admin.getPassword()));
+        admin.setName(admin.getName().trim());
+        admin.setEmail(admin.getEmail().trim());
         adminService.edit(admin);
         request.getSession().removeAttribute("admin");
         return "redirect:/static/manager/login.jsp";

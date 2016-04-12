@@ -446,11 +446,11 @@
                                     </div>
                                     <div class="control-group">
 
-                                        <label class="control-label" for="date">出版日期</label>
+                                        <label class="control-label" for="pressdate">出版日期</label>
 
                                         <div class="controls">
-                                            <input type="text" name="pressdate" class="m-wrap span6"
-                                                   placeholder="yyyy-MM-dd" id="date">
+                                            <input id="pressdate" name="pressdate"  class=" span6 Wdate" type="text"
+                                                   onFocus="WdatePicker({dateFmt:'yyyy-MM-dd'})"/>
                                         </div>
 
                                     </div>
@@ -634,6 +634,9 @@
 <script src="media/js/bookadd.js"></script>
 <script src="media/js/datetimepicker.min.js"></script>
 <script src="media/js/functions.js"></script>
+<script src="media/js/smallarAlert.js"></script>
+<script language="javascript" type="text/javascript" src="My97DatePicker/WdatePicker.js"></script>
+
 <script>
 
     jQuery(document).ready(function () {

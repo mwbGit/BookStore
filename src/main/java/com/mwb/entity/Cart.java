@@ -10,6 +10,7 @@ public class Cart {
     private Book book;
     private int num;
     private double price;
+    private boolean flag;
 
     public Cart() {
     }
@@ -29,6 +30,14 @@ public class Cart {
                 ", num=" + num +
                 ", price=" + price +
                 '}';
+    }
+
+    public boolean isFlag() {
+        return flag;
+    }
+
+    public void setFlag(boolean flag) {
+        this.flag = flag;
     }
 
     public Book getBook() {

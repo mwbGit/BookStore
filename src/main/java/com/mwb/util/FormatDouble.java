@@ -8,7 +8,6 @@ import java.text.DecimalFormat;
  */
 public class FormatDouble {
     public static Double getToDoble(double db){
-
         DecimalFormat df=new DecimalFormat("0.00");
       return Double.parseDouble(df.format(db));
     }

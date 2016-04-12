@@ -4,6 +4,7 @@ import com.mwb.entity.Book;
 import com.mwb.entity.Cart;
 import com.mwb.entity.OderDetails;
 import com.mwb.entity.User;
+import com.mwb.service.BookService;
 import com.mwb.service.CartService;
 import com.mwb.service.OderDetailsService;
 import com.mwb.service.OderService;
@@ -16,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpServletRequest;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -34,6 +36,8 @@ public class CartController {
     private OderDetailsService oderDetailsService;
     @Autowired
     private OderService oderService;
+    @Autowired
+    private BookService bookService;
 
     //进入购物车
     @RequestMapping("/getMyCar")
@@ -51,6 +55,12 @@ public class CartController {
         for (Cart car : list){
             sum+=car.getNum();
             price+=car.getPrice();
+            if(car.getBook().getInventory()-car.getNum()<0) {
+                //库存不足
+                car.setFlag(false);
+            }else {
+                car.setFlag(true);
+            }
         }
         if (list.size()==0){
             //购物车空
@@ -116,28 +126,39 @@ public class CartController {
     //修改数量
     @RequestMapping("/editCart")
     @ResponseBody
-    public String editCart(@RequestParam("id") int id,@RequestParam("num") int num,HttpServletRequest request) {
+    public Map<String,Object> editCart(@RequestParam("id") int id,@RequestParam(required = false,value = "num") Integer num,
+                           @RequestParam("type") String type,  HttpServletRequest request) {
         LOGGER.info("into  editCart");
         User user =(User)request.getSession().getAttribute("user");
-        //修改数量
-        Cart cart=new Cart();
-        cart.setId(id);
-        cart.setNum(num);
-        cart.setUser(user);
-        cartService.edit(cart);
-        //返回信息
-        int sum=0;double price=0;
         Map<String,Object> map=new HashMap<String, Object>();
-        List<Cart> list=cartService.find(user);
-        for (Cart car : list){
-            sum+=car.getNum();
-            price+=car.getPrice();
+        Cart cart=cartService.findById(id);
+        //判断是否是当前用户
+        if (cart.getUser().getId()!=user.getId()){
+            LOGGER.info("no cur user");
+            return null;
         }
-        map.put("sum",sum);
-        map.put("price", FormatDouble.getToDoble(price));
-        map.put("carts",list);
-        LOGGER.info("cart map={}",map);
-        return "redirect:/static/getMyCar";
+        if (type.equals("add")) {
+            cart.setNum(cart.getNum()+1);
+        }else  if (type.equals("min")){
+            cart.setNum(cart.getNum()-1);
+        }else if (type.equals("put")){
+            cart.setNum(num);
+        }else {
+            return null;
+        }
+        cartService.edit(cart);
+        cart=cartService.findById(id);
+        if(cart.getBook().getInventory()-cart.getNum()<0) {
+            //库存不足
+            cart.setFlag(false);
+        }else {
+            cart.setFlag(true);
+        }
+        //返回信息
+        map.put("num",cart.getNum());
+        map.put("flag",cart.isFlag());
+        map.put("price",cart.getPrice());
+        return map;
     }
     //清空
     @RequestMapping("/clearCart")
@@ -154,8 +175,7 @@ public class CartController {
         LOGGER.info("into  checkOut");
         if (cartid!=null){
             User user =(User)request.getSession().getAttribute("user");
-         boolean flag=cartService.checkOut(user,cartid);
-            request.setAttribute("flag",flag);
+            cartService.checkOut(user,cartid);
             LOGGER.info("cart clear");
         }
         return "redirect:/static/getMyCar";

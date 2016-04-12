@@ -1,5 +1,6 @@
 package com.mwb.service;
 
+import com.mwb.entity.Book;
 import com.mwb.entity.Cart;
 import com.mwb.entity.OderDetails;
 import com.mwb.entity.User;
@@ -14,8 +15,9 @@ public interface CartService {
     public void delete(int id);
     public void clear(User user);
     public void edit(Cart cart);
+    public Cart findById(int id);
     public List<Cart> find(User user);
-   public boolean checkOut(User user,int[] id);
+   public List<Book> checkOut(User user,int[] id);
 
 
 }

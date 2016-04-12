@@ -450,7 +450,7 @@
                                 <table class="table table-bordered table-hover">
                                     <tr>
                                         <td><label class="control-label">名称</label></td>
-                                        <td><input type="text" name="name"/></td>
+                                        <td><input id="typename" type="text" name="name"/></td>
                                     </tr>
 
                                     <tr>
@@ -567,6 +567,7 @@
 <script src="media/js/book-editable.js"></script>
 <script src="media/js/datetimepicker.min.js"></script>
 <script src="media/js/functions.js"></script>
+<script src="media/js/smallarAlert.js"></script>
 
 <script>
 
@@ -581,6 +582,16 @@
                 return false;
             }
 
+        });
+        $("#sub").click(function () {
+            if($("#typename").val().trim()=="") {
+                $.MsgBox({
+                    msg: "类别为空！",
+                    type: "alert",
+                    opacity: .5 //遮罩层透明度
+                });
+                setTimeout('$("#msg_box,#msg_con").remove()', 1500);
+            }
         });
 
     });

@@ -91,16 +91,22 @@ public class CartServiceImpl implements CartService {
     }
 
     @Override
+    public Cart findById(int id) {
+        return cartDao.findById(id);
+    }
+
+    @Override
     public List<Cart> find(User user) {
         return cartDao.find(user);
     }
 
     //结账
     @Override
-    public boolean checkOut(User user, int[] id) {
+    public List<Book> checkOut(User user, int[] id) {
         LOGGER.info("cart edit num price ");
+        List<Book> list=new ArrayList<Book>();
         if (id.length==0){
-            return  false;
+            return  list;
         }
         Oder oder=new Oder();
         Date date=new  Date();
@@ -114,9 +120,14 @@ public class CartServiceImpl implements CartService {
         oder.setTel(user.getTel());
         for (int i=0;i<id.length;i++){
             Cart cart=cartDao.findById(id[i]);
-            //订单总价 数量赋值
-            oder.setNum(oder.getNum()+cart.getNum());
-            oder.setPrice(oder.getPrice()+cart.getPrice());
+            if(cart.getBook().getInventory()-cart.getNum()>=0) {
+                //订单总价 数量赋值
+                oder.setNum(oder.getNum() + cart.getNum());
+                oder.setPrice(oder.getPrice()+cart.getPrice());
+            }else {
+                //库存不足
+                list.add(cart.getBook());
+            }
         }
         //存储订单
         oderService.add(oder);
@@ -124,31 +135,27 @@ public class CartServiceImpl implements CartService {
             Cart cart=cartDao.findById(id[i]);
             Book book=cart.getBook();
             OderDetails oderDetails=new OderDetails();
-            //库存不足
-            if(book.getInventory()-cart.getNum()<0){
-                LOGGER.info("book Inventor no have ");
-                return false;
+            if(book.getInventory()-cart.getNum()>=0) {
+                //库存减
+                book.setInventory(book.getInventory() - cart.getNum());
+                //销量加
+                book.setVolume(book.getVolume() + cart.getNum());
+                //书籍信息存储
+                bookService.edit(book);
+                //订单详情
+                oderDetails.setOder(oder);
+                oderDetails.setNum(cart.getNum());
+                oderDetails.setPrice(cart.getPrice());
+                oderDetails.setStatus(0);
+                oderDetails.setBook(book);
+                //存储订单详情
+                oderDetailsService.add(oderDetails);
+                //购物车移除
+                cartDao.delete(id[i]);
+                LOGGER.info("cart checkOut ok ");
             }
-            //库存减
-            book.setInventory(book.getInventory()-cart.getNum());
-            //销量加
-            book.setVolume(book.getVolume() + cart.getNum());
-            //书籍信息存储
-            bookService.edit(book);
-            //订单详情
-            oderDetails.setOder(oder);
-            oderDetails.setNum(cart.getNum());
-            oderDetails.setPrice(cart.getPrice());
-            oderDetails.setStatus(0);
-            oderDetails.setBook(book);
-            //存储订单详情
-            oderDetailsService.add(oderDetails);
-            //购物车移除
-            cartDao.delete(id[i]);
-            LOGGER.info("cart checkOut ok ");
         }
-
-        return true;
+        return list;
     }
 
 

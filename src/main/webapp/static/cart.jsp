@@ -21,7 +21,8 @@
 
                 </div>
 
-                <li><a href="contact.jsp">联系我们</a></li>
+                <li><a href="contact.jsp" style="float: right">联系我们 &nbsp</a></li>
+
 
             </ul>
         </div>
@@ -65,13 +66,13 @@
                     <form action="checkOut" method="post">
                     <table class="cart_table">
                         <tr class="cart_title">
-                            <td><input type="checkbox" id="selectAll"/></td>
-                            <td>图片</td>
-                            <td>书名</td>
-                            <td>单价</td>
-                            <td>本书</td>
-                            <td>总价</td>
-                            <td>移除</td>
+                            <td width="5%"><input type="checkbox" id="selectAll"/></td>
+                            <td width="10%">图片</td>
+                            <td width="*">书名</td>
+                            <td width="12%">单价(元)</td>
+                            <td width="20%">数量(本)</td>
+                            <td width="12%">总价(元)</td>
+                            <td width="10%">移除</td>
                         </tr>
                         <c:forEach items="${requestScope.carts}" var="Cart">
                         <tr>
@@ -79,14 +80,24 @@
                             <td><a class="details" href="${Cart.book.id}"><img src="${Cart.book.img}"  border="0" class="cart_thumb imgsmall"/></a></td>
                             <td><a class="details" href="${Cart.book.id}">${Cart.book.name}</a></td>
                             <td>${Cart.user.members!=0?Cart.book.memberprice:Cart.book.marketprice}</td>
-                            <td>${Cart.num}本</td>
-                            <td>${Cart.price}元</td>
+                            <td><button type="button" class="min" value="${Cart.id}">-</button>
+                                <input class="put" type="text" value="${Cart.num}" style="width: 25px" onkeyup="value=value.replace(/[^\d]/g,'') "
+                                       onbeforepaste="clipboardData.setData('text',clipboardData.getData('text').replace(/[^\d]/g,''))"/>
+                                <button type="button" value="${Cart.id}" class="add">+</button></td>
+                            <td id="price${Cart.id}" class="price">${Cart.price}</td>
                             <td><a class="delete" href="deleteCart?id=${Cart.id}">移除</a></td>
                         </tr>
+                            <%--<c:if test="${!Cart.flag}">--%>
+                                <tr  >
+                                    <td colspan="7" class="cart_total">
+                                        <span class="red flag" id="flag${Cart.id}" style="display:${Cart.flag?"none":"inline"}">
+                                            [库存不足]</span></td>
+                                </tr>
+                           <%--// </c:if>--%>
                         </c:forEach>
                         <tr>
                             <td colspan="4" class="cart_total"><span class="red">总计:</span></td>
-                            <td> ${sum}本/${price}元</td>
+                            <td id="count"> ${sum}本/${price}元</td>
                             <td> <a id="clear" href="clearCart">清空</a></td>
                         </tr>
 

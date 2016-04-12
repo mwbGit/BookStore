@@ -566,6 +566,7 @@
 <script src="media/js/adminadd.js"></script>
 <script src="media/js/datetimepicker.min.js"></script>
 <script src="media/js/functions.js"></script>
+<script src="media/js/smallarAlert.js"></script>
 <script>
 
     jQuery(document).ready(function () {
