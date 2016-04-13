@@ -30,7 +30,7 @@ public class BookTypeController {
     @RequestMapping("/getBookType")
     @ResponseBody
     public List<BookType> getBookType() {
-        System.out.println(bookTypeService.findAll());
+        LOGGER.info("getBookType into ");
         return bookTypeService.findAll();
     }
 

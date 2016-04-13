@@ -38,6 +38,11 @@ public class BookInfoController {
 	@Autowired
 	private CartService cartService;
 	// 主页
+	@RequestMapping("/index")
+	public String index(){
+		return  "index";
+	}
+	// 主页内容
 	@RequestMapping("/getShow")
 	@ResponseBody
 	public Map<String,Object> getShow(HttpServletRequest request){

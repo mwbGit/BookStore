@@ -26,16 +26,23 @@ public class BookController {
 	@Autowired
 	private BookService bookService;
 
+	//添加图书页面
+	@RequestMapping("/getBookAdd")
+	public String getBookAdd(){
+		LOGGER.info("request getBookAdd=");
+		return "manager/bookadd";
+	}
 	//添加图书
 	@RequestMapping("/bookAdd")
 	public String bookAdd(Book book,@RequestParam("file") MultipartFile file,HttpServletRequest request){
 		LOGGER.info("bookAdd fileup into");
-		String img="",contextPath;
+		String contextPath=request.getSession().getServletContext().getContextPath();
+		String img=contextPath+"/static/bookimgs/" +"default.jpg";
 		if (!file.isEmpty()) {
 			String filePath = request.getSession().getServletContext().getRealPath("/")
 					+ "\\static\\bookimgs\\" +  file.getOriginalFilename();
 			//   /BookStore
-			contextPath=request.getSession().getServletContext().getContextPath();
+
 			img=contextPath+"/static/bookimgs/" +  file.getOriginalFilename();
 			//转存文件
 			LOGGER.info(" fileup into{}",file.getOriginalFilename());
@@ -56,7 +63,7 @@ public class BookController {
 		book.setPress(book.getPress().trim());
 		bookService.add(book);
 		LOGGER.info("book add ok");
-		return "redirect:/static/manager/bookadd.jsp";
+		return "redirect:/static/manager/getBooks";
 	}
 	//展示图书
 	@RequestMapping("/getBooks")

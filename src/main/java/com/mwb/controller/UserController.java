@@ -26,7 +26,11 @@ public class UserController {
     @Autowired
     private UserService userService;
 
-
+    //用户登录
+    @RequestMapping("/getLogin")
+    public String getLogin(){
+        return  "login";
+    }
     //用户登录
     @RequestMapping("/Login")
     public String login(User user ,HttpServletRequest request) {
@@ -42,7 +46,7 @@ public class UserController {
             userService.edit(user1);
             HttpSession session = request.getSession();
             session.setAttribute("user", user1);
-            return "redirect:/static/index.jsp";
+            return "redirect:/static/index";
         }
 
     }
@@ -51,7 +55,7 @@ public class UserController {
     public String logOut(HttpServletRequest request) {
         LOGGER.info("logOut into ");
         request.getSession().removeAttribute("user");
-        return "redirect:/static/index.jsp";
+        return "redirect:/static/index";
     }
 
     //获取修改页面
@@ -93,7 +97,12 @@ public class UserController {
         userService.edit(user);
         LOGGER.info("getEdit edit ok ");
         request.getSession().removeAttribute("user");
-        return "redirect:/static/login.jsp";
+        return "redirect:/static/getLogin";
+    }
+    // 注册
+    @RequestMapping("/Register")
+    public String Register(){
+        return  "register";
     }
     //注册
     @RequestMapping("/getRegister")
@@ -109,7 +118,7 @@ public class UserController {
         user.setPassword(MD5.GetMD5Code(user.getPassword()));
         user.setJoindate(new Date());
         userService.add(user);
-        return "redirect:/static/login.jsp";
+        return "redirect:/static/getLogin";
     }
 //后台----------------
     //展示所有用户

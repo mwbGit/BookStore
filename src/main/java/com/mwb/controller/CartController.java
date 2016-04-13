@@ -215,12 +215,6 @@ public class CartController {
         oderService.clearOder(user);
         return "redirect:/static/getOder";
     }
-    @RequestMapping("/Test")
-    public String  Test(HttpServletRequest request) {
-     String string=request.getSession().getServletContext().getContextPath();
-     String string1=request.getSession().getServletContext().getRealPath("/");
-     String string2=request.getPathInfo();
-        return "redirect:/static/getOder";
-    }
+
 
 }

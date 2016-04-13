@@ -22,6 +22,12 @@ public class ContactController {
 
     @Autowired
     private ContactService contactService;
+    //留言
+    @RequestMapping("/getContact")
+    public String getContact(){
+        return  "contact";
+    }
+    //前台留言
     @RequestMapping("/sendMessage")
     public String sendMessage(Contact contact) {
         LOGGER.info("sendMessage ");
@@ -30,14 +36,17 @@ public class ContactController {
             contact.setDate(new Date());
             contactService.add(contact);
         }
-        return "redirect:/static/index.jsp";
+        return "redirect:/static/index";
     }
+    //后台
+    //删除
     @RequestMapping("manager/deleteMessage")
     public String deleteMessage(@RequestParam("id") int id) {
         LOGGER.info("deleteMessage ");
         contactService.delete(id);
         return "redirect:/static/manager/getMessage";
     }
+    //展示
     @RequestMapping("manager/getMessage")
     public String getMessage(Map<String,Object> map) {
         LOGGER.info("getMessage ");

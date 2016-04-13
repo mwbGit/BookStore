@@ -20,42 +20,50 @@ import java.util.Map;
  * 管理员
  */
 @Controller
-@RequestMapping("/static")
+@RequestMapping("/static/manager")
 public class AdminController {
     private static final org.slf4j.Logger LOGGER = LoggerFactory.getLogger(AdminController.class);
 
     @Autowired
     private AdminService adminService;
 
-
     //管理员登录
-    @RequestMapping("/manager/LoginAdmin")
+    @RequestMapping("/adminlogin")
+    public String adminlogin() {
+        return "manager/login";
+    }
+    @RequestMapping("/index")
+    public String index() {
+        return "manager/index";
+    }
+    //管理员登录
+    @RequestMapping("/LoginAdmin")
     public String Login(Admin admin,HttpServletRequest request) {
         LOGGER.info("Login into ");
         admin.setPassword(MD5.GetMD5Code(admin.getPassword()));
         Admin manager = adminService.login(admin);
         if (manager == null) {
             LOGGER.info("admin =null ");
-            return "redirect:/static/manager/login.jsp";
+            return "redirect:/static/manager/adminlogin";
         } else {
             LOGGER.info("admin =ok ");
             manager.setLastdate(new Date());
             adminService.edit(manager);
             HttpSession session = request.getSession();
             session.setAttribute("admin", manager);
-            return "redirect:/static/manager/index.jsp";
+            return "redirect:/static/manager/index";
         }
     }
     //展示所有管理员
-    @RequestMapping("/manager/getAdmins")
+    @RequestMapping("/getAdmins")
     public String getAdmins(Map<String, Object> map) {
         LOGGER.info("getAdmins into ");
         map.put("admins", adminService.findAll());
-        return "manager/adminmanager";
+        return "manager/adminedit";
     }
 
     //升级管理员
-    @RequestMapping("/manager/AdminUpgrade")
+    @RequestMapping("/AdminUpgrade")
     public String AdminUpgrade(@RequestParam("id") int id, @RequestParam("grade") int grade) {
         LOGGER.info("UserUpgrade into ");
         if (grade == 1) {
@@ -69,7 +77,7 @@ public class AdminController {
     }
 
     //删除
-    @RequestMapping("/manager/AdminDelete")
+    @RequestMapping("/AdminDelete")
     public String AdminDelete(@RequestParam("id") int id, @RequestParam("grade") int grade) {
         LOGGER.info("AdminDelete into ");
         if (grade != 9) {
@@ -79,7 +87,7 @@ public class AdminController {
         return "redirect:/static/manager/getAdmins";
     }
     //添加
-    @RequestMapping("/manager/Addadmin")
+    @RequestMapping("/Addadmin")
     public String Addadmin(Admin admin,Map<String,Object> map) {
         LOGGER.info("Addadmin into ");
         if(adminService.findNameExist(admin)!=null){
@@ -98,20 +106,26 @@ public class AdminController {
         return "redirect:/static/manager/getAdmins";
     }
     //展示页面
-    @RequestMapping("/manager/addAdmin")
+    @RequestMapping("/addAdmin")
     public String addAdmin() {
         LOGGER.info("addAdmin into ");
         return "manager/adminadd";
     }
     //退出
-    @RequestMapping("/manager/logOut")
+    @RequestMapping("/logOut")
     public String logOut(HttpServletRequest request) {
         LOGGER.info("logOut into ");
         request.getSession().removeAttribute("admin");
-        return "redirect:/static/manager/login.jsp";
+        return "redirect:/static/manager/adminlogin";
+    }
+    //展示页面
+    @RequestMapping("/getAdminEdit")
+    public String getAdminEdit() {
+        LOGGER.info("getAdminEdit into ");
+        return "manager/adminedit";
     }
     //修改信息
-    @RequestMapping("/manager/EditPassword")
+    @RequestMapping("/EditPassword")
     public String EditPassword(Admin admin,Map<String,Object> map,HttpServletRequest request) {
         LOGGER.info("EditPassword into ");
         //防止修改其他用户
@@ -130,7 +144,7 @@ public class AdminController {
         admin.setEmail(admin.getEmail().trim());
         adminService.edit(admin);
         request.getSession().removeAttribute("admin");
-        return "redirect:/static/manager/login.jsp";
+        return "redirect:/static/manager/adminlogin";
     }
 
 }

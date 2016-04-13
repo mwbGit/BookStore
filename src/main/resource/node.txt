@@ -43,7 +43,7 @@ var params = $('form').serialize(); //序列化表单的值
                         <input id="endDate"name="end"  class="Wdate" type="text" onFocus="WdatePicker({dateFmt:'yyyy-MM-dd HH:mm:ss',minDate:'#F{$dp.$D(\'beginDate\')}'})"/>
  </div>
 待处理
-session  后台价格
-日期异常
+session  图书修改
+
 后台主页
-版权 返回顶部 关于我们 分类列表右对齐
+版权 返回顶部 关于我们  异常页面  销量新书 本书-1
