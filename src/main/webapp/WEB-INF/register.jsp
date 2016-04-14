@@ -5,7 +5,7 @@
 <html>
 <head>
     <meta charset="utf-8"/>
-    <title>Book Store</title>
+    <title>博古书屋</title>
     <link rel="stylesheet" type="text/css" href="js/style.css"/>
 </head>
 <body>
@@ -147,15 +147,19 @@
         <div class="center right_content">
 
             <!--右侧关于我们-->
-            <div class="title"><span class="title_icon"><img src="images/bullet3.gif" alt="" title=""/></span>About Our
-                Store
+            <div class="title"><span class="title_icon"><img src="images/bullet3.gif" alt="" title=""/>
+            </span>博古书屋
             </div>
             <div class="about">
                 <p>
                     <img src="images/about.gif" alt="" title="" class="right"/>
-                    当当网，综合性网上购物中心。致力于为消费者提供更多选择、更低价格、更为便捷的一站式购物体验。包括服装、鞋包、图书、家居、孕.婴.童等众多品类,支持全网比价、货到付款、上门退换货! </p>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    博古书屋,专注于古典历史网上购物书店，致力于为消费者提供更多历史书籍选择、更低价格、更为便捷购物体验。
+                    含括中国史、世界史、史家名著、文物考古、史学理论、逸闻野史、历史随笔、史料典籍、历史地理等众多类别,
+                    支持全网比价、货到付款、上门退换货! </p>
 
             </div>
+            <div class="clear"></div>
             <!--右侧热销-->
             <div class="right_box">
 
@@ -183,24 +187,17 @@
 
 
     <div class="center footer">
-        <div class="left_footer"><img src="images/footer_logo.gif" alt="" title=""/><br/> <a
-                href="http://www.cssmoban.com/" title="free templates">cssmoban</a></div>
         <div class="right_footer">
-            <a href="#">home</a>
-            <a href="#">about us</a>
-            <a href="#">services</a>
-            <a href="#">privacy policy</a>
-            <a href="#">contact us</a>
-
+            <a href="javascript:;" target="_blank">
+                &copy; 2015 com.mwb.cn email:562684394@qq.com</a>
+            <a href="manager/adminlogin" target="_blank">管理</a>
         </div>
-
-
     </div>
-
-
 </div>
 
 <script type="application/javascript" src="js/jquery-1.10.1.min.js"></script>
+<script type="application/javascript" src="js/jquery.min.js"></script>
+<script type="text/javascript" src="js/jquery.goup.min.js"></script>
 <script type="application/javascript" src="js/useredit.js"></script>
 <script type="application/javascript" src="js/bookshow.js"></script>
 

@@ -2,6 +2,14 @@
  * 分页展示books
  */
 jQuery(document).ready(function () {
+    $.goup({
+        location : 'left',
+        trigger: 100,
+        bottomOffset: 60,
+        locationOffset: 170,
+        title: 'Top',
+        titleAsText: false
+    });
     //每个面获取书籍信息展示 热销 类别 新书
     $.ajax({
         type: "post", //请求方式
@@ -19,7 +27,7 @@ jQuery(document).ready(function () {
             var booktypes="";
             $.each(map.hotbooks, function (index, Book) {
                 hotbooks+='<div class="new_prod_box"><a class="details" href="'+Book.id+'">'+Book.name+
-                '</a><div class="new_prod_bg"><span class="new_icon"><img src="images/promo_icon.gif"/></span>' +
+                '</a><div class="new_prod_bg"><span class="new_icon"><img src="images/special_icon.gif"/></span>' +
                 '<a class="details" href="'+Book.id+'"><img src="'+Book.img+'" class="image thumb"' +
                 ' border="0"/></a> </div></div>';
             });
@@ -80,7 +88,7 @@ jQuery(document).ready(function () {
                 var str = "";
                 $.each(data.TypeBooks, function (index, Book) {
                     str += '<div class="new_prod_box"><a  class="details" href="' +
-                    Book.id + '">' + Book.name + '</a><div class="new_prod_bg"><a  class="details" href="' +
+                    Book.id + '"style="width:132px;">' + Book.name + '</a><div class="new_prod_bg"><a  class="details" href="' +
                     Book.id + '"><img src="' + Book.img + '" class="image thumb" border="0"/></a></div></div>';
                 });
                 //展示数据

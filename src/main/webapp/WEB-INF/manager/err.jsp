@@ -16,7 +16,7 @@
 
 	<meta charset="utf-8" />
 
-	<title>Metronic | Extra - 404 Page Option 3</title>
+	<title>遇到错误</title>
 
 	<meta content="width=device-width, initial-scale=1.0" name="viewport" />
 
@@ -68,7 +68,7 @@
 
 	<div class="container error-404">
 
-		<h1>404</h1>
+		<h1>Error</h1>
 
 		<h2>Houston, we have a problem.</h2>
 
@@ -80,7 +80,7 @@
 
 		<p>
 
-			<a href="login.jsp">Return Login</a>
+			<a href="<%=ctx %>/static/getContact">留言</a>
 
 			<br>
 

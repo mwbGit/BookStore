@@ -38,6 +38,7 @@ public class UserController {
         User user1 = userService.login(user);
         if (user1 == null) {
             LOGGER.info("user1 =null ");
+            request.setAttribute("err","err");
             return "login";
         } else {
             LOGGER.info("user1 =ok ");

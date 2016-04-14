@@ -153,7 +153,11 @@
 
 <div class="copyright">
 
-    2015 &copy; Com.mwb.cn - Admin -<a href="#">书城</a>.
+    <div class="" style=" margin:0 auto; width:400px; color: #ffffff ;font-size: small">
+        &copy; 2015 com.mwb.cn email:562684394@qq.com
+        <a href="<%=ctx %>/static/index" target="_blank">bookstore</a>
+
+    </div>
 
 </div>
 

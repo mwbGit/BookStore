@@ -1,6 +1,7 @@
 package com.mwb;
 
 import org.junit.Test;
+import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 /**
@@ -8,10 +9,12 @@ import org.slf4j.LoggerFactory;
  */
 public class TestLog {
     private static final org.slf4j.Logger LOGGER = LoggerFactory.getLogger(TestLog.class);
+    private static final Logger logger = LoggerFactory.getLogger(TestLog.class);
 
     @Test
     public void Show(){
         System.out.println("22");
         LOGGER.info("111");
+        logger.info("111");
     }
 }

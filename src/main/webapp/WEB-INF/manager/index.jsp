@@ -391,20 +391,16 @@
 
 <div class="footer">
 
-    <div class="footer-inner">
-
-        2015 &copy; Com.mwb.cn<a href="#" target="_blank">书城</a>
+    <div class="" style=" margin:0 auto; width:400px; color: #ffffff ;font-size: small">
+        &copy; 2015 com.mwb.cn email:562684394@qq.com
+        <a href="<%=ctx %>/static/index" target="_blank">bookstore</a>
 
     </div>
 
     <div class="footer-tools">
-
 			<span class="go-top">
-
 			<i class="icon-angle-up"></i>
-
 			</span>
-
     </div>
 
 </div>

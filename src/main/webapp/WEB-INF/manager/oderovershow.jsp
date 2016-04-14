@@ -456,10 +456,9 @@
 
 <div class="footer">
 
-    <div class="footer-inner">
-
-        2013 &copy; Metronic by keenthemes.Collect from <a href="http://www.cssmoban.com/" title="网站模板" target="_blank">网站模板</a>
-        - More Templates <a href="http://www.cssmoban.com/" target="_blank" title="模板之家">模板之家</a>
+    <div class="" style=" margin:0 auto; width:400px; color: #ffffff ;font-size: small">
+        &copy; 2015 com.mwb.cn email:562684394@qq.com
+        <a href="<%=ctx %>/static/index" target="_blank">bookstore</a>
 
     </div>
 

@@ -148,16 +148,20 @@ public class CartController {
         }
         cartService.edit(cart);
         cart=cartService.findById(id);
-        if(cart.getBook().getInventory()-cart.getNum()<0) {
-            //库存不足
-            cart.setFlag(false);
+        if (cart==null){
+            map.put("num",0);
         }else {
-            cart.setFlag(true);
+            if(cart.getBook().getInventory()-cart.getNum()<0) {
+                //库存不足
+                cart.setFlag(false);
+            }else {
+                cart.setFlag(true);
+            }
+            map.put("num",cart.getNum());
+            //返回信息
+            map.put("flag",cart.isFlag());
+            map.put("price",cart.getPrice());
         }
-        //返回信息
-        map.put("num",cart.getNum());
-        map.put("flag",cart.isFlag());
-        map.put("price",cart.getPrice());
         return map;
     }
     //清空
