@@ -22,8 +22,7 @@
 
     <meta charset="utf-8"/>
 
-    <title>图书管理</title>
-
+    <title>博古书屋</title>
     <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 
     <meta content="" name="description"/>
@@ -266,96 +265,11 @@
                     <div class="<%=ctx %>/static/media-body">
                         <div class="<%=ctx %>/static/media" id="top-menu">
                             <div id="time" class="pull-right">
-                                <span id="hours"></span> : <span id="min"></span> : <span id="sec"></span>
-                            </div>
+                                <span style="font-size: large;"><span id="hours"></span> : <span id="min"></span> : <span id="sec"></span>
+                           </span> </div>
                         </div>
                     </div>
-                    <!-- 设置按键-->
-                    <div class="color-panel hidden-phone">
 
-                        <div class="color-mode-icons icon-color"></div>
-
-                        <div class="color-mode-icons icon-color-close"></div>
-
-                        <div class="color-mode">
-
-                            <p>THEME COLOR</p>
-
-                            <ul class="inline">
-
-                                <li class="color-black current color-default" data-style="default"></li>
-
-                                <li class="color-blue" data-style="blue"></li>
-
-                                <li class="color-brown" data-style="brown"></li>
-
-                                <li class="color-purple" data-style="purple"></li>
-
-                                <li class="color-grey" data-style="grey"></li>
-
-                                <li class="color-white color-light" data-style="light"></li>
-
-                            </ul>
-
-                            <label>
-
-                                <span>Layout</span>
-
-                                <select class="layout-option m-wrap small">
-
-                                    <option value="fluid" selected>Fluid</option>
-
-                                    <option value="boxed">Boxed</option>
-
-                                </select>
-
-                            </label>
-
-                            <label>
-
-                                <span>Header</span>
-
-                                <select class="header-option m-wrap small">
-
-                                    <option value="fixed" selected>Fixed</option>
-
-                                    <option value="default">Default</option>
-
-                                </select>
-
-                            </label>
-
-                            <label>
-
-                                <span>Sidebar</span>
-
-                                <select class="sidebar-option m-wrap small">
-
-                                    <option value="fixed">Fixed</option>
-
-                                    <option value="default" selected>Default</option>
-
-                                </select>
-
-                            </label>
-
-                            <label>
-
-                                <span>Footer</span>
-
-                                <select class="footer-option m-wrap small">
-
-                                    <option value="fixed">Fixed</option>
-
-                                    <option value="default" selected>Default</option>
-
-                                </select>
-
-                            </label>
-
-                        </div>
-
-                    </div>
 
                     <!-- 来源-->
                     <ul class="breadcrumb">
@@ -401,6 +315,16 @@
                         </div>
                         <div class="portlet-body">
 
+                            <div  class="show"style="display:none;margin:5px 100px;font-size: large;" >
+                                <input type="hidden" class="fid" />
+                                书名：<span class="bn"></span>&nbsp;
+                               市场价:<input class="mk" size="7" style="width:50px;" type="text"/>
+                                会员价:<input class="mb" size="7"style="width:50px;" type="text" />
+                                库存:<input  class="it" size="4" style="width:50px;" type="text" />
+                                <div style="display:inline;margin:0 10px ">
+                                <input type="submit"  class="sub btn green" value="修改" />
+                                <input type="button"  class="cal btn green" value="取消"/></div>
+                            </div>
                             <table class="table table-striped table-hover table-bordered"
                                    id="sample_editable_1">
 
@@ -408,18 +332,18 @@
 
                                 <tr>
 
-                                    <th>Id</th>
-                                    <th>书名</th>
-                                    <th>作者</th>
-                                    <th>类别</th>
-                                    <th>出版社</th>
-                                    <th>出版时间</th>
-                                    <th>市场价</th>
-                                    <th>会员价</th>
-                                    <th>成交量</th>
-                                    <th>库存量</th>
-                                    <th>Edit</th>
-                                    <th>Delete</th>
+                                    <th width="2%">Id</th>
+                                    <th width="*">书名</th>
+                                    <th width="5%">作者</th>
+                                    <th width="7%">类别</th>
+                                    <th width="9%">出版社</th>
+                                    <th width="8%">出版时间</th>
+                                    <th width="9%">市场价(元)</th>
+                                    <th width="9%">会员价(元)</th>
+                                    <th width="9%">库存量(本)</th>
+                                    <th width="9%">成交量(本)</th>
+                                    <th width="5%">Edit</th>
+                                    <th width="5%">Delete</th>
                                 </tr>
                                 </thead>
                                 <tbody>
@@ -427,23 +351,26 @@
                                     <tr>
                                         <input type="hidden" value="${Book.id}"/>
                                         <td>${Book.id}</td>
-                                        <td>${Book.name}</td>
+                                        <td><span class="bn${Book.id}">${Book.name}</span></td>
                                         <td>${Book.author}</td>
                                         <td>${Book.booktype.name}</td>
                                         <td>${Book.press}</td>
                                         <td>${Book.dateStr}</td>
-                                        <td>${Book.marketprice}</td>
-                                        <td>${Book.memberprice}</td>
+                                        <td ><span class="mk${Book.id}">${Book.marketprice}</span></td>
+                                        <td ><span class="mb${Book.id}">${Book.memberprice}</span></td>
+                                        <td><span class="it${Book.id}">${Book.inventory}</span></td>
                                         <td>${Book.volume}</td>
-                                        <td>${Book.inventory}</td>
-                                        <td><a class="edit" href="javascript:;">Edit</a></td>
-                                        <td><a class="delet" href="bookDelet?id=${Book.id}">delete</a></td>
+                                        <td><a class="shwoedit" href="${Book.id}">Edit</a></td>
+                                        <td><a class="delete" href="bookDelet?id=${Book.id}">delete</a></td>
                                     </tr>
+
                                 </c:forEach>
                                 </tbody>
 
 
                             </table>
+
+
                         </div>
                     </div>
 
@@ -470,7 +397,7 @@
 <div class="footer">
     <div class="" style=" margin:0 auto; width:400px; color: #ffffff ;font-size: small">
         &copy; 2015 com.mwb.cn email:562684394@qq.com
-        <a href="<%=ctx %>/static/index" target="_blank">bookstore</a>
+        <a href="<%=ctx %>/static/index" target="_blank">博古</a>
 
     </div>
 
@@ -502,13 +429,6 @@
 
 <script src="<%=ctx %>/static/media/js/bootstrap.min.js" type="text/javascript"></script>
 
-<!--[if lt IE 9]>
-
-<script src="<%=ctx %>/static/media/js/excanvas.min.js"></script>
-
-<script src="<%=ctx %>/static/media/js/respond.min.js"></script>
-
-<![endif]-->
 
 <script src="<%=ctx %>/static/media/js/jquery.slimscroll.min.js" type="text/javascript"></script>
 
@@ -538,7 +458,9 @@
 <script src="<%=ctx %>/static/media/js/app.js"></script>
 
 <!-- END PAGE LEVEL SCRIPTS -->
+<script src="<%=ctx %>/static/media/js/smallarAlertgreen.js"></script>
 <script src="<%=ctx %>/static/media/js/book-editable.js"></script>
+<script src="<%=ctx %>/static/media/js/bookedit.js"></script>
 <script src="<%=ctx %>/static/media/js/datetimepicker.min.js"></script>
 <script src="<%=ctx %>/static/media/js/functions.js"></script>
 
@@ -547,16 +469,6 @@
     jQuery(document).ready(function () {
         App.init();
         TableEditable.init();
-
-        $(".delet").click(function () {
-
-            if (window.confirm("确定删除?")) {
-                return true;
-            } else {
-                return false;
-            }
-
-        });
 
     });
 

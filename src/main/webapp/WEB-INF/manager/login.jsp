@@ -23,8 +23,7 @@
 
     <meta charset="utf-8"/>
 
-    <title>Admin Login</title>
-
+    <title>博古书屋</title>
     <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 
     <meta content="" name="description"/>
@@ -71,7 +70,7 @@
 
 <div class="logo">
 
-    <img src="<%=ctx %>/static/media/image/logo-big.png" alt=""/>
+    <img src="<%=ctx %>/static/media/image/logo.png" alt=""/>
 
 </div>
 
@@ -153,9 +152,9 @@
 
 <div class="copyright">
 
-    <div class="" style=" margin:0 auto; width:400px; color: #ffffff ;font-size: small">
-        &copy; 2015 com.mwb.cn email:562684394@qq.com
-        <a href="<%=ctx %>/static/index" target="_blank">bookstore</a>
+    <div class="" >
+        &copy; 2015 com.mwb.cn
+        <a href="<%=ctx %>/static/index" target="_blank">博古</a>
 
     </div>
 

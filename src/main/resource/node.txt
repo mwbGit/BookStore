@@ -43,6 +43,5 @@ var params = $('form').serialize(); //序列化表单的值
                         <input id="endDate"name="end"  class="Wdate" type="text" onFocus="WdatePicker({dateFmt:'yyyy-MM-dd HH:mm:ss',minDate:'#F{$dp.$D(\'beginDate\')}'})"/>
  </div>
 待处理
-  图书修改 博古书屋
-    <title>博古书屋</title> 图片 logo 删除无用js
-后台主页
+   删除无用js
+

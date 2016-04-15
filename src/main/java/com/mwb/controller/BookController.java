@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.http.HttpServletRequest;
@@ -83,13 +84,15 @@ public class BookController {
 
 	//修改图书
 	@RequestMapping("/bookEdit")
-	public void bookEdit(Book book){
+	@ResponseBody
+	public String bookEdit(Book book){
 		LOGGER.info("request bookEdit=");
 		Book book2=bookService.find(book.getId());
 		book2.setMarketprice(book.getMarketprice());
 		book2.setMemberprice(book.getMemberprice());
 		book2.setInventory(book.getInventory());
 		bookService.edit(book2);
+		return "成功";
 	}
 
 }

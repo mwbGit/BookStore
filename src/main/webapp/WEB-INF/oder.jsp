@@ -7,6 +7,7 @@
     <meta charset="utf-8"/>
     <title>博古书屋</title>
     <link rel="stylesheet" type="text/css" href="js/style.css"/>
+    <link rel="shortcut icon" href="/static/media/image/favicon.ico"/>
 
 </head>
 <body>

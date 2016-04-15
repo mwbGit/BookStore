@@ -22,7 +22,7 @@
 
     <meta charset="utf-8"/>
 
-    <title>后台管理</title>
+    <title>博古书屋</title>
 
     <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 
@@ -76,7 +76,7 @@
 
         <div class="container-fluid">
             <!-- BEGIN LOGO -->
-            <a class="brand" href="index.html">
+            <a class="brand" href="index">
                 <img src="<%=ctx %>/static/media/image/logo.png" alt="logo"/>
             </a>
 
@@ -259,122 +259,132 @@
         <!-- END SIDEBAR MENU -->
 
     </div>
-    <div class="page-content">
-        <div class="container-fluid">
+    <div class="page-content" >
+        <div class="container-fluid" >
             <!-- 上方-->
             <div class="row-fluid">
                 <div class="span12">
                     <div class="<%=ctx %>/static/media-body">
                         <div class="<%=ctx %>/static/media" id="top-menu">
                             <div id="time" class="pull-right">
-                                <span id="hours"></span> : <span id="min"></span> : <span id="sec"></span>
+                                <span style="font-size: large;"><span id="hours" ></span> : <span id="min"></span> : <span id="sec"></span></span>                            </div>
                             </div>
                         </div>
                     </div>
-                    <!-- 设置按键-->
-                    <div class="color-panel hidden-phone">
+                </div>
 
-                        <div class="color-mode-icons icon-color"></div>
+            <div id="dashboard">
 
-                        <div class="color-mode-icons icon-color-close"></div>
+                <!-- BEGIN DASHBOARD STATS -->
 
-                        <div class="color-mode">
+                <div class="row-fluid">
 
-                            <p>THEME COLOR</p>
+                    <div class="span3 responsive" data-tablet="span6" data-desktop="span3">
 
-                            <ul class="inline">
+                        <div class="dashboard-stat blue">
 
-                                <li class="color-black current color-default" data-style="default"></li>
+                            <div class="visual">
 
-                                <li class="color-blue" data-style="blue"></li>
+                                <i class="icon-comments"></i>
 
-                                <li class="color-brown" data-style="brown"></li>
+                            </div>
 
-                                <li class="color-purple" data-style="purple"></li>
+                            <div class="details">
 
-                                <li class="color-grey" data-style="grey"></li>
+                                <div class="number">
+                                    用户
+                                </div>
 
-                                <li class="color-white color-light" data-style="light"></li>
+                            </div>
 
-                            </ul>
+                            <a class="more" href="getUsers">
 
-                            <label>
+                                View more <i class="m-icon-swapright m-icon-white"></i>
 
-                                <span>Layout</span>
-
-                                <select class="layout-option m-wrap small">
-
-                                    <option value="fluid" selected>Fluid</option>
-
-                                    <option value="boxed">Boxed</option>
-
-                                </select>
-
-                            </label>
-
-                            <label>
-
-                                <span>Header</span>
-
-                                <select class="header-option m-wrap small">
-
-                                    <option value="fixed" selected>Fixed</option>
-
-                                    <option value="default">Default</option>
-
-                                </select>
-
-                            </label>
-
-                            <label>
-
-                                <span>Sidebar</span>
-
-                                <select class="sidebar-option m-wrap small">
-
-                                    <option value="fixed">Fixed</option>
-
-                                    <option value="default" selected>Default</option>
-
-                                </select>
-
-                            </label>
-
-                            <label>
-
-                                <span>Footer</span>
-
-                                <select class="footer-option m-wrap small">
-
-                                    <option value="fixed">Fixed</option>
-
-                                    <option value="default" selected>Default</option>
-
-                                </select>
-
-                            </label>
+                            </a>
 
                         </div>
 
                     </div>
 
+                    <div class="span3 responsive" data-tablet="span6" data-desktop="span3">
+
+                        <div class="dashboard-stat green">
+
+                            <div class="visual">
+
+                                <i class="icon-shopping-cart"></i>
+
+                            </div>
+
+                            <div class="details">
+
+                                <div class="number">订单</div>
+
+                            </div>
+
+                            <a class="more" href="getOders">
+
+                                View more <i class="m-icon-swapright m-icon-white"></i>
+
+                            </a>
+
+                        </div>
+
+                    </div>
+
+                    <div class="span3 responsive" data-tablet="span6  fix-offset" data-desktop="span3">
+
+                        <div class="dashboard-stat purple">
+                            <div class="visual">
+                                <i class="icon-globe"></i>
+                            </div>
+                            <div class="details">
+
+                                <div class="number">留言</div>
+                            </div>
+
+                            <a class="more" href="getMessage">
+
+                                View more <i class="m-icon-swapright m-icon-white"></i>
+
+                            </a>
+
+                        </div>
+
+                    </div>
+
+                    <div class="span3 responsive" data-tablet="span6" data-desktop="span3">
+
+                        <div class="dashboard-stat yellow">
+
+                            <div class="visual">
+
+                                <i class="icon-bar-chart"></i>
+
+                            </div>
+
+                            <div class="details">
+
+                                <div class="number">图书</div>
+
+                            </div>
+
+                            <a class="more" href="getBooks">
+
+                                View more <i class="m-icon-swapright m-icon-white"></i>
+
+                            </a>
+
+                        </div>
+
+                    </div>
 
                 </div>
 
-            </div>
-
-            <!-- 内容展示-->
-            <div class="row-fluid">
-
-                <div class="span12">
-                    <h1>Hello!!!</h1>
-
-                </div>
+                <div class="clearfix"></div>
 
             </div>
-
-            <!-- END PAGE CONTENT-->
-
         </div>
 
         <!-- END PAGE CONTAINER-->
@@ -393,7 +403,7 @@
 
     <div class="" style=" margin:0 auto; width:400px; color: #ffffff ;font-size: small">
         &copy; 2015 com.mwb.cn email:562684394@qq.com
-        <a href="<%=ctx %>/static/index" target="_blank">bookstore</a>
+        <a href="<%=ctx %>/static/index" target="_blank">博古</a>
 
     </div>
 
@@ -446,27 +456,15 @@
 <script type="text/javascript" src="<%=ctx %>/static/media/js/jquery.dataTables.min.js"></script>
 
 <script type="text/javascript" src="<%=ctx %>/static/media/js/DT_bootstrap.js"></script>
-<!-- END PAGE LEVEL PLUGINS -->
-
-<!-- BEGIN PAGE LEVEL SCRIPTS -->
 
 <script src="<%=ctx %>/static/media/js/app.js"></script>
 
-<script src="<%=ctx %>/static/media/js/form-samples.js"></script>
-
-<script src="<%=ctx %>/static/media/js/app.js"></script>
-
-<script src="<%=ctx %>/static/media/js/table-advanced.js"></script>
 <!-- END PAGE LEVEL SCRIPTS -->
-<script src="<%=ctx %>/static/media/js/table-editable.js"></script>
 <script src="<%=ctx %>/static/media/js/datetimepicker.min.js"></script>
 <script src="<%=ctx %>/static/media/js/functions.js"></script>
 <script>
-
     jQuery(document).ready(function () {
-
         App.init();
-        FormSamples.init();
 
     });
 

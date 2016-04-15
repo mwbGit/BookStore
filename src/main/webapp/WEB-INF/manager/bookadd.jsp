@@ -22,8 +22,7 @@
 
     <meta charset="utf-8"/>
 
-    <title>图书管理</title>
-
+    <title>博古书屋</title>
     <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 
     <meta content="" name="description"/>
@@ -76,7 +75,7 @@
 
         <div class="container-fluid">
             <!-- BEGIN LOGO -->
-            <a class="brand" href="index.html">
+            <a class="brand" href="index">
                 <img src="<%=ctx %>/static/media/image/logo.png" alt="logo"/>
             </a>
 
@@ -156,7 +155,7 @@
 
                     <li class="active">
 
-                        <a href="bookadd.jsp">
+                        <a href="getBookAdd">
 
                             添加图书</a>
 
@@ -267,96 +266,11 @@
                     <div class="<%=ctx %>/static/media-body">
                         <div class="<%=ctx %>/static/media" id="top-menu">
                             <div id="time" class="pull-right">
-                                <span id="hours"></span> : <span id="min"></span> : <span id="sec"></span>
-                            </div>
+                               <span style="font-size: large;"> <span id="hours"></span> : <span id="min"></span> : <span id="sec"></span>
+                           </span> </div>
                         </div>
                     </div>
-                    <!-- 设置按键-->
-                    <div class="color-panel hidden-phone">
 
-                        <div class="color-mode-icons icon-color"></div>
-
-                        <div class="color-mode-icons icon-color-close"></div>
-
-                        <div class="color-mode">
-
-                            <p>THEME COLOR</p>
-
-                            <ul class="inline">
-
-                                <li class="color-black current color-default" data-style="default"></li>
-
-                                <li class="color-blue" data-style="blue"></li>
-
-                                <li class="color-brown" data-style="brown"></li>
-
-                                <li class="color-purple" data-style="purple"></li>
-
-                                <li class="color-grey" data-style="grey"></li>
-
-                                <li class="color-white color-light" data-style="light"></li>
-
-                            </ul>
-
-                            <label>
-
-                                <span>Layout</span>
-
-                                <select class="layout-option m-wrap small">
-
-                                    <option value="fluid" selected>Fluid</option>
-
-                                    <option value="boxed">Boxed</option>
-
-                                </select>
-
-                            </label>
-
-                            <label>
-
-                                <span>Header</span>
-
-                                <select class="header-option m-wrap small">
-
-                                    <option value="fixed" selected>Fixed</option>
-
-                                    <option value="default">Default</option>
-
-                                </select>
-
-                            </label>
-
-                            <label>
-
-                                <span>Sidebar</span>
-
-                                <select class="sidebar-option m-wrap small">
-
-                                    <option value="fixed">Fixed</option>
-
-                                    <option value="default" selected>Default</option>
-
-                                </select>
-
-                            </label>
-
-                            <label>
-
-                                <span>Footer</span>
-
-                                <select class="footer-option m-wrap small">
-
-                                    <option value="fixed">Fixed</option>
-
-                                    <option value="default" selected>Default</option>
-
-                                </select>
-
-                            </label>
-
-                        </div>
-
-                    </div>
 
                     <!-- 来源-->
                     <ul class="breadcrumb">
@@ -563,7 +477,7 @@
 
     <div class="" style=" margin:0 auto; width:400px; color: #ffffff ;font-size: small">
         &copy; 2015 com.mwb.cn email:562684394@qq.com
-        <a href="<%=ctx %>/static/index" target="_blank">bookstore</a>
+        <a href="<%=ctx %>/static/index" target="_blank">博古</a>
 
     </div>
 

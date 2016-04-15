@@ -59,7 +59,7 @@ public class AdminController {
     public String getAdmins(Map<String, Object> map) {
         LOGGER.info("getAdmins into ");
         map.put("admins", adminService.findAll());
-        return "manager/adminedit";
+        return "manager/adminmanager";
     }
 
     //升级管理员
