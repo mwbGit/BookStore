@@ -124,34 +124,34 @@ jQuery(document).ready(function () {
                 }
                 function setPageList() {
                     if (pageindex == i) {
-                        a[a.length] = "<a href=\"#\" class=\"on\">" + i + "</a>";
+                        a[a.length] = "<a href=\"#\" class=\"on\" style='color:#ff0000;font-size:16px;'>" + i + "</a>";
                     } else {
                         a[a.length] = "<a href=\"#\">" + i + "</a>";
                     }
                 }
 
                 //总页数小于10
-                if (pages <= 10) {
+                if (pages <= 6) {
                     for (var i = 1; i <= pages; i++) {
                         setPageList();
                     }
                 }
                 //总页数大于10页
                 else {
-                    if (pageindex <= 4) {
-                        for (var i = 1; i <= 5; i++) {
+                    if (pageindex <= 2) {
+                        for (var i = 1; i <= 3; i++) {
                             setPageList();
                         }
                         a[a.length] = "...<a href=\"#\">" + pages + "</a>";
-                    } else if (pageindex >= pages - 3) {
+                    } else if (pageindex >= pages - 2) {
                         a[a.length] = "<a href=\"#\">1</a>...";
-                        for (var i = pages - 4; i <= pages; i++) {
+                        for (var i = pages - 2; i <= pages; i++) {
                             setPageList();
                         }
                     }
                     else { //当前页在中间部分
                         a[a.length] = "<a href=\"#\">1</a>...";
-                        for (var i = pageindex - 2; i <= pageindex + 2; i++) {
+                        for (var i = pageindex - 1; i <= pageindex + 1; i++) {
 
                             setPageList();
                         }
