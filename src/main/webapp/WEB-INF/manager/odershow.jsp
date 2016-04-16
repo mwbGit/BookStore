@@ -444,22 +444,13 @@
 <!-- END PAGE LEVEL SCRIPTS -->
 <script src="<%=ctx %>/static/media/js/datetimepicker.min.js"></script>
 <script src="<%=ctx %>/static/media/js/functions.js"></script>
-<script src="<%=ctx %>/static/media/js/odershow.js"></script>
+<script src="<%=ctx %>/static/media/js/admin-odershow.js"></script>
 
 <script>
 
     jQuery(document).ready(function () {
         App.init();
         TableAdvanced.init();
-
-        $(".send").click(function () {
-            if (window.confirm("确定发货?")) {
-                return true;
-            } else {
-                return false;
-            }
-
-        });
 
     });
 

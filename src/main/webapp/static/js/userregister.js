@@ -1,6 +1,6 @@
 /**
  * Created by Administrator on 2016/4/6 0006.
- * 管理员添加验证
+ * 注册
  */
 jQuery(document).ready(function ($) {
     //提交验证
@@ -15,7 +15,7 @@ jQuery(document).ready(function ($) {
         var zipcode = $("#zipcode").val();
         var el = /[~#^$@%&!*.,。，()<>:;'"{}【】  ]/gi;
         if (name == "" || name.length > 10|| name.length < 3 || el.test(name)) {
-            alert("名称格式不正确！");
+            alert("用户名至少三位小于10位！");
             return false;
         }
         if (realname == "" || realname.length > 10|| realname.length < 2 || el.test(realname)) {

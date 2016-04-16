@@ -64,7 +64,8 @@ public class BookController {
 		book.setPress(book.getPress().trim());
 		bookService.add(book);
 		LOGGER.info("book add ok");
-		return "redirect:/static/manager/getBooks";
+		//return "redirect:/static/manager/getBooks";
+		return "redirect:/static/manager/getBookAdd";
 	}
 	//展示图书
 	@RequestMapping("/getBooks")

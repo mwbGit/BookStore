@@ -26,14 +26,20 @@ jQuery(document).ready(function () {
             var newbooks="";
             var booktypes="";
             $.each(map.hotbooks, function (index, Book) {
-                hotbooks+='<div class="new_prod_box"><a class="details" href="'+Book.id+'">'+Book.name+
-                '</a><div class="new_prod_bg"><span class="new_icon"><img src="images/special_icon.gif"/></span>' +
+                hotbooks+='<div class="new_prod_box"><a class="details" href="'+Book.id+'"><span style="color: #6B6B6B;">'+Book.name+
+                '</span></a>';
+                if((Book.name).length<13){
+                    hotbooks+='<br>'}
+                hotbooks+='<div class="new_prod_bg"><span class="new_icon"><img src="images/special_icon.gif"/></span>' +
                 '<a class="details" href="'+Book.id+'"><img src="'+Book.img+'" class="image thumb"' +
                 ' border="0"/></a> </div></div>';
             });
             $.each(map.newbooks, function (index, Book) {
-                newbooks+='<div class="new_prod_box"><a class="details" href="'+Book.id+'">'+Book.name+
-                '</a><div class="new_prod_bg"><span class="new_icon"><img src="images/new_icon.gif"/></span>' +
+                newbooks+='<div class="new_prod_box"><a class="details" href="'+Book.id+'"><span style="color: #6B6B6B;">'+Book.name+
+                '</span></a>';
+                if((Book.name).length<13){
+                    newbooks+='<br>'}
+                newbooks +='<div class="new_prod_bg"><span class="new_icon"><img src="images/new_icon.gif"/></span>' +
                 '<a  class="details" href="'+Book.id+'"><img src="'+Book.img+'" class="image thumb"' +
                 ' border="0"/></a> </div></div>';
             });
@@ -87,8 +93,11 @@ jQuery(document).ready(function () {
 
                 var str = "";
                 $.each(data.TypeBooks, function (index, Book) {
-                    str += '<div class="new_prod_box"><a  class="details" href="' +
-                    Book.id + '"style="width:132px;">' + Book.name + '</a><div class="new_prod_bg"><a  class="details" href="' +
+                    str += '<div class="new_prod_box" ><a  class="details" href="' +
+                    Book.id + '"style="width:132px;"><span style="color: #6B6B6B;">' + Book.name + '</span></a>';
+                    if((Book.name).length<=11){
+                        str+='<br>'}
+                    str+='<div class="new_prod_bg"><a  class="details" href="' +
                     Book.id + '"><img src="' + Book.img + '" class="image thumb" border="0"/></a></div></div>';
                 });
                 //展示数据

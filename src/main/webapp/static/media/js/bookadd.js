@@ -25,7 +25,7 @@ jQuery(document).ready(function ($) {
         var introduction = $("#introduction").val().trim();
         var inventory = $("#inventory").val();
 
-        if (name == "" || name.length > 20 ) {
+        if (name == "" || name.length > 30 ) {
             $.MsgBox({
                 msg: "书名格式不正确！",
                 type: "alert",
@@ -63,7 +63,7 @@ jQuery(document).ready(function ($) {
             setTimeout('$("#msg_box,#msg_con").remove()', 1500);
             return false;
         }
-        if (introduction == "" || introduction.length > 500 ) {
+        if (introduction == "" || introduction.length > 1000 ) {
             $.MsgBox({
                 msg: "简介格式不正确！",
                 type: "alert",

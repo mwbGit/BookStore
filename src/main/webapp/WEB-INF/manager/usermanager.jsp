@@ -345,7 +345,7 @@
                                         <td>${User.joindatestr}</td>
                                         <td>${User.lastdatestr}</td>
                                         <td>${User.members==1?"是":"否"}</td>
-                                        <td><a class="delete" href="UserDelete?id=${User.id}">删除</a></td>
+                                        <td><a class="del" href="UserDelete?id=${User.id}">删除</a></td>
                                         <td><a class="upgrade" href="UserUpgrade?id=${User.id}&members=${User.members}">升级</a>
                                         </td>
                                     </tr>
@@ -460,31 +460,7 @@
         App.init();
         TableEditable.init();
 
-        $(".upgrade").click(function () {
-            var href = $(this).attr("href");
-            var num = href.charAt(href.length - 1);
-            if (num == '1') {
-                alert("该用户已经是会员！");
-                return false;
-            } else {
-                if (window.confirm("确定升级该用户为会员吗?")) {
-                    //   $("form").attr("action", href).submit();
-                    return true;
-                } else {
-                    return false;
-                }
-            }
-        });
 
-        $(".delete").click(function () {
-
-            if (window.confirm("确定删除该用户？")) {
-                return true;
-            } else {
-                return false;
-            }
-
-        });
     });
 
 </script>

@@ -427,11 +427,10 @@
 
 <script src="<%=ctx %>/static/media/js/app.js"></script>
 
-<script src="<%=ctx %>/static/media/js/table-advanced.js"></script>
 <!-- END PAGE LEVEL SCRIPTS -->
 <script src="<%=ctx %>/static/media/js/datetimepicker.min.js"></script>
 <script src="<%=ctx %>/static/media/js/functions.js"></script>
-<script src="<%=ctx %>/static/media/js/admin-editable.js"></script>
+<script src="<%=ctx %>/static/media/js/admin-contact.js"></script>
 
 <script>
 
@@ -439,14 +438,7 @@
     App.init();
     TableEditable.init();
 
-    $(".delete").click(function(){
-        if(window.confirm("确定删除该管理员吗?")){
-          //   $("form").attr("action", href).submit();
-          return true;
-        }else{
-          return false;
-      }
-    });
+
 
   });
 

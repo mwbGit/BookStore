@@ -19,7 +19,7 @@ public class PaginationService {
     //默认大小及起始 热销排行展示数量
     private static final int INDEX=0;
     private static final int SIZE=12;
-    private static final int COUNT=20;
+    private static final int COUNT=100;
     //按类别分页
     public static Map<String,Object> Paging(int tyepeid,Pagination page,BookService bookService,BookTypeService bookTypeService){
         //map 查询参数  books结果list

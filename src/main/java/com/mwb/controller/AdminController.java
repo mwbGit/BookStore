@@ -44,7 +44,8 @@ public class AdminController {
         Admin manager = adminService.login(admin);
         if (manager == null) {
             LOGGER.info("admin =null ");
-            return "redirect:/static/manager/adminlogin";
+            request.setAttribute("err","err");
+            return "manager/login";
         } else {
             LOGGER.info("admin =ok ");
             manager.setLastdate(new Date());

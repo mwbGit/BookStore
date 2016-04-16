@@ -442,7 +442,7 @@
 <!-- END PAGE LEVEL SCRIPTS -->
 <script src="<%=ctx %>/static/media/js/datetimepicker.min.js"></script>
 <script src="<%=ctx %>/static/media/js/functions.js"></script>
-<script src="<%=ctx %>/static/media/js/odershow.js"></script>
+<script src="<%=ctx %>/static/media/js/admin-odershow.js"></script>
 
 <script>
 

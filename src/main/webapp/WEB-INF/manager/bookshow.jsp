@@ -315,7 +315,7 @@
                         </div>
                         <div class="portlet-body">
 
-                            <div  class="show"style="display:none;margin:5px 100px;font-size: large;" >
+                            <div  class="show"style="display:none;margin:0 auto;font-size: large;" >
                                 <input type="hidden" class="fid" />
                                 书名：<span class="bn"></span>&nbsp;
                                市场价:<input class="mk" size="7" style="width:50px;" type="text"/>
@@ -334,7 +334,7 @@
 
                                     <th width="2%">Id</th>
                                     <th width="*">书名</th>
-                                    <th width="5%">作者</th>
+                                    <th width="12%">作者</th>
                                     <th width="7%">类别</th>
                                     <th width="9%">出版社</th>
                                     <th width="8%">出版时间</th>

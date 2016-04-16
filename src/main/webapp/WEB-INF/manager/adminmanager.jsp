@@ -440,36 +440,7 @@
   jQuery(document).ready(function () {
     App.init();
     TableEditable.init();
-    $(".upgrade").click(function () {
-      var href = $(this).attr("href");
-      var num = href.charAt(href.length - 1);
-      if (num == '2' || num == '9') {
-        alert("该管理员级别达到上限！");
-        return false;
-      } else {
-        if (window.confirm("确定升级该管理员吗?")) {
-          //   $("form").attr("action", href).submit();
-          return true;
-        } else {
-          return false;
-        }
-      }
-    });
-    $(".delete").click(function () {
-      var href = $(this).attr("href");
-      var num = href.charAt(href.length - 1);
-      if (num == '9') {
-        alert("您的级别不够！");
-        return false;
-      } else {
-        if (window.confirm("确定删除该管理员吗?")) {
-          //   $("form").attr("action", href).submit();
-          return true;
-        } else {
-          return false;
-        }
-      }
-    });
+
   });
 </script>
 

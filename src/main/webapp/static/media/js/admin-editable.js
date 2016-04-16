@@ -34,7 +34,36 @@ var TableEditable = function () {
                 oTable.fnUpdate('<a class="delete" href="bookDelet?id='+jqInputs[0].value+'">Delete</a>', nRow, 11, false);
                 oTable.fnDraw();
             }
-
+            $(".upgrade").click(function () {
+                var href = $(this).attr("href");
+                var num = href.charAt(href.length - 1);
+                if (num == '2' || num == '9') {
+                    alert("该管理员级别达到上限！");
+                    return false;
+                } else {
+                    if (window.confirm("确定升级该管理员吗?")) {
+                        //   $("form").attr("action", href).submit();
+                        return true;
+                    } else {
+                        return false;
+                    }
+                }
+            });
+            $(".delete").click(function () {
+                var href = $(this).attr("href");
+                var num = href.charAt(href.length - 1);
+                if (num == '9') {
+                    alert("您的级别不够！");
+                    return false;
+                } else {
+                    if (window.confirm("确定删除该管理员吗?")) {
+                        //   $("form").attr("action", href).submit();
+                        return true;
+                    } else {
+                        return false;
+                    }
+                }
+            });
             function cancelEditRow(oTable, nRow) {
                 var jqInputs = $('input', nRow);
                 oTable.fnUpdate(jqInputs[0].value, nRow, 0, false);

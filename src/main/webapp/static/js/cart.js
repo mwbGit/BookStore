@@ -65,9 +65,10 @@ jQuery(document).ready(function () {
                 if(data.flag){
                     $("#flag"+id).hide();
                 }else{
-                    $("#price"+id).html(data.price);
+
                     $("#flag"+id).show();
                 }
+                $("#price"+id).html(data.price);
                 count();
             }
         });

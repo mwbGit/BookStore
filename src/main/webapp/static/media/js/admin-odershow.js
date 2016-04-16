@@ -35,7 +35,14 @@ var TableAdvanced = function () {
         $('#sample_1 thead tr').each( function () {
             this.insertBefore( nCloneTh, this.childNodes[0] );
         } );
-         
+        $(".send").click(function () {
+            if (window.confirm("确定发货?")) {
+                return true;
+            } else {
+                return false;
+            }
+
+        });
         $('#sample_1 tbody tr').each( function () {
             this.insertBefore(  nCloneTd.cloneNode( true ), this.childNodes[0] );
         } );

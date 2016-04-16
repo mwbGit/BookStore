@@ -366,7 +366,7 @@
 
                                         <div class="controls">
                                             <input id="pressdate" name="pressdate"  class=" span6 Wdate" type="text"
-                                                   onFocus="WdatePicker({dateFmt:'yyyy-MM-dd'})"/>
+                                                   onFocus="WdatePicker({dateFmt:'yyyy-MM-dd'})" value="2016-01-01"/>
                                         </div>
 
                                     </div>
@@ -386,14 +386,14 @@
                                         <label class="control-label" for="introduction">简介</label>
 
                                         <div class="controls">
-                                                    <textarea id="introduction" type="text" name="introduction"
+                                                    <textarea id="introduction" type="text" name="introduction" rows="10"
                                                               class="m-wrap span6"></textarea>
                                         </div>
 
                                     </div>
                                     <div class="control-group">
 
-                                        <label class="control-label" for="marketprice">市场价</label>
+                                        <label class="control-label" for="marketprice">市场价(元)</label>
 
                                         <div class="controls">
 
@@ -404,7 +404,7 @@
                                     </div>
                                     <div class="control-group">
 
-                                        <label class="control-label" for="memberprice">会员价</label>
+                                        <label class="control-label" for="memberprice">会员价(元)</label>
 
                                         <div class="controls">
 
@@ -415,11 +415,11 @@
                                     </div>
                                     <div class="control-group">
 
-                                        <label class="control-label" for="inventory">存量</label>
+                                        <label class="control-label" for="inventory">存量(本)</label>
 
                                         <div class="controls">
 
-                                            <input type="text" id="inventory" name="inventory" class="m-wrap span6">
+                                            <input type="text" id="inventory" name="inventory" class="m-wrap span6" value="100">
 
                                         </div>
 

@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
          pageEncoding="UTF-8" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <%
     String ctx = request.getContextPath();
@@ -120,7 +121,7 @@
 
                     <input name="password" class="m-wrap placeholder-no-fix" type="password" placeholder="Password"
                            name="password"
-                           onkeyup="value=value.replace(/[\W]/g,'') "
+                           onkeyup="$('#err').hide();value=value.replace(/[\W]/g,'') "
                            onbeforepaste="clipboardData.setData('text',clipboardData.getData('text').replace(/[^\d]/g,''))"/>
 
                 </div>
@@ -141,6 +142,15 @@
                 Login <i class="m-icon-swapright m-icon-white"></i>
 
             </button>
+
+        </div>
+        <div class="control-group">
+            <c:if test="${!empty err}">
+                <span id="err"  style="color: orangered;font-size: large">用户名或密码错误</span>
+            </c:if>
+            <c:if test="${empty err}">
+                <span id="err"></span>
+            </c:if>
         </div>
     </form>
 
@@ -152,7 +162,7 @@
 
 <div class="copyright">
 
-    <div class="" >
+    <div class="">
         &copy; 2015 com.mwb.cn
         <a href="<%=ctx %>/static/index" target="_blank">博古</a>
 

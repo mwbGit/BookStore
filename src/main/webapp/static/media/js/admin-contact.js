@@ -14,31 +14,7 @@ var TableEditable = function () {
 
                 oTable.fnDraw();
             }
-            $(".upgrade").click(function () {
-                var href = $(this).attr("href");
-                var num = href.charAt(href.length - 1);
-                if (num == '1') {
-                    alert("该用户已经是会员！");
-                    return false;
-                } else {
-                    if (window.confirm("确定升级该用户为会员吗?")) {
-                        //   $("form").attr("action", href).submit();
-                        return true;
-                    } else {
-                        return false;
-                    }
-                }
-            });
 
-            $(".del").click(function () {
-
-                if (window.confirm("确定删除该用户？")) {
-                    return true;
-                } else {
-                    return false;
-                }
-
-            });
             function editRow(oTable, nRow) {
                 var aData = oTable.fnGetData(nRow);
                 var jqTds = $('>td', nRow);
@@ -50,32 +26,6 @@ var TableEditable = function () {
             }
 
             function saveRow(oTable, nRow) {
-                var jqInputs = $('input', nRow);
-                var a = /^(([1-9]\d*)|\d)(\.\d{1,2})?$/;
-                if (!a.test(jqInputs[1].value)||!a.test(jqInputs[2].value)) {
-                    alert("金额格式不正确！");
-                    return false;
-                }
-                if(parseInt(jqInputs[2].value)>parseInt(jqInputs[1].value)){
-                    alert("会员价应小于市场价！");
-                    return false;
-                    }
-                var sum= /^[1-9]\d*$/;
-                if (jqInputs[3].value == "" || jqInputs[3].value.length > 20 || !sum.test(jqInputs[3].value)) {
-                    alert("存量格式不正确！");
-                    return false;
-                }
-                $.ajax({
-                    type: "post", //请求方式
-                     async: false, //同步和异步的参数
-                    dataType: "json",
-                    url: "bookEdit?id="+jqInputs[0].value+"&marketprice="+jqInputs[1].value+"&memberprice="+
-                    jqInputs[2].value+"&inventory="+jqInputs[3].value,
-                    // data: params,
-                    success: function (data) {
-                       alert("修改成功");
-                    }
-                });
 
                 oTable.fnUpdate(jqInputs[1].value, nRow, 6, false);
                 oTable.fnUpdate(jqInputs[2].value, nRow, 7, false);
@@ -85,6 +35,14 @@ var TableEditable = function () {
                 oTable.fnDraw();
             }
 
+            $(".delete").click(function(){
+                if(window.confirm("确定删除该吗?")){
+                    //   $("form").attr("action", href).submit();
+                    return true;
+                }else{
+                    return false;
+                }
+            });
             function cancelEditRow(oTable, nRow) {
                 var jqInputs = $('input', nRow);
                 oTable.fnUpdate(jqInputs[0].value, nRow, 0, false);
@@ -102,7 +60,7 @@ var TableEditable = function () {
                 ],
                 // set the initial value
                 "iDisplayLength": 5,
-                "aaSorting": [[8,"desc"]],
+                "aaSorting": [[3, "desc"]],
                 "sDom": "<'row-fluid'<'span6'l><'span6'f>r>t<'row-fluid'<'span6'i><'span6'p>>",
                 "sPaginationType": "bootstrap",
                 "oLanguage": {
