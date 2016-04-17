@@ -54,6 +54,10 @@ public class CartController {
         List<Cart> list=cartService.find(user);
         for (Cart car : list){
             sum+=car.getNum();
+            if(car.getUser().getMembers()==1){
+                car.setPrice(car.getBook().getMemberprice()*car.getNum());
+                cartService.edit( car);
+            }
             price+=car.getPrice();
             if(car.getBook().getInventory()-car.getNum()<0) {
                 //库存不足

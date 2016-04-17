@@ -68,6 +68,10 @@ public class BookInfoController {
 			List<Cart> list=cartService.find(user);
 			for (Cart car : list){
 				sum+=car.getNum();
+				if(car.getUser().getMembers()==1){
+					car.setPrice(car.getBook().getMemberprice()*car.getNum());
+					cartService.edit( car);
+				}
 				price+=car.getPrice();
 			}
 			result.put("sum",sum);

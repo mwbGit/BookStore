@@ -43,5 +43,5 @@ var params = $('form').serialize(); //序列化表单的值
                         <input id="endDate"name="end"  class="Wdate" type="text" onFocus="WdatePicker({dateFmt:'yyyy-MM-dd HH:mm:ss',minDate:'#F{$dp.$D(\'beginDate\')}'})"/>
  </div>
 待处理
-   删除无用js  购物车升级会员价格变动
+   删除无用js
 

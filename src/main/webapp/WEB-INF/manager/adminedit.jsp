@@ -326,7 +326,7 @@
                                         </td>
                                     </tr>
                                     <tr>
-                                        <td><label for="password2" class="control-label tooltips" data-placement="top"
+                                        <td><label for="tel" class="control-label tooltips" data-placement="top"
                                                    data-original-title="只能为数字">手机号</label></td>
                                         <td><input id="tel" type="text" name="tel" value="${admin.tel}"
                                                    onkeyup="value=value.replace(/[^\d]/g,'') "
@@ -344,7 +344,7 @@
                                         <td>
                                             <button id="sub" type="submit" class="btn red"><i class="icon-ok"></i>修改
                                             </button>
-                                            <button type="reset" class="btn red">清空</button>
+                                            <button type="reset" class="btn red">重置</button>
                                         </td>
                                     </tr>
                                 </table>
@@ -444,9 +444,8 @@
 
 <script src="<%=ctx %>/static/media/js/app.js"></script>
 
-<script src="<%=ctx %>/static/media/js/table-advanced.js"></script>
 <!-- END PAGE LEVEL SCRIPTS -->
-<script src="<%=ctx %>/static/media/js/table-editable.js"></script>
+<script src="<%=ctx %>/static/media/js/smallarAlert.js"></script>
 <script src="<%=ctx %>/static/media/js/adminadd.js"></script>
 <script src="<%=ctx %>/static/media/js/datetimepicker.min.js"></script>
 <script src="<%=ctx %>/static/media/js/functions.js"></script>
