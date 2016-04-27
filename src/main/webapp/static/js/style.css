@@ -449,6 +449,9 @@ background-color:#fff;
 border:1px #DFDFDF solid;
 float:right;
 }
+.new_prod_box :hover img { -moz-transform: scale(1.1); -webkit-transform: scale(1.1); -o-transform: scale(1.1); -ms-transform: scale(1.1); }
+.img :hover img { -moz-transform: scale(1.1); -webkit-transform: scale(1.1); -o-transform: scale(1.1); -ms-transform: scale(1.1); }
+
 input.register{
 width:71px;
 height:25px;

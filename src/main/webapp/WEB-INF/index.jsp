@@ -11,6 +11,8 @@
     <title>博古书屋</title>
     <link rel="shortcut icon" href="/static/media/image/favicon.ico"/>
     <link rel="stylesheet" type="text/css" href="<%=ctx %>/static/js/style.css"/>
+    <style type="text/css">
+    </style>
 </head>
 <body>
 <div>

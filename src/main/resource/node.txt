@@ -42,6 +42,8 @@ var params = $('form').serialize(); //序列化表单的值
                         至
                         <input id="endDate"name="end"  class="Wdate" type="text" onFocus="WdatePicker({dateFmt:'yyyy-MM-dd HH:mm:ss',minDate:'#F{$dp.$D(\'beginDate\')}'})"/>
  </div>
+ .img :hover img { -moz-transform: scale(1.1); -webkit-transform: scale(1.1); -o-transform: scale(1.1); -ms-transform: scale(1.1); }
+
 待处理
-   删除无用js
+删除无用js
 

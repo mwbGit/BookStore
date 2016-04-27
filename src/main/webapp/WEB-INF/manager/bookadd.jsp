@@ -217,41 +217,43 @@
                 </a>
 
             </li>
-            <li>
+            <li class="${admin.grade==1?'last':''} ">
                 <a href="getUsers">
                     <i class="icon-user"></i>
                     <span class="title">用户管理</span>
                 </a>
 
             </li>
-            <li class="last">
+            <c:if test="${admin.grade!=1}">
+                <li class="last">
 
-                <a href="javascript:;">
+                    <a href="javascript:;">
 
-                    <i class="icon-sitemap"></i>
+                        <i class="icon-sitemap"></i>
 
-                    <span class="title">管理员</span>
+                        <span class="title">管理员</span>
 
-                    <span class="arrow "></span>
+                        <span class="arrow "></span>
 
-                </a>
+                    </a>
 
-                <ul class="sub-menu">
+                    <ul class="sub-menu">
 
-                    <li>
+                        <li>
 
-                        <a href="addAdmin">
-                            添加管理员</a>
-                    </li>
-                    <li class="active">
-                        <a href="getAdmins">
-                            展示管理员</a>
+                            <a href="addAdmin">
+                                添加管理员</a>
+                        </li>
+                        <li >
+                            <a href="getAdmins">
+                                展示管理员</a>
 
-                    </li>
+                        </li>
 
-                </ul>
+                    </ul>
 
-            </li>
+                </li>
+            </c:if>
 
         </ul>
 

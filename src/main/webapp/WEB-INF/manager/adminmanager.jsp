@@ -213,13 +213,14 @@
         </a>
 
       </li>
-      <li>
+      <li class="${admin.grade==1?'last':''} ">
         <a href="getUsers">
           <i class="icon-user"></i>
           <span class="title">用户管理</span>
         </a>
 
       </li>
+      <c:if test="${admin.grade!=1}">
       <li class="active last">
 
         <a href="javascript:;">
@@ -248,7 +249,7 @@
         </ul>
 
       </li>
-
+</c:if>
 
     </ul>
 

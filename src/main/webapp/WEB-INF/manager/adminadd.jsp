@@ -217,13 +217,14 @@
                 </a>
 
             </li>
-            <li>
+            <li class="${admin.grade==1?'last':''} ">
                 <a href="getUsers">
                     <i class="icon-user"></i>
                     <span class="title">用户管理</span>
                 </a>
 
             </li>
+            <c:if test="${admin.grade!=1}">
             <li class="last active">
 
                 <a href="javascript:;">
@@ -252,7 +253,7 @@
                 </ul>
 
             </li>
-
+            </c:if>
         </ul>
 
         <!-- END SIDEBAR MENU -->
@@ -266,7 +267,8 @@
                     <div class="<%=ctx %>/static/media-body">
                         <div class="<%=ctx %>/static/media" id="top-menu">
                             <div id="time" class="pull-right">
-                              <span style="font-size: large;">  <span id="hours"></span> : <span id="min"></span> : <span id="sec"></span> </span>
+                                <span style="font-size: large;">  <span id="hours"></span> : <span
+                                        id="min"></span> : <span id="sec"></span> </span>
                             </div>
                         </div>
                     </div>

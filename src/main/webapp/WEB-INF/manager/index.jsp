@@ -218,13 +218,14 @@
                 </a>
 
             </li>
-            <li>
+            <li class="${admin.grade==1?'last':''} ">
                 <a href="getUsers">
                     <i class="icon-user"></i>
                     <span class="title">用户管理</span>
                 </a>
 
             </li>
+            <c:if test="${admin.grade!=1}">
             <li class="last">
 
                 <a href="javascript:;">
@@ -244,7 +245,7 @@
                         <a href="addAdmin">
                             添加管理员</a>
                     </li>
-                    <li class="active">
+                    <li >
                         <a href="getAdmins">
                             展示管理员</a>
 
@@ -253,7 +254,7 @@
                 </ul>
 
             </li>
-
+            </c:if>
         </ul>
 
         <!-- END SIDEBAR MENU -->

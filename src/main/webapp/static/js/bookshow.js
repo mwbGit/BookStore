@@ -254,7 +254,7 @@ jQuery(document).ready(function () {
                     str+='<div class="crumb_nav">'+
                     '<a href="javascript:;">Home</a> &gt;&gt; 书籍详情</div><div class="title"><span class="title_icon">' +
                     '<img src="images/bullet1.gif"/></span>'+Book.name+'</div><div class="feat_prod_box_details">' +
-                    '<div class="prod_img"><a href="javascript:;"><img src="'+Book.img+'"' +
+                    '<div class="prod_img img"><a href="javascript:;"><img src="'+Book.img+'"' +
                     ' width="100px" height="150px" border="0"/></a><br/><br/><a target="_blank" href="'+Book.img+'"' +
                     ' rel="lightbox"><img src="images/zoom.gif" border="0"/></a> </div><div class="prod_det_box">' +
                     '<div class="box_top"></div><div class="box_center"><div class="prod_title"><h3>详情</h3></div>' +
@@ -262,10 +262,10 @@ jQuery(document).ready(function () {
                     '<div class="price"><strong> &nbsp;&nbsp; 作者:</strong> <span class="red">'+Book.author+'</span></div>' +
                     '<div class="price"><strong>&nbsp;&nbsp; 出版社:</strong> <span class="red">'+Book.press+'</span></div>' +
                     '<div class="price"><strong> &nbsp;&nbsp; 出版日期:</strong> <span class="red">'+Book.dateStr+'</span></div>' +
-                    '<div class="price"><strong> &nbsp;&nbsp; 市场价:</strong> <span class="red">'+Book.marketprice+'</span></div>' +
-                    '<div class="price"><strong> &nbsp;&nbsp; 会员价:</strong> <span class="red">'+Book.memberprice+'</span></div>' +
-                    '<div class="price"><strong> &nbsp;&nbsp; 成交量:</strong> <span  class="red">'+Book.volume+'</span></div>' +
-                    '<div class="price"><strong> &nbsp;&nbsp; 库存:</strong> <span class="red">'+Book.inventory+'</span></div>' +
+                    '<div class="price"><strong> &nbsp;&nbsp; 市场价:</strong> <span class="red">'+Book.marketprice+'元</span></div>' +
+                    '<div class="price"><strong> &nbsp;&nbsp; 会员价:</strong> <span class="red">'+Book.memberprice+'元</span></div>' +
+                    '<div class="price"><strong> &nbsp;&nbsp; 成交量:</strong> <span  class="red">'+Book.volume+'本</span></div>' +
+                    '<div class="price"><strong> &nbsp;&nbsp; 库存:</strong> <span class="red">'+Book.inventory+'本</span></div>' +
                     '<a href="javascript:;" id="return" class="more"><input  type="button" class="register" value="返回"/></a>' +
                     '<a class="join" href="'+Book.id+'" class="more"> <input id="sub" type="button" class="register" value="加入"/></a>' +
                     '<div class="clear"></div></div><div class="box_bottom"></div></div><div class="clear"></div></div>' +
